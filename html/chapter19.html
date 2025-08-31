@@ -184,6 +184,13 @@
                     </div>
                 
                     <div class="tree-item " >
+                        <a href="chapter20.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第20章：动作场景综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
                         <a href="CLAUDE.html" class="tree-link">
                             <span class="tree-icon">📄</span>
                             <span class="tree-title">Untitled</span>
@@ -520,9 +527,649 @@
 480-600帧：跳跃尝试
 600-720帧：观望结束
 </code></pre></div>
+
+<ol start="3">
+<li><strong>关键姿势设计</strong>
+   - 起始姿势：蜷缩睡觉
+   - 警觉姿势：耳朵竖起
+   - 奔跑姿势：四肢交替
+   - 跳跃姿势：身体拉伸
+   - 落地姿势：四肢弯曲</li>
+</ol>
+<h3 id="1952">19.5.2 基础动画制作</h3>
+<ol>
+<li><strong>Blocking阶段</strong></li>
+</ol>
+<p>关键帧设置方法：</p>
+<ul>
+<li>使用Stepped插值（阶梯式）</li>
+<li>每4-6帧设置关键姿势</li>
+<li>专注于剪影效果</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>Blocking检查清单：
+□ 动作清晰可读
+□ 时间节奏合适
+□ 重心位置正确
+□ 弧线流畅自然
+</code></pre></div>
+
+<ol start="2">
+<li><strong>Spline阶段</strong></li>
+</ol>
+<p>切换到样条插值后的调整：</p>
+<ul>
+<li>清理不必要的关键帧</li>
+<li>调整曲线编辑器</li>
+<li>添加缓入缓出</li>
+<li>保持动作弧线</li>
+</ul>
+<ol start="3">
+<li><strong>Polish阶段</strong></li>
+</ol>
+<p>细节润色：</p>
+<ul>
+<li>添加次要动作（尾巴、耳朵）</li>
+<li>调整重叠动作时间差</li>
+<li>增加微小预备动作</li>
+<li>完善表情变化</li>
+</ul>
+<h3 id="1953">19.5.3 卡通动画原则应用</h3>
+<ol>
+<li><strong>挤压与拉伸</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code>跳跃过程变形：
+准备期：压缩20%
+起跳时：拉伸30%
+空中：  正常形态
+落地前：拉伸20%
+落地时：压缩30%
+</code></pre></div>
+
+<ol start="2">
+<li>
+<p><strong>预备动作</strong>
+   - 跳跃前的下蹲
+   - 转头前的反向
+   - 奔跑前的后退</p>
+</li>
+<li>
+<p><strong>跟随与重叠</strong>
+   - 尾巴延迟2-3帧
+   - 耳朵轻微滞后
+   - 胡须微颤动</p>
+</li>
+<li>
+<p><strong>夸张表现</strong>
+   - 速度线效果
+   - 动作幅度放大
+   - 表情极致化</p>
+</li>
+</ol>
+<h3 id="1954">19.5.4 蝴蝶动画制作</h3>
+<p>蝴蝶飞行的特殊处理：</p>
+<ol>
+<li>
+<p><strong>路径动画</strong>
+   - 创建贝塞尔曲线路径
+   - Follow Path约束
+   - 随机偏移增加自然感</p>
+</li>
+<li>
+<p><strong>翅膀扇动</strong></p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 伪代码示例</span>
+<span class="n">wing_rotation</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">frame</span> <span class="o">*</span> <span class="n">speed</span><span class="p">)</span> <span class="o">*</span> <span class="n">amplitude</span>
+<span class="n">wing_bend</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">frame</span> <span class="o">*</span> <span class="n">speed</span><span class="p">))</span> <span class="o">*</span> <span class="n">bend_factor</span>
+</code></pre></div>
+
+<ol start="3">
+<li><strong>飘忽感营造</strong>
+   - 添加噪波修改器
+   - 不规则速度变化
+   - 8字形飞行轨迹</li>
+</ol>
+<h3 id="1955">19.5.5 镜头动画与剪辑</h3>
+<ol>
+<li><strong>镜头运动设计</strong></li>
+</ol>
+<p>各镜头的运动方式：</p>
+<ul>
+<li>镜头1：缓慢推进</li>
+<li>镜头2：快速切换</li>
+<li>镜头3：跟随运动</li>
+<li>镜头4：环绕拍摄</li>
+<li>镜头5：定格强调</li>
+<li>镜头6：缓慢拉远</li>
+</ul>
+<ol start="2">
+<li>
+<p><strong>镜头衔接技巧</strong>
+   - 动作衔接：利用运动连续性
+   - 视线衔接：保持观看方向
+   - 节奏衔接：快慢结合</p>
+</li>
+<li>
+<p><strong>摄像机动画</strong></p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>摄像机约束设置：
+Track To → 目标：角色
+Limit Distance → 保持距离
+Damped Track → 柔和跟随
+</code></pre></div>
+
+<h2 id="196">19.6 音频同步与最终输出</h2>
+<h3 id="1961">19.6.1 音频规划</h3>
+<p>音频构成要素：</p>
+<ol>
+<li>
+<p><strong>背景音乐</strong>
+   - 轻快活泼的配乐
+   - 30秒完整乐句
+   - 情绪起伏配合剧情</p>
+</li>
+<li>
+<p><strong>音效设计</strong></p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>音效列表：
+0-5秒  ：环境音（鸟叫、风声）
+5秒    ：醒来音效（打哈欠）
+10-20秒：奔跑脚步声
+20秒   ：跳跃音效
+22秒   ：扑空音效
+25-30秒：环境音淡出
+</code></pre></div>
+
+<ol start="3">
+<li><strong>拟音制作</strong>
+   - 小猫叫声（喵喵）
+   - 草地沙沙声
+   - 翅膀扇动声</li>
+</ol>
+<h3 id="1962">19.6.2 音频导入与同步</h3>
+<ol>
+<li><strong>VSE音频编辑</strong></li>
+</ol>
+<p>在视频序列编辑器中：</p>
+<ul>
+<li>导入音频文件</li>
+<li>调整音频片段位置</li>
+<li>设置淡入淡出</li>
+<li>音量包络调整</li>
+</ul>
+<ol start="2">
+<li><strong>动作与音效同步</strong></li>
+</ol>
+<p>精确对位技巧：</p>
+<ul>
+<li>使用标记点定位</li>
+<li>预览时开启音频</li>
+<li>微调关键帧位置</li>
+<li>确保视听统一</li>
+</ul>
+<ol start="3">
+<li><strong>音频混合</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code>混音原则：
+背景音乐：-12dB（基准）
+主要音效：-6dB（突出）
+环境音：  -18dB（衬托）
+对话/叫声：-3dB（最清晰）
+</code></pre></div>
+
+<h3 id="1963">19.6.3 渲染设置优化</h3>
+<ol>
+<li><strong>Eevee渲染设置</strong>（推荐用于卡通风格）</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>渲染属性：
+├─ Sampling
+│  ├─ Render: 64
+│  └─ Viewport: 32
+├─ Shadows
+│  ├─ Cube Size: 1024px
+│  └─ Cascade Size: 2048px
+├─ Indirect Lighting
+│  └─ Bake Indirect Lighting
+└─ Film
+   └─ Transparent（如需要）
+</code></pre></div>
+
+<ol start="2">
+<li><strong>输出设置</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code>Format设置：
+├─ Resolution: 1920×1080
+├─ Frame Rate: 24fps
+├─ File Format: FFmpeg video
+├─ Container: MP4
+├─ Codec: H.264
+└─ Output Quality: High
+</code></pre></div>
+
+<ol start="3">
+<li><strong>批渲染策略</strong>
+   - 分层渲染（角色/背景）
+   - 分段渲染（按镜头）
+   - 使用渲染农场（如需要）</li>
+</ol>
+<h3 id="1964">19.6.4 后期合成处理</h3>
+<ol>
+<li><strong>合成节点设置</strong></li>
+</ol>
+<p>基础合成流程：</p>
+<div class="codehilite"><pre><span></span><code>Render Layers → Color Correction → Glare → Composite
+              ↓
+           Vignette
+              ↓
+           Film Grain
+</code></pre></div>
+
+<ol start="2">
+<li>
+<p><strong>色彩校正</strong>
+   - 增加饱和度15%
+   - 提升对比度10%
+   - 暖色调偏移+5%</p>
+</li>
+<li>
+<p><strong>特效添加</strong>
+   - 运动模糊（快速动作）
+   - 景深效果（背景虚化）
+   - 发光效果（眼睛高光）</p>
+</li>
+</ol>
+<h3 id="1965">19.6.5 最终输出与交付</h3>
+<ol>
+<li><strong>质量检查清单</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code>□ 动画流畅无跳帧
+□ 音画同步准确
+□ 色彩一致性
+□ 无渲染错误
+□ 文件格式正确
+□ 分辨率符合要求
+</code></pre></div>
+
+<ol start="2">
+<li>
+<p><strong>多版本输出</strong>
+   - 高质量版（1080p, ProRes）
+   - 网络版（720p, H.264）
+   - 预览版（480p, 低码率）
+   - 静帧序列（备份用）</p>
+</li>
+<li>
+<p><strong>项目归档</strong>
+   - 打包所有项目文件
+   - 整理素材库
+   - 记录版本信息
+   - 备份到云端</p>
+</li>
+</ol>
+<h2 id="_1">本章小结</h2>
+<p>通过本章的学习，您已经完成了一个完整的卡通短片项目。主要掌握的技能包括：</p>
+<ol>
+<li><strong>项目管理</strong>：从概念到成品的完整工作流程</li>
+<li><strong>故事讲述</strong>：通过视觉语言传达故事</li>
+<li><strong>风格把控</strong>：统一的卡通美术风格</li>
+<li><strong>动画技巧</strong>：卡通动画的核心原则应用</li>
+<li><strong>技术整合</strong>：建模、动画、渲染、合成的综合运用</li>
+<li><strong>音频处理</strong>：音效与画面的完美同步</li>
+</ol>
+<p>这个项目展示了Blender在卡通动画制作中的强大能力。记住，好的动画不仅需要技术，更需要对时间节奏、情感表达和视觉美感的把握。</p>
+<h2 id="_2">练习题</h2>
+<h3 id="_3">基础题</h3>
+<ol>
+<li><strong>故事板绘制练习</strong>
+   创建一个15秒的简单故事板，包含至少4个关键帧。故事内容：一个球从山坡滚下。</li>
+</ol>
+<p><em>提示：注意镜头角度变化和动作连续性</em></p>
+<details markdown="block">
+   <summary markdown="off">参考答案</summary>
+
+   故事板应包含：
+
+   - 第1帧（0-3秒）：远景，展示山坡全貌，球在顶部
+   - 第2帧（3-7秒）：中景，球开始滚动，展示初始加速
+   - 第3帧（7-12秒）：跟随镜头，展示滚动过程中的速度变化
+   - 第4帧（12-15秒）：定格镜头，球停在底部，添加弹跳细节
+
+   关键要素：保持运动方向一致性（从左到右或从右到左），体现重力加速度
+   </details>
+<ol start="2">
+<li><strong>卡通材质制作</strong>
+   为一个立方体创建三种不同的卡通材质：金属、塑料、木头。要求使用Shader Editor完成。</li>
+</ol>
+<p><em>提示：关注Roughness和Metallic参数的差异</em></p>
+<details markdown="block">
+   <summary markdown="off">参考答案</summary>
+
+   三种材质的关键参数：
+
+   - 金属：Metallic=1.0, Roughness=0.2, Base Color=灰色
+   - 塑料：Metallic=0.0, Roughness=0.4, Base Color=鲜艳色彩, Subsurface=0.1
+   - 木头：Metallic=0.0, Roughness=0.8, Base Color=棕色+噪波纹理
+
+   所有材质都应使用ColorRamp节点实现卡通化的明暗分离效果
+   </details>
+<ol start="3">
+<li><strong>基础弹跳球动画</strong>
+   制作一个24帧的弹跳球动画，球从1米高落下，弹跳3次后停止。</li>
+</ol>
+<p><em>提示：每次弹跳高度递减，应用挤压与拉伸原则</em></p>
+<details markdown="block">
+   <summary markdown="off">参考答案</summary>
+
+   关键帧设置：
+
+   - 第0帧：球在最高点（1米）
+   - 第6帧：触地（挤压30%）
+   - 第10帧：第一次弹起（0.6米，拉伸20%）
+   - 第14帧：第二次触地（挤压20%）
+   - 第17帧：第二次弹起（0.3米，拉伸15%）
+   - 第20帧：第三次触地（挤压10%）
+   - 第22帧：第三次弹起（0.1米）
+   - 第24帧：静止
+
+   使用Graph Editor调整曲线，确保符合物理规律
+   </details>
+<ol start="4">
+<li><strong>简单场景灯光设置</strong>
+   为一个包含地面、立方体和球体的场景设置卡通风格的三点照明。</li>
+</ol>
+<p><em>提示：使用Sun Light作为主光，Area Light作为补光</em></p>
+<details markdown="block">
+   <summary markdown="off">参考答案</summary>
+
+   灯光设置：
+
+   - 主光（Sun Light）：强度3.0，角度45度，颜色偏暖（#FFE4B5）
+   - 补光（Area Light）：强度1.0，从侧面照射，颜色偏冷（#B0E0E6）
+   - 轮廓光（Spot Light）：强度2.0，从后方照射，纯白色
+
+   Eevee设置：开启Contact Shadows，Shadow Cube Size设为1024px
+   </details>
+<h3 id="_4">挑战题</h3>
+<ol start="5">
+<li><strong>创建一个10秒的变形动画</strong>
+   制作一个角色从立方体变形为球体，再变形为金字塔的动画。要求过渡自然流畅。</li>
+</ol>
+<p><em>提示：使用Shape Keys或修改器动画，注意体积守恒</em></p>
+<details markdown="block">
+   <summary markdown="off">参考答案</summary>
+
+   实现方法：
+
+   1. 创建基础立方体，添加Subdivision Surface修改器
+   2. 添加三个Shape Keys：Basis（立方体）、Sphere（球体）、Pyramid（金字塔）
+   3. 动画时间分配：
+      - 0-3秒：立方体保持
+      - 3-5秒：立方体→球体（Shape Key值从0到1）
+      - 5-7秒：球体保持
+      - 7-9秒：球体→金字塔（使用两个Shape Key混合）
+      - 9-10秒：金字塔保持
+
+   关键技巧：
+
+   - 在变形过程中添加挤压拉伸增强卡通感
+   - 使用缓入缓出让变形更自然
+   - 保持网格体积大致不变
+   </details>
+<ol start="6">
+<li><strong>设计并实现一个情绪转换动画</strong>
+   为卡通角色制作从"开心"到"惊讶"再到"生气"的表情变化动画（5秒）。</li>
+</ol>
+<p><em>提示：结合Shape Keys和骨骼控制，注意情绪过渡的节奏</em></p>
+<details markdown="block">
+   <summary markdown="off">参考答案</summary>
+
+   表情变化关键点：
+
+   开心（0-1.5秒）：
+
+   - 嘴角上扬（Shape Key: smile = 1.0）
+   - 眼睛眯起（Shape Key: eyes_happy = 0.8）
+   - 整体姿态放松
+
+   过渡（1.5-2秒）：
+
+   - 快速的预备动作
+   - 眼睛睁大的过程
+
+   惊讶（2-3.5秒）：
+
+   - 眼睛最大（Shape Key: eyes_wide = 1.0）
+   - 嘴巴张开（Shape Key: mouth_open = 0.7）
+   - 眉毛上扬（骨骼控制）
+   - 可添加轻微后仰
+
+   生气（3.5-5秒）：
+
+   - 眉毛下压成V形（Shape Key: eyebrows_angry = 1.0）
+   - 嘴巴紧闭或露齿（Shape Key: mouth_angry = 1.0）
+   - 脸部轻微发红（材质颜色动画）
+   - 身体前倾表示攻击性
+
+   添加次要动作如耳朵、头发的延迟反应增强效果
+   </details>
+<ol start="7">
+<li><strong>多角色互动场景</strong>
+   创建两个简单角色（可以是基础几何体拟人化），制作一个"传球"的10秒动画。</li>
+</ol>
+<p><em>提示：注意动作的因果关系和时间配合</em></p>
+<details markdown="block">
+   <summary markdown="off">参考答案</summary>
+
+   动画分解：
+
+   角色A动作：
+
+   - 0-1秒：持球准备
+   - 1-1.5秒：预备动作（向后拉）
+   - 1.5-2秒：投掷动作
+   - 2-4秒：观察球的飞行
+   - 4-5秒：看到角色B接球的反应
+
+   球的运动：
+
+   - 0-1.5秒：在角色A手中
+   - 1.5-3.5秒：抛物线飞行（添加旋转）
+   - 3.5-4秒：被角色B接住（挤压变形）
+
+   角色B动作：
+
+   - 0-2秒：等待姿势（可加小动作）
+   - 2-3秒：预判球的轨迹（眼睛跟随）
+   - 3-3.5秒：接球动作（手臂伸出）
+   - 3.5-4秒：接球缓冲（身体后倾）
+   - 4-5秒：成功接球的反应
+
+   关键点：
+
+   - 使用预备动作增强动作可读性
+   - 球离手和接球的时机要精确
+   - 添加次要动作如身体摇摆增加生动性
+   </details>
+<ol start="8">
+<li><strong>完整的迷你短片制作</strong>
+   基于本章项目，创建自己的15秒卡通短片。主题："惊喜"。要求包含至少一个角色、完整的起承转合、音效配合。</li>
+</ol>
+<p><em>提示：先写故事大纲，再制作故事板，最后执行</em></p>
+<details markdown="block">
+   <summary markdown="off">参考答案</summary>
+
+   示例方案："礼物盒的惊喜"
+
+   故事大纲：
+
+   - 设定：一个好奇的角色发现一个礼物盒
+   - 冲突：犹豫是否打开
+   - 高潮：打开后跳出东西
+   - 结局：开心的反应
+
+   制作流程：
+
+   1. 故事板（4个关键帧）
+   2. 角色设计（简单几何体角色即可）
+   3. 场景搭建（简单房间一角）
+   4. 动画制作：
+      - 0-3秒：角色发现盒子，走近
+      - 3-6秒：围绕盒子观察，表现好奇
+      - 6-8秒：决定打开，手伸向盒子
+      - 8-10秒：盒子打开，东西弹出（可以是彩带、气球等）
+      - 10-12秒：角色惊喜反应（跳跃）
+      - 12-15秒：开心地与弹出物互动
+
+   5. 音效添加：
+      - 脚步声
+      - 盒子打开声
+      - 弹出音效
+      - 欢快的背景音乐
+
+   6. 渲染输出（720p即可）
+
+   评分标准：
+
+   - 故事完整性（25%）
+   - 动画流畅度（25%）
+   - 角色表现力（25%）
+   - 音画同步（25%）
+   </details>
+<h2 id="gotchas">常见陷阱与错误（Gotchas）</h2>
+<h3 id="_5">项目管理陷阱</h3>
+<ol>
+<li>
+<p><strong>文件命名混乱</strong>
+   - 错误：随意命名文件，版本管理混乱
+   - 正确：使用统一命名规范，如<code>proj_shot01_anim_v003.blend</code></p>
+</li>
+<li>
+<p><strong>缺乏增量保存</strong>
+   - 错误：覆盖保存，丢失之前的工作
+   - 正确：定期增量保存，保留关键版本</p>
+</li>
+<li>
+<p><strong>忽视文件关联</strong>
+   - 错误：移动项目文件夹后纹理丢失
+   - 正确：使用相对路径，打包外部数据</p>
+</li>
+</ol>
+<h3 id="_6">动画制作陷阱</h3>
+<ol start="4">
+<li>
+<p><strong>过度使用关键帧</strong>
+   - 错误：每一帧都设关键帧，曲线混乱
+   - 正确：只在关键姿势设置关键帧，让插值完成过渡</p>
+</li>
+<li>
+<p><strong>忽视动画原则</strong>
+   - 错误：动作僵硬，缺乏预备动作
+   - 正确：始终应用12条动画原则</p>
+</li>
+<li>
+<p><strong>错误的帧率设置</strong>
+   - 错误：制作时用30fps，输出时改为24fps
+   - 正确：项目开始就确定帧率并保持一致</p>
+</li>
+</ol>
+<h3 id="_7">渲染输出陷阱</h3>
+<ol start="7">
+<li>
+<p><strong>渲染设置不当</strong>
+   - 错误：使用过高的采样数，渲染时间过长
+   - 正确：根据卡通风格特点适当降低采样</p>
+</li>
+<li>
+<p><strong>忽视渲染优化</strong>
+   - 错误：场景中保留所有高精度模型
+   - 正确：使用LOD、视锥体剔除等优化技术</p>
+</li>
+<li>
+<p><strong>音频不同步</strong>
+   - 错误：后期才考虑音频，导致对位困难
+   - 正确：动画制作时就导入音频参考</p>
+</li>
+</ol>
+<h3 id="_8">工作流程陷阱</h3>
+<ol start="10">
+<li>
+<p><strong>跳过预演阶段</strong></p>
+<ul>
+<li>错误：直接进入精细制作</li>
+<li>正确：先用简单形状完成动态预演</li>
+</ul>
+</li>
+<li>
+<p><strong>场景规模失控</strong></p>
+<ul>
+<li>错误：不断添加细节，场景过于复杂</li>
+<li>正确：根据镜头需要控制细节层次</li>
+</ul>
+</li>
+<li>
+<p><strong>忽视团队协作</strong></p>
+<ul>
+<li>错误：独自工作，不考虑资产共享</li>
+<li>正确：建立清晰的文件结构和命名规范</li>
+</ul>
+</li>
+</ol>
+<h2 id="_9">最佳实践检查清单</h2>
+<h3 id="_10">前期准备检查</h3>
+<ul>
+<li>[ ] 故事是否简单明了，适合短片长度？</li>
+<li>[ ] 是否绘制了完整的故事板？</li>
+<li>[ ] 风格参考是否收集充分？</li>
+<li>[ ] 项目文件结构是否建立？</li>
+<li>[ ] 时间规划是否合理？</li>
+</ul>
+<h3 id="_11">建模与材质检查</h3>
+<ul>
+<li>[ ] 模型拓扑是否适合动画变形？</li>
+<li>[ ] 是否保持了统一的美术风格？</li>
+<li>[ ] 材质是否符合卡通渲染要求？</li>
+<li>[ ] 是否合理使用了实例化？</li>
+<li>[ ] 文件大小是否在可控范围内？</li>
+</ul>
+<h3 id="_12">动画制作检查</h3>
+<ul>
+<li>[ ] 是否完成了Blocking阶段？</li>
+<li>[ ] 动画原则是否正确应用？</li>
+<li>[ ] 时间节奏是否符合故事需要？</li>
+<li>[ ] 表情动画是否生动？</li>
+<li>[ ] 是否添加了必要的次要动作？</li>
+</ul>
+<h3 id="_13">灯光渲染检查</h3>
+<ul>
+<li>[ ] 灯光是否统一且符合场景氛围？</li>
+<li>[ ] 渲染设置是否针对卡通风格优化？</li>
+<li>[ ] 是否设置了正确的输出格式？</li>
+<li>[ ] 渲染时间是否在预期范围内？</li>
+<li>[ ] 是否保留了分层渲染的可能？</li>
+</ul>
+<h3 id="_14">后期输出检查</h3>
+<ul>
+<li>[ ] 音频是否完美同步？</li>
+<li>[ ] 色彩是否一致？</li>
+<li>[ ] 是否完成了必要的后期效果？</li>
+<li>[ ] 输出格式是否满足发布要求？</li>
+<li>[ ] 是否完成了项目归档？</li>
+</ul>
+<h3 id="_15">质量保证检查</h3>
+<ul>
+<li>[ ] 是否在不同设备上测试播放？</li>
+<li>[ ] 是否获得了他人的反馈？</li>
+<li>[ ] 是否修复了所有已知问题？</li>
+<li>[ ] 是否准备了不同版本的输出？</li>
+<li>[ ] 是否记录了项目经验和教训？</li>
+</ul>
+<hr />
+<p>恭喜您完成了第19章的学习！通过这个综合项目，您已经掌握了制作卡通短片的完整流程。下一章，我们将探索更具挑战性的动作场景制作。继续加油！</p>
             </article>
             
-            <nav class="page-nav"><a href="chapter18.html" class="nav-link prev">← 第18章：写实角色综合项目</a><a href="CLAUDE.html" class="nav-link next">Untitled →</a></nav>
+            <nav class="page-nav"><a href="chapter18.html" class="nav-link prev">← 第18章：写实角色综合项目</a><a href="chapter20.html" class="nav-link next">第20章：动作场景综合项目 →</a></nav>
         </main>
     </div>
 </body>

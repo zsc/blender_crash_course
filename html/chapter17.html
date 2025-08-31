@@ -184,6 +184,13 @@
                     </div>
                 
                     <div class="tree-item " >
+                        <a href="chapter20.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第20章：动作场景综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
                         <a href="CLAUDE.html" class="tree-link">
                             <span class="tree-icon">📄</span>
                             <span class="tree-title">Untitled</span>
@@ -208,6 +215,7 @@
 <li>地球背景</li>
 <li>动态镜头漫游</li>
 </ul>
+<p>这个项目将模拟真实的国际空间站设计理念，同时融入科幻元素，创造出既真实又富有想象力的太空场景。通过这个项目，您将学会如何处理大规模场景的组织管理、优化渲染性能，以及创建引人入胜的镜头动画。</p>
 <h3 id="_3">项目规模评估</h3>
 <div class="codehilite"><pre><span></span><code>场景复杂度分析：
 ┌─────────────────────────────────┐
@@ -223,17 +231,66 @@
 └─────────────────────────────────┘
 </code></pre></div>
 
+<p><strong>性能考虑因素：</strong></p>
+<ul>
+<li><strong>视窗性能</strong>：使用Viewport Shading的Solid模式进行建模，Material Preview模式检查材质</li>
+<li><strong>内存管理</strong>：大型纹理使用.tx格式（UDIM支持），启用纹理流式加载</li>
+<li><strong>几何体优化</strong>：远景模型使用Proxy，近景使用完整细节</li>
+<li><strong>渲染分层</strong>：将场景分为前景、中景、背景分别渲染，减少单次渲染负载</li>
+</ul>
 <h3 id="_4">时间规划</h3>
 <p>制作周期建议：40-60小时</p>
 <ul>
 <li>概念设计：4-6小时</li>
+<li>草图绘制：2小时</li>
+<li>参考收集：1小时</li>
+<li>设计迭代：1-3小时</li>
 <li>建模制作：20-25小时</li>
+<li>主体结构：8-10小时</li>
+<li>细节部件：8-10小时</li>
+<li>模块组装：4-5小时</li>
 <li>材质制作：8-10小时</li>
+<li>基础材质：3-4小时</li>
+<li>纹理绘制：3-4小时</li>
+<li>材质调试：2小时</li>
 <li>灯光设置：4-5小时</li>
+<li>环境光设置：2小时</li>
+<li>局部光源：1-2小时</li>
+<li>光效调试：1小时</li>
 <li>动画制作：4-6小时</li>
+<li>相机路径：2-3小时</li>
+<li>动态元素：2-3小时</li>
 <li>渲染后期：4-8小时</li>
+<li>测试渲染：2小时</li>
+<li>最终渲染：2-4小时</li>
+<li>后期合成：2小时</li>
 </ul>
-<h3 id="_5">文件组织结构</h3>
+<h3 id="_5">项目里程碑</h3>
+<p><strong>第一阶段（概念验证）：</strong></p>
+<ul>
+<li>完成基础布局设计</li>
+<li>创建核心舱段原型</li>
+<li>确定视觉风格方向</li>
+</ul>
+<p><strong>第二阶段（资产制作）：</strong></p>
+<ul>
+<li>完成所有模块建模</li>
+<li>制作材质库</li>
+<li>建立模块化系统</li>
+</ul>
+<p><strong>第三阶段（场景集成）：</strong></p>
+<ul>
+<li>组装完整空间站</li>
+<li>设置环境和灯光</li>
+<li>添加细节和装饰</li>
+</ul>
+<p><strong>第四阶段（动画渲染）：</strong></p>
+<ul>
+<li>制作相机动画</li>
+<li>添加动态效果</li>
+<li>输出最终成品</li>
+</ul>
+<h3 id="_6">文件组织结构</h3>
 <div class="codehilite"><pre><span></span><code>项目文件夹结构：
 SpaceStation_Project/
 ├── 01_References/          # 参考图片
@@ -257,7 +314,7 @@ SpaceStation_Project/
     └── Final/
 </code></pre></div>
 
-<h3 id="_6">技术规范</h3>
+<h3 id="_7">技术规范</h3>
 <p><strong>建模规范：</strong></p>
 <ul>
 <li>使用米制单位（1单位 = 1米）</li>
@@ -271,25 +328,49 @@ SpaceStation_Project/
 <li>内存占用：&lt; 16GB</li>
 <li>渲染时间：&lt; 5分钟/帧（1080p）</li>
 </ul>
-<h2 id="_7">概念设计与参考收集</h2>
-<h3 id="_8">设计理念</h3>
+<h2 id="_8">概念设计与参考收集</h2>
+<h3 id="_9">设计理念</h3>
 <p>空间站设计原则：</p>
 <ol>
 <li><strong>功能性优先</strong>：每个模块都有明确的功能定位</li>
 <li><strong>模块化结构</strong>：便于扩展和维护</li>
 <li><strong>视觉层次</strong>：主次分明的细节分布</li>
 <li><strong>科学合理性</strong>：符合基本的物理和工程逻辑</li>
+<li><strong>冗余设计</strong>：关键系统双重备份，确保安全性</li>
+<li><strong>人体工程学</strong>：内部空间符合零重力环境下的人体活动需求</li>
 </ol>
-<h3 id="_9">参考收集策略</h3>
+<p>在设计过程中，我们需要平衡真实感与科幻感。太过真实会显得平淡，太过科幻则失去可信度。理想的设计应该是"基于现实，超越现实"——以现有技术为基础，加入合理的未来科技元素。</p>
+<h3 id="_10">参考收集策略</h3>
 <p><strong>主要参考来源：</strong></p>
 <ul>
 <li>国际空间站（ISS）技术资料</li>
+<li>舱段连接方式</li>
+<li>太阳能板布局</li>
+<li>散热器设计</li>
 <li>科幻电影概念设计（《星际穿越》、《地心引力》）</li>
+<li>镜头构图参考</li>
+<li>灯光氛围</li>
+<li>细节密度分布</li>
 <li>NASA公开的空间站设计方案</li>
+<li>深空网关（Deep Space Gateway）</li>
+<li>月球轨道站概念</li>
 <li>硬科幻小说插图</li>
+<li>Arthur C. Clarke作品</li>
+<li>Isaac Asimov太空站设计</li>
+<li>现代航天器设计</li>
+<li>SpaceX龙飞船</li>
+<li>波音Starliner</li>
+<li>中国天宫空间站</li>
 </ul>
-<h3 id="_10">概念草图绘制</h3>
-<div class="codehilite"><pre><span></span><code>空间站布局示意图：
+<p><strong>参考图片组织方法：</strong></p>
+<ol>
+<li>按功能分类（推进、居住、实验、能源）</li>
+<li>按细节层级（整体、模块、部件、细节）</li>
+<li>按材质类型（金属、隔热、玻璃、标识）</li>
+<li>创建mood board，确定整体视觉方向</li>
+</ol>
+<h3 id="_11">概念草图绘制</h3>
+<div class="codehilite"><pre><span></span><code>空间站布局示意图（顶视图）：
       [太阳能板]
            |
     ┌──────┼──────┐
@@ -299,150 +380,447 @@ SpaceStation_Project/
     └──────┼──────┘
            |
       [居住舱]
+
+空间站布局示意图（侧视图）：
+     通信天线
+        ↑
+    ┌───┴───┐
+    │ 核心舱 │←── 旋转环（人工重力）
+    ├───────┤
+    │ 节点舱 │←── 多方向对接口
+    ├───────┤
+    │ 货运舱 │←── 大型货物存储
+    └───────┘
+        ↓
+    推进系统
 </code></pre></div>
 
-<h3 id="_11">风格定位</h3>
+<p><strong>结构层次规划：</strong></p>
+<ul>
+<li><strong>主结构</strong>：承重框架和压力舱</li>
+<li><strong>次结构</strong>：连接节点和加强筋</li>
+<li><strong>三级结构</strong>：设备支架和管线</li>
+<li><strong>表面细节</strong>：铆钉、焊缝、标识</li>
+</ul>
+<h3 id="_12">风格定位</h3>
 <p><strong>视觉风格特征：</strong></p>
 <ul>
 <li>色调：冷色调为主（蓝、灰、白）</li>
+<li>主色：钛白色（舱体）</li>
+<li>辅色：深空蓝（太阳能板）</li>
+<li>点缀色：橙色（警告标识）、绿色（状态灯）</li>
 <li>材质：金属、碳纤维、玻璃</li>
+<li>多层隔热材料（MLI）的金色/银色反射</li>
+<li>阳极氧化铝的哑光质感</li>
+<li>碳纤维的编织纹理</li>
 <li>细节：技术感强，功能性装饰</li>
+<li>每个细节都有实际功能</li>
+<li>避免纯装饰性元素</li>
+<li>强调工业设计美学</li>
 <li>氛围：专业、冷峻、未来感</li>
+<li>硬边建模为主</li>
+<li>干净利落的线条</li>
+<li>高科技低生活感</li>
 </ul>
-<h3 id="_12">模块功能设计</h3>
+<h3 id="_13">模块功能设计</h3>
 <p><strong>核心舱（Command Module）：</strong></p>
 <ul>
 <li>控制中心</li>
+<li>360度全景观察窗</li>
+<li>多屏幕工作站</li>
+<li>全息投影区</li>
 <li>生命支持系统</li>
+<li>空气循环装置</li>
+<li>水回收系统</li>
+<li>温度控制单元</li>
 <li>通信设备</li>
+<li>高增益天线阵列</li>
+<li>激光通信系统</li>
+<li>应急信标</li>
 </ul>
 <p><strong>实验室（Laboratory Module）：</strong></p>
 <ul>
 <li>科学实验设备</li>
+<li>手套箱操作台</li>
+<li>离心机</li>
+<li>显微镜工作站</li>
 <li>观察窗</li>
+<li>光学级玻璃</li>
+<li>防辐射涂层</li>
+<li>可调节遮光板</li>
 <li>机械臂</li>
+<li>7自由度关节</li>
+<li>精密操作手</li>
+<li>工具更换接口</li>
 </ul>
 <p><strong>居住舱（Habitat Module）：</strong></p>
 <ul>
 <li>睡眠区</li>
+<li>独立睡眠舱位</li>
+<li>个人物品存储</li>
+<li>隐私帘设计</li>
 <li>健身区</li>
+<li>跑步机（带固定装置）</li>
+<li>阻力训练设备</li>
+<li>医疗检查站</li>
 <li>餐饮区</li>
+<li>食物加热站</li>
+<li>水分配系统</li>
+<li>废物处理装置</li>
 </ul>
 <p><strong>对接口（Docking Port）：</strong></p>
 <ul>
 <li>标准对接机构</li>
+<li>IDSS国际对接标准</li>
+<li>软捕获/硬捕获系统</li>
+<li>对接环密封圈</li>
 <li>气闸舱</li>
+<li>双重舱门</li>
+<li>压力均衡系统</li>
+<li>EVA准备区</li>
 <li>货物转运区</li>
+<li>机械臂辅助</li>
+<li>货物固定架</li>
+<li>快速转运轨道</li>
 </ul>
-<h2 id="_13">模块化建模流程</h2>
-<h3 id="_14">基础模块制作</h3>
+<p><strong>能源系统（Power System）：</strong></p>
+<ul>
+<li>太阳能电池阵列</li>
+<li>可旋转跟踪</li>
+<li>展开面积200平方米</li>
+<li>转换效率30%</li>
+<li>电池储能单元</li>
+<li>锂离子电池组</li>
+<li>冗余备份系统</li>
+<li>智能电源管理</li>
+</ul>
+<p><strong>推进系统（Propulsion System）：</strong></p>
+<ul>
+<li>主推进器</li>
+<li>离子推进引擎</li>
+<li>化学推进备份</li>
+<li>姿态控制</li>
+<li>RCS反应控制系统</li>
+<li>陀螺仪稳定装置</li>
+<li>磁力矩器</li>
+</ul>
+<h2 id="_14">模块化建模流程</h2>
+<h3 id="_15">基础模块制作</h3>
 <p><strong>核心建模技术：</strong></p>
 <ol>
 <li>使用Array修改器创建重复结构</li>
 <li>利用Mirror修改器保证对称性</li>
 <li>Boolean运算创建复杂开口</li>
 <li>Solidify修改器制作壳体结构</li>
+<li>Bevel修改器添加倒角细节</li>
+<li>Subdivision Surface控制曲面平滑度</li>
 </ol>
-<h3 id="_15">标准化接口设计</h3>
+<p><strong>建模精度控制：</strong></p>
+<ul>
+<li>开启场景单位设置（Scene Properties → Units）</li>
+<li>设置长度单位为米（Meters）</li>
+<li>单位比例（Unit Scale）：1.0</li>
+<li>开启精确建模（Shift+Tab开启吸附）</li>
+<li>使用测量工具验证尺寸</li>
+</ul>
+<h3 id="_16">标准化接口设计</h3>
 <div class="codehilite"><pre><span></span><code>模块接口规范：
-┌─────────────┐
-│  外径：4m   │
-│  内径：3.5m │
-│  深度：0.5m │
-└─────────────┘
+┌─────────────────────────┐
+│  外径：4m               │
+│  内径：3.5m             │
+│  深度：0.5m             │
+│  螺栓孔：24个           │
+│  密封圈槽：2道          │
+└─────────────────────────┘
+
+接口类型分类：
+├── 主接口（4m直径）
+│   └── 用于主舱段连接
+├── 次接口（2m直径）
+│   └── 用于设备舱连接
+└── 小接口（1m直径）
+    └── 用于管道和线缆
 </code></pre></div>
 
 <p><strong>接口建模步骤：</strong></p>
 <ol>
-<li>创建标准圆柱体（Shift+A → Mesh → Cylinder）</li>
-<li>设置32个顶点，半径2m</li>
-<li>应用Solidify修改器，厚度0.25m</li>
-<li>添加连接法兰细节</li>
-<li>创建密封圈凹槽</li>
+<li>创建标准圆柱体（Shift+A → Mesh → Cylinder）
+   - 顶点数：64（确保圆滑）
+   - 半径：2m
+   - 深度：0.5m</li>
+<li>应用Solidify修改器
+   - 厚度：0.25m
+   - 偏移：-1（向内）
+   - Even Thickness：启用</li>
+<li>添加连接法兰细节
+   - 使用Inset Faces（I键）创建法兰面
+   - Extrude（E键）突出法兰
+   - 厚度：0.1m</li>
+<li>创建螺栓孔
+   - 添加圆形（Circle）作为切割对象
+   - 使用Array修改器（Radial模式）
+   - Count：24个
+   - 应用Boolean Difference</li>
+<li>创建密封圈凹槽
+   - 选择内圈边缘
+   - Bevel（Ctrl+B）创建凹槽
+   - 深度：0.02m
+   - Segments：3</li>
 </ol>
-<h3 id="_16">主体结构建模</h3>
+<h3 id="_17">主体结构建模</h3>
 <p><strong>舱体建模工作流：</strong></p>
 <div class="codehilite"><pre><span></span><code>建模流程图：
 基础形状 → 切割开口 → 添加加强筋 → 
 细节雕刻 → 拓扑优化 → UV展开
+
+详细流程：
+┌─────────────┐
+│ 1.基础建模  │
+├─────────────┤
+│ 2.布尔切割  │
+├─────────────┤
+│ 3.细节添加  │
+├─────────────┤
+│ 4.拓扑清理  │
+├─────────────┤
+│ 5.UV映射    │
+└─────────────┘
 </code></pre></div>
 
 <p><strong>步骤详解：</strong></p>
 <ol>
 <li>
 <p><strong>基础形状创建</strong>
-   - 从圆柱体开始
-   - 调整比例（长度8-12m）
-   - 细分表面（Subdivision Level 2）</p>
+   - 从圆柱体开始（Add → Mesh → Cylinder）
+   - 调整比例：</p>
+<ul>
+<li>半径：2m（标准舱段）</li>
+<li>长度：10m（可根据功能调整）</li>
+<li>应用变换（Ctrl+A → Apply Scale）</li>
+<li>细分策略：</li>
+<li>Loop Cut（Ctrl+R）添加横向分段</li>
+<li>每2米一个分段，便于后续编辑</li>
+<li>端盖处理：</li>
+<li>Inset Faces创建内圈</li>
+<li>为接口预留空间</li>
+</ul>
 </li>
 <li>
 <p><strong>功能性开口</strong>
-   - 舷窗位置规划
-   - 舱门开口切割
-   - 设备安装口</p>
+   - 舷窗位置规划</p>
+<ul>
+<li>使用Empty标记位置</li>
+<li>创建切割用球体</li>
+<li>直径：0.8m（标准舷窗）</li>
+<li>Boolean Difference切割</li>
+<li>保留Boolean修改器便于调整</li>
+<li>舱门开口切割</li>
+<li>标准舱门：2m × 1m</li>
+<li>使用立方体作为切割对象</li>
+<li>添加倒角避免锐边</li>
+<li>设备安装口</li>
+<li>小型接口：0.3m直径</li>
+<li>阵列分布在舱体表面</li>
+<li>用于安装传感器、天线等</li>
+</ul>
 </li>
 <li>
 <p><strong>结构加强</strong>
-   - 外部加强筋
-   - 内部框架
-   - 连接点加固</p>
+   - 外部加强筋</p>
+<ul>
+<li>创建横向环形加强筋</li>
+<li>使用Curve建模后转换为Mesh</li>
+<li>截面：0.1m × 0.15m</li>
+<li>间隔：每2m一道</li>
+<li>纵向加强筋</li>
+<li>连接各横向加强筋</li>
+<li>数量：8-12根均匀分布</li>
+<li>使用Array修改器快速创建</li>
+<li>连接点加固</li>
+<li>在接口周围添加加强板</li>
+<li>厚度：基础壳体的1.5倍</li>
+<li>使用Solidify修改器控制厚度</li>
+</ul>
 </li>
 </ol>
-<h3 id="_17">细节部件制作</h3>
+<h3 id="_18">细节部件制作</h3>
 <p><strong>太阳能电池板：</strong></p>
 <ol>
-<li>创建平面（10m × 3m）</li>
-<li>使用Array修改器创建单元格</li>
-<li>添加边框和支架</li>
-<li>制作旋转机构</li>
+<li>创建平面（10m × 3m）
+   - Add → Mesh → Plane
+   - Scale: X=5, Y=1.5
+   - Subdivision: 10×3 segments</li>
+<li>使用Array修改器创建单元格
+   - 创建单个电池单元（0.2m × 0.2m）
+   - Array修改器X轴：Count 50, Relative Offset 1.05
+   - Array修改器Y轴：Count 15, Relative Offset 1.05
+   - 间隙模拟单元间的连接缝</li>
+<li>添加边框和支架
+   - 使用Solidify修改器添加厚度（0.02m）
+   - 创建铝合金边框（Profile: 0.1m × 0.05m）
+   - 添加加强筋（每2m一道）</li>
+<li>制作旋转机构
+   - 创建旋转轴（Cylinder, 直径0.3m）
+   - 添加驱动电机模型
+   - 制作万向节连接
+   - 设置旋转约束（Limit Rotation）</li>
+<li>细节增强
+   - 添加接线盒
+   - 创建温度传感器
+   - 制作微陨石防护层</li>
 </ol>
 <p><strong>通信天线：</strong></p>
 <ol>
-<li>基础支架建模</li>
-<li>抛物面天线制作</li>
-<li>馈源和接收器</li>
-<li>线缆细节</li>
+<li>基础支架建模
+   - 创建三脚架结构
+   - 管径：0.05m，长度：2m
+   - 使用Edge → Bridge连接
+   - 添加交叉支撑</li>
+<li>抛物面天线制作
+   - UV Sphere → 删除下半部分
+   - Proportional Editing塑造抛物面
+   - 直径：3m，焦距：1.5m
+   - Solidify修改器（厚度0.01m）
+   - 添加网格结构（Wire修改器）</li>
+<li>馈源和接收器
+   - 创建喇叭形馈源
+   - 添加波导管
+   - 制作LNB（低噪声放大器）
+   - 支撑杆（4根，直径0.03m）</li>
+<li>线缆细节
+   - 使用Bezier Curve创建线缆路径
+   - Bevel Object设置圆形截面
+   - 添加固定夹具（每0.5m一个）
+   - 制作接头和连接器</li>
 </ol>
 <p><strong>推进器组件：</strong></p>
 <ol>
-<li>喷口建模</li>
-<li>燃料管路</li>
-<li>控制阀门</li>
-<li>安装支架</li>
+<li>喷口建模
+   - 创建锥形喷口（Cone → 调整形状）
+   - 内部添加喷射导流片
+   - 制作冷却通道（螺旋状）
+   - 喉部直径：0.2m，出口直径：0.5m</li>
+<li>燃料管路
+   - 主管道：直径0.1m
+   - 分支管道：直径0.05m
+   - 添加法兰连接
+   - 制作柔性段（波纹管）</li>
+<li>控制阀门
+   - 球阀建模
+   - 执行机构（电动/气动）
+   - 压力表和传感器
+   - 手动旁通阀</li>
+<li>安装支架
+   - 万向节悬挂系统
+   - 推力矢量控制机构
+   - 减震器模型
+   - 热防护罩</li>
 </ol>
-<h3 id="_18">模块组装技术</h3>
+<p><strong>其他重要部件：</strong></p>
+<ol>
+<li><strong>散热器面板</strong>
+   - 蜂窝状结构
+   - 热管网络
+   - 可展开设计</li>
+<li><strong>对接灯光系统</strong>
+   - 导航灯（红/绿/白）
+   - 对接指示灯阵列
+   - 应急照明</li>
+<li><strong>EVA扶手和脚架</strong>
+   - 标准扶手间距：0.5m
+   - 防滑表面处理
+   - 系绳固定点</li>
+</ol>
+<h3 id="_19">模块组装技术</h3>
 <p><strong>组装原则：</strong></p>
 <ul>
 <li>使用Collection管理模块</li>
+<li>主Collection：SpaceStation</li>
+<li>子Collection：Modules, Solar_Panels, Antennas, Details</li>
 <li>保持模块独立性</li>
+<li>每个模块独立的Origin点</li>
+<li>避免直接合并几何体</li>
 <li>建立父子关系</li>
+<li>核心舱作为父对象</li>
+<li>其他模块作为子对象</li>
 <li>使用实例化减少内存占用</li>
+<li>Alt+D创建Linked Duplicate</li>
+<li>修改一个实例，全部更新</li>
 </ul>
 <p><strong>对齐技术：</strong></p>
-<div class="codehilite"><pre><span></span><code><span class="c1"># 伪代码示例（概念说明）</span>
-<span class="c1"># 使用Snap功能精确对齐</span>
+<div class="codehilite"><pre><span></span><code>精确对齐流程：
 
-<span class="mf">1.</span> <span class="n">开启Vertex</span> <span class="n">Snap</span>
-<span class="mf">2.</span> <span class="n">选择连接点</span>
-<span class="mf">3.</span> <span class="n">移动到目标位置</span>
-<span class="mf">4.</span> <span class="n">应用变换</span>
+1. 准备阶段
+   - 设置Pivot Point为3D Cursor
+   - 开启Snap（Shift+Tab）
+   - 选择Vertex模式
+
+2. 对齐步骤
+   - 选择源模块的连接点
+   - Shift+S → Cursor to Selected
+   - 选择目标模块
+   - Shift+S → Selection to Cursor
+
+3. 旋转对齐
+   - 使用Track To约束临时对齐
+   - Apply Visual Transform
+   - Clear约束
+
+4. 验证对齐
+   - 检查法线方向
+   - 验证密封面贴合
+   - 测量间隙（应&lt;0.001m）
 </code></pre></div>
 
+<p><strong>模块连接系统：</strong></p>
+<ol>
+<li><strong>机械连接</strong>
+   - 螺栓阵列（24个M20螺栓）
+   - 快速锁定机构
+   - 应急释放系统</li>
+<li><strong>电气连接</strong>
+   - 电源总线接口
+   - 数据通信接口
+   - 备用连接</li>
+<li><strong>流体连接</strong>
+   - 空气循环管道
+   - 冷却液管路
+   - 废物处理管线</li>
+</ol>
 <h3 id="lod">细节层次管理（LOD）</h3>
 <p><strong>LOD策略：</strong></p>
-<ul>
-<li>LOD0：完整细节（近景）</li>
-<li>LOD1：中等细节（中景）</li>
-<li>LOD2：简化模型（远景）</li>
-</ul>
+<div class="codehilite"><pre><span></span><code>LOD级别定义：
+┌──────────┬──────────┬─────────────┬──────────┐
+│ 级别      │ 多边形数  │ 可见距离     │ 用途      │
+├──────────┼──────────┼─────────────┼──────────┤
+│ LOD0     │ 100%     │ 0-50m       │ 特写镜头  │
+│ LOD1     │ 30%      │ 50-200m     │ 中景镜头  │
+│ LOD2     │ 10%      │ 200-1000m   │ 远景镜头  │
+│ LOD3     │ 2%       │ &gt;1000m      │ 背景元素  │
+└──────────┴──────────┴─────────────┴──────────┘
+</code></pre></div>
+
 <p><strong>实现方法：</strong></p>
 <ol>
-<li>使用Decimate修改器</li>
-<li>手动简化拓扑</li>
-<li>代理模型替换</li>
+<li><strong>使用Decimate修改器</strong>
+   - Collapse模式：保持形状
+   - Ratio：根据LOD级别设置
+   - 保持UV和材质</li>
+<li><strong>手动简化拓扑</strong>
+   - 删除不可见的内部面
+   - 合并临近顶点
+   - 简化圆形为多边形</li>
+<li><strong>代理模型替换</strong>
+   - 创建简化版本
+   - 保持整体轮廓
+   - 使用贴图补偿细节</li>
+<li><strong>智能切换系统</strong>
+   - 使用Geometry Nodes控制
+   - 基于相机距离自动切换
+   - 淡入淡出过渡</li>
 </ol>
-<h2 id="_19">材质与灯光设计</h2>
-<h3 id="_20">科幻材质库构建</h3>
+<h2 id="_20">材质与灯光设计</h2>
+<h3 id="_21">科幻材质库构建</h3>
 <p><strong>基础材质类型：</strong></p>
 <ol>
 <li><strong>金属材质</strong></li>
@@ -473,7 +851,7 @@ Roughness: 0.3-0.5
    - 用于指示灯和显示屏</p>
 </li>
 </ol>
-<h3 id="_21">纹理制作流程</h3>
+<h3 id="_22">纹理制作流程</h3>
 <p><strong>PBR纹理工作流：</strong></p>
 <ol>
 <li>
@@ -497,7 +875,7 @@ Roughness: 0.3-0.5
    - 涂装区域标记</p>
 </li>
 </ol>
-<h3 id="_22">贴花系统应用</h3>
+<h3 id="_23">贴花系统应用</h3>
 <p><strong>贴花类型：</strong></p>
 <ul>
 <li>警告标识</li>
@@ -512,7 +890,7 @@ Roughness: 0.3-0.5
 <li>Alpha通道处理</li>
 <li>法线传递设置</li>
 </ol>
-<h3 id="_23">环境光设置</h3>
+<h3 id="_24">环境光设置</h3>
 <p><strong>三层光照系统：</strong></p>
 <div class="codehilite"><pre><span></span><code>光照布局：
          [主光源-太阳]
@@ -541,7 +919,7 @@ Roughness: 0.3-0.5
 <li>推进器光效</li>
 <li>指示灯系统</li>
 </ul>
-<h3 id="_24">体积光效果</h3>
+<h3 id="_25">体积光效果</h3>
 <p><strong>空间尘埃效果：</strong></p>
 <ol>
 <li>添加Volume Scatter</li>
@@ -554,8 +932,8 @@ Roughness: 0.3-0.5
 <li>配合粒子系统</li>
 <li>动画控制强度</li>
 </ol>
-<h2 id="_25">镜头动画与渲染</h2>
-<h3 id="_26">镜头规划</h3>
+<h2 id="_26">镜头动画与渲染</h2>
+<h3 id="_27">镜头规划</h3>
 <p><strong>镜头类型设计：</strong></p>
 <ol>
 <li>
@@ -577,7 +955,7 @@ Roughness: 0.3-0.5
    - 追踪飞船对接</p>
 </li>
 </ol>
-<h3 id="_27">相机动画技术</h3>
+<h3 id="_28">相机动画技术</h3>
 <p><strong>相机路径设置：</strong></p>
 <ol>
 <li>创建贝塞尔曲线</li>
@@ -593,7 +971,7 @@ Roughness: 0.3-0.5
 摇镜（Pan）→ 引导视线
 </code></pre></div>
 
-<h3 id="_28">动画元素添加</h3>
+<h3 id="_29">动画元素添加</h3>
 <p><strong>旋转动画：</strong></p>
 <ul>
 <li>太阳能板缓慢旋转</li>
@@ -612,7 +990,7 @@ Roughness: 0.3-0.5
 <li>噪波调制器</li>
 <li>表达式动画</li>
 </ul>
-<h3 id="_29">渲染设置优化</h3>
+<h3 id="_30">渲染设置优化</h3>
 <p><strong>Cycles渲染设置：</strong></p>
 <div class="codehilite"><pre><span></span><code>推荐设置：
 Samples: 256-512
@@ -633,7 +1011,7 @@ Ambient Occlusion: ON
 Bloom: ON
 </code></pre></div>
 
-<h3 id="_30">渲染层管理</h3>
+<h3 id="_31">渲染层管理</h3>
 <p><strong>多层渲染策略：</strong></p>
 <ol>
 <li><strong>前景层</strong>：空间站主体</li>
@@ -650,7 +1028,7 @@ Bloom: ON
 <li>Object ID</li>
 <li>Cryptomatte</li>
 </ul>
-<h3 id="_31">批量渲染管理</h3>
+<h3 id="_32">批量渲染管理</h3>
 <p><strong>渲染农场设置：</strong></p>
 <ol>
 <li>场景优化和打包</li>
@@ -658,7 +1036,7 @@ Bloom: ON
 <li>渲染设置锁定</li>
 <li>输出格式选择（EXR推荐）</li>
 </ol>
-<h2 id="_32">本章小结</h2>
+<h2 id="_33">本章小结</h2>
 <p>本章通过"轨道空间站"项目，系统展示了大型科幻场景的完整制作流程。关键要点包括：</p>
 <ol>
 <li><strong>项目管理</strong>：合理的规划和文件组织是大型项目成功的基础</li>
@@ -668,8 +1046,8 @@ Bloom: ON
 <li><strong>工作流程</strong>：从概念到成品的专业制作流程</li>
 </ol>
 <p>掌握这些技术后，您将能够独立完成专业级的科幻场景制作，并将这些方法应用到其他类型的项目中。</p>
-<h2 id="_33">练习题</h2>
-<h3 id="_34">基础题</h3>
+<h2 id="_34">练习题</h2>
+<h3 id="_35">基础题</h3>
 <p><strong>练习17.1：模块化建模</strong>
 创建一个标准化的空间站舱段模块，要求：</p>
 <ul>
@@ -754,7 +1132,7 @@ Bloom: ON
 <li>调整相机焦距获得理想构图</li>
 </ol>
 </details>
-<h3 id="_35">挑战题</h3>
+<h3 id="_36">挑战题</h3>
 <p><strong>练习17.4：完整空间站组装</strong>
 使用模块化方法组装一个完整的空间站，要求：</p>
 <ul>
@@ -892,8 +1270,8 @@ Bloom: ON
 </li>
 </ol>
 </details>
-<h2 id="_36">常见陷阱与错误</h2>
-<h3 id="_37">建模阶段</h3>
+<h2 id="_37">常见陷阱与错误</h2>
+<h3 id="_38">建模阶段</h3>
 <p><strong>问题1：模块接口不匹配</strong></p>
 <ul>
 <li>原因：没有使用统一的标准</li>
@@ -909,7 +1287,7 @@ Bloom: ON
 <li>原因：没有设定统一的单位系统</li>
 <li>解决：开始前设定场景单位，使用参考物体</li>
 </ul>
-<h3 id="_38">材质阶段</h3>
+<h3 id="_39">材质阶段</h3>
 <p><strong>问题4：金属材质看起来像塑料</strong></p>
 <ul>
 <li>原因：Roughness值过高，Metallic值过低</li>
@@ -920,7 +1298,7 @@ Bloom: ON
 <li>原因：贴图分辨率过低或UV展开不当</li>
 <li>解决：使用高分辨率贴图（至少2K），优化UV布局</li>
 </ul>
-<h3 id="_39">渲染阶段</h3>
+<h3 id="_40">渲染阶段</h3>
 <p><strong>问题6：渲染时间过长</strong></p>
 <ul>
 <li>原因：采样数过高，场景未优化</li>
@@ -931,15 +1309,15 @@ Bloom: ON
 <li>原因：纹理过大，几何体过多</li>
 <li>解决：压缩纹理，使用实例化，分层渲染</li>
 </ul>
-<h2 id="_40">最佳实践检查清单</h2>
-<h3 id="_41">项目规划</h3>
+<h2 id="_41">最佳实践检查清单</h2>
+<h3 id="_42">项目规划</h3>
 <ul>
 <li>[ ] 制定明确的项目目标和范围</li>
 <li>[ ] 创建合理的时间计划</li>
 <li>[ ] 建立规范的文件组织结构</li>
 <li>[ ] 收集充足的参考资料</li>
 </ul>
-<h3 id="_42">建模规范</h3>
+<h3 id="_43">建模规范</h3>
 <ul>
 <li>[ ] 使用统一的单位系统</li>
 <li>[ ] 保持合理的多边形密度</li>
@@ -947,21 +1325,21 @@ Bloom: ON
 <li>[ ] 清晰的命名规则</li>
 <li>[ ] 定期保存和备份</li>
 </ul>
-<h3 id="_43">材质优化</h3>
+<h3 id="_44">材质优化</h3>
 <ul>
 <li>[ ] 使用PBR工作流程</li>
 <li>[ ] 纹理尺寸适中（2K-4K）</li>
 <li>[ ] 复用材质减少内存占用</li>
 <li>[ ] 正确设置UV映射</li>
 </ul>
-<h3 id="_44">场景管理</h3>
+<h3 id="_45">场景管理</h3>
 <ul>
 <li>[ ] 使用Collection组织对象</li>
 <li>[ ] 合理使用实例化</li>
 <li>[ ] 实施LOD策略</li>
 <li>[ ] 定期清理无用数据</li>
 </ul>
-<h3 id="_45">渲染输出</h3>
+<h3 id="_46">渲染输出</h3>
 <ul>
 <li>[ ] 选择合适的渲染引擎</li>
 <li>[ ] 优化采样设置</li>

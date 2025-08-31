@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="./">
+    <title>第19章：卡通短片综合项目</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/highlight.css">
+    <script src="assets/script.js" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                processEscapes: false,
+                packages: {'[+]': ['noerrors', 'ams']}
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            loader: {
+                load: ['[tex]/noerrors', '[tex]/ams']
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>目录</h3>
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div class="sidebar-search">
+                <input type="text" id="sidebar-search-input" placeholder="搜索..." autocomplete="off">
+            </div>
+            <div id="tree-container">
+                <nav class="tree-nav" role="tree">
+                    <div class="tree-item " >
+                        <a href="index.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Blender 速成教程</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter1.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第1章：Blender 界面与基础操作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter2.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第2章：基础建模技术</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter3.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第3章：材质与纹理基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter4.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第4章：硬表面建模</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter5.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第5章：有机建模与雕刻</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter6.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第6章：场景构建与优化</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter7.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第7章：角色建模基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter8.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第8章：写实角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter9.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第9章：卡通角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter10.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第10章：动画基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter11.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第11章：骨骼绑定系统</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter12.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第12章：角色动画进阶</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter13.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第13章：打斗动画制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter14.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第14章：物理模拟与动力学</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter15.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第15章：灯光与渲染</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter16.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第16章：合成与后期处理</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter17.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第17章：科幻场景综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter18.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第18章：写实角色综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item active" >
+                        <a href="chapter19.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第19章：卡通短片综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="CLAUDE.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Untitled</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <article>
+                <h1 id="19">第19章：卡通短片综合项目</h1>
+<p>本章将带领您完成一个完整的卡通短片项目，从故事构思到最终输出。通过这个综合项目，您将整合前面章节学到的所有技能，包括风格化角色建模、场景设计、动画制作、音频同步等。我们将制作一个30秒的卡通短片，讲述一个简单而有趣的故事。</p>
+<h2 id="191">19.1 项目概述与前期准备</h2>
+<h3 id="1911">19.1.1 项目目标</h3>
+<p>我们将制作一个名为"午后冒险"的30秒卡通短片，讲述一只好奇的小猫在花园中追逐蝴蝶的故事。这个项目将涵盖：</p>
+<ul>
+<li>风格化角色设计与建模（小猫、蝴蝶）</li>
+<li>卡通场景搭建（花园环境）</li>
+<li>角色动画制作（跑跳、追逐）</li>
+<li>镜头设计与剪辑</li>
+<li>音效与背景音乐同步</li>
+<li>最终渲染与输出</li>
+</ul>
+<h3 id="1912">19.1.2 风格定位</h3>
+<p>我们采用迪士尼/皮克斯风格的3D卡通美术风格，特点包括：</p>
+<div class="codehilite"><pre><span></span><code>风格特征：
+┌─────────────────────────────┐
+│ • 夸张的比例（大眼睛、大头）  │
+│ • 柔和的形状（圆润、少棱角）  │
+│ • 鲜艳的色彩（高饱和度）      │
+│ • 简化的细节（重点突出）      │
+│ • 夸张的动作（弹性、挤压）    │
+└─────────────────────────────┘
+</code></pre></div>
+
+<h3 id="1913">19.1.3 项目文件结构</h3>
+<p>建立清晰的项目文件结构至关重要：</p>
+<div class="codehilite"><pre><span></span><code>cartoon_short/
+├── 00_reference/          # 参考资料
+│   ├── concept_art/       # 概念设计
+│   ├── storyboard/        # 故事板
+│   └── style_guide/       # 风格指南
+├── 01_models/             # 模型文件
+│   ├── characters/        # 角色模型
+│   ├── props/            # 道具模型
+│   └── environment/      # 环境模型
+├── 02_textures/          # 纹理贴图
+├── 03_rigs/              # 绑定文件
+├── 04_animation/         # 动画文件
+│   ├── layout/           # 动态预演
+│   ├── animation/        # 动画文件
+│   └── cache/           # 缓存文件
+├── 05_lighting/          # 灯光设置
+├── 06_render/            # 渲染输出
+│   ├── preview/          # 预览渲染
+│   └── final/           # 最终渲染
+├── 07_comp/              # 合成文件
+└── 08_audio/             # 音频文件
+</code></pre></div>
+
+<h3 id="1914">19.1.4 时间规划</h3>
+<p>30秒短片的制作时间分配：</p>
+<ul>
+<li>前期准备（概念设计、故事板）：2天</li>
+<li>建模阶段（角色、场景）：3天</li>
+<li>绑定与设置：1天</li>
+<li>动画制作：4天</li>
+<li>灯光渲染：2天</li>
+<li>后期合成：1天</li>
+<li>音频制作：1天</li>
+</ul>
+<h2 id="192">19.2 故事板与动态预演</h2>
+<h3 id="1921">19.2.1 故事结构设计</h3>
+<p>30秒短片的三幕结构：</p>
+<div class="codehilite"><pre><span></span><code>时间轴（30秒）：
+0-5秒   ：开场 - 小猫在花园中打盹
+5-10秒  ：诱因 - 蝴蝶飞过，引起注意
+10-20秒 ：追逐 - 小猫追逐蝴蝶的主要动作
+20-25秒 ：高潮 - 小猫跳跃试图抓住蝴蝶
+25-30秒 ：结尾 - 蝴蝶飞走，小猫继续观望
+</code></pre></div>
+
+<h3 id="1922">19.2.2 故事板绘制</h3>
+<p>故事板的关键帧设计：</p>
+<div class="codehilite"><pre><span></span><code>关键帧布局：
+┌─────┬─────┬─────┬─────┐
+│ 1   │ 2   │ 3   │ 4   │
+│开场 │发现 │追逐1│追逐2│
+├─────┼─────┼─────┼─────┤
+│ 5   │ 6   │ 7   │ 8   │
+│跳跃 │扑空 │再试 │结尾 │
+└─────┴─────┴─────┴─────┘
+
+每个关键帧包含：
+
+- 镜头类型（远景/中景/特写）
+- 角色位置与动作
+- 镜头运动（固定/跟随/摇移）
+- 情绪表达
+</code></pre></div>
+
+<h3 id="1923-previz">19.2.3 动态预演（Previz）</h3>
+<p>使用简单几何体快速搭建场景，确定：</p>
+<ol>
+<li>
+<p><strong>镜头规划</strong>
+   - 镜头1（0-5秒）：远景，展示花园全貌
+   - 镜头2（5-10秒）：中景，小猫特写反应
+   - 镜头3（10-15秒）：跟随镜头，追逐动作
+   - 镜头4（15-20秒）：低角度，展示跳跃
+   - 镜头5（20-25秒）：慢动作，高潮时刻
+   - 镜头6（25-30秒）：拉远镜头，平静结尾</p>
+</li>
+<li>
+<p><strong>时间节奏</strong></p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>节奏曲线：
+强度 ↑
+    │     ╱╲
+    │    ╱  ╲
+    │   ╱    ╲___
+    │__╱
+    └─────────────→ 时间
+    0   10  20  30秒
+</code></pre></div>
+
+<h3 id="1924">19.2.4 镜头语言设计</h3>
+<p>卡通短片的镜头语言特点：</p>
+<ul>
+<li><strong>景别运用</strong>：多用中景和特写强调表情</li>
+<li><strong>镜头运动</strong>：活泼的推拉摇移增加动感</li>
+<li><strong>构图原则</strong>：遵循三分法，突出主体</li>
+<li><strong>连续性</strong>：保持180度规则和视线匹配</li>
+</ul>
+<h2 id="193">19.3 风格化角色群组制作</h2>
+<h3 id="1931">19.3.1 主角小猫设计</h3>
+<p>角色设计要点：</p>
+<div class="codehilite"><pre><span></span><code>小猫比例设计：
+     ╱─╲
+    │●●│  ← 大眼睛（占脸部1/3）
+    │ ▽ │  ← 小鼻子
+     ╲─╱   ← 圆润脸型
+      │
+    ╱─┴─╲  ← 身体（头身比1:1.5）
+   │     │
+   ╰─┘ ╰─┘ ← 短腿（强调可爱）
+</code></pre></div>
+
+<p>建模工作流程：</p>
+<ol>
+<li>
+<p><strong>基础形体</strong>
+   - 使用球体作为头部基础
+   - 圆柱体构建身体
+   - 保持低多边形数量（初期约2000面）</p>
+</li>
+<li>
+<p><strong>细节添加</strong>
+   - 耳朵：锥形变形
+   - 尾巴：曲线+圆形截面
+   - 爪子：简化为球形</p>
+</li>
+<li>
+<p><strong>拓扑优化</strong>
+   - 面部布线支持表情变形
+   - 关节处增加循环边
+   - 整体保持四边面</p>
+</li>
+</ol>
+<h3 id="1932">19.3.2 配角蝴蝶制作</h3>
+<p>蝴蝶的简化设计：</p>
+<div class="codehilite"><pre><span></span><code>蝴蝶结构：
+    ╱╲ ╱╲
+   ╱  ╳  ╲   ← 翅膀（使用贴图）
+  ╱   │   ╲
+      ═══     ← 身体（圆柱体）
+</code></pre></div>
+
+<p>制作技巧：</p>
+<ul>
+<li>翅膀使用平面+Alpha贴图</li>
+<li>身体保持极简造型</li>
+<li>动画使用形状键实现扇翅</li>
+</ul>
+<h3 id="1933">19.3.3 角色材质制作</h3>
+<p>卡通材质的特点：</p>
+<ol>
+<li><strong>基础色设置</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="n">Shader节点</span><span class="err">：</span>
+<span class="p">[</span><span class="n">Principled</span><span class="w"> </span><span class="n">BSDF</span><span class="p">]</span>
+<span class="err">├─</span><span class="w"> </span><span class="n">Base</span><span class="w"> </span><span class="n">Color</span><span class="o">:</span><span class="w"> </span><span class="n">高饱和度色彩</span>
+<span class="err">├─</span><span class="w"> </span><span class="n">Roughness</span><span class="o">:</span><span class="w"> </span><span class="mf">0.8-1.0</span><span class="err">（</span><span class="n">减少反射</span><span class="err">）</span>
+<span class="err">├─</span><span class="w"> </span><span class="n">Subsurface</span><span class="o">:</span><span class="w"> </span><span class="mf">0.1</span><span class="err">（</span><span class="n">柔和感</span><span class="err">）</span>
+<span class="err">└─</span><span class="w"> </span><span class="n">Sheen</span><span class="o">:</span><span class="w"> </span><span class="mf">0.3</span><span class="err">（</span><span class="n">毛发质感</span><span class="err">）</span>
+</code></pre></div>
+
+<ol start="2">
+<li>
+<p><strong>卡通渲染设置</strong>
+   - 使用ColorRamp节点实现色阶分离
+   - Toon BSDF创建卡通阴影
+   - Fresnel效果增加轮廓光</p>
+</li>
+<li>
+<p><strong>纹理绘制</strong>
+   - 手绘风格的简单纹理
+   - 强调色块而非细节
+   - 使用渐变增加体积感</p>
+</li>
+</ol>
+<h3 id="1934">19.3.4 表情系统设置</h3>
+<p>使用形状键（Shape Keys）制作表情：</p>
+<p>基础表情库：</p>
+<ul>
+<li>眨眼（左/右独立）</li>
+<li>瞳孔放大/缩小</li>
+<li>嘴巴张开/微笑/惊讶</li>
+<li>耳朵竖起/下垂</li>
+<li>胡须抖动</li>
+</ul>
+<p>表情混合技巧：</p>
+<div class="codehilite"><pre><span></span><code>复合表情 = 基础表情A × 0.7 + 基础表情B × 0.3
+例如：困惑 = 眉毛上扬 × 0.6 + 嘴巴歪斜 × 0.4
+</code></pre></div>
+
+<h2 id="194">19.4 场景搭建与氛围营造</h2>
+<h3 id="1941">19.4.1 花园场景设计</h3>
+<p>场景布局规划：</p>
+<div class="codehilite"><pre><span></span><code>俯视图：
+┌─────────────────────┐
+│ 树木  花丛   蝴蝶区 │
+│  🌳    🌺🌺    🦋   │
+│                     │
+│  草地     小猫活动区 │
+│  ～～～    🐱       │
+│                     │
+│ 花盆  小径   围栏   │
+│  🏺   ═══    |||    │
+└─────────────────────┘
+</code></pre></div>
+
+<h3 id="1942">19.4.2 场景建模策略</h3>
+<ol>
+<li>
+<p><strong>模块化制作</strong>
+   - 制作基础植物模型库
+   - 使用粒子系统分布草地
+   - 实例化复用花朵模型</p>
+</li>
+<li>
+<p><strong>细节层次（LOD）</strong></p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>远景：简化模型，贴图代替
+中景：中等细节，主要形状
+近景：高细节，完整模型
+</code></pre></div>
+
+<ol start="3">
+<li><strong>场景优化</strong>
+   - 使用Collection分组管理
+   - 视锥体剔除隐藏不可见物体
+   - 代理模型用于预览</li>
+</ol>
+<h3 id="1943">19.4.3 卡通风格植被制作</h3>
+<p>简化的植物制作方法：</p>
+<ol>
+<li><strong>卡通树木</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code>树冠：球体变形
+树干：圆柱+噪波
+树叶：粒子系统+卡片
+</code></pre></div>
+
+<ol start="2">
+<li>
+<p><strong>风格化花朵</strong>
+   - 使用曲线制作花瓣
+   - 阵列修改器复制
+   - 简单渐变色彩</p>
+</li>
+<li>
+<p><strong>草地系统</strong>
+   - Hair粒子作为基础
+   - 自定义草叶模型
+   - 颜色变化增加层次</p>
+</li>
+</ol>
+<h3 id="1944">19.4.4 氛围灯光设计</h3>
+<p>卡通场景的光照特点：</p>
+<ol>
+<li><strong>三点照明升级</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code>主光：太阳光（暖色调）
+补光：天空光（冷色调）
+轮廓光：聚光灯（强调轮廓）
+</code></pre></div>
+
+<ol start="2">
+<li>
+<p><strong>色彩方案</strong>
+   - 主色调：绿色（自然）
+   - 辅助色：黄色（阳光）
+   - 点缀色：彩色（花朵）</p>
+</li>
+<li>
+<p><strong>光影风格化</strong>
+   - 硬边阴影
+   - 色彩分离
+   - 避免过度真实</p>
+</li>
+</ol>
+<h2 id="195">19.5 完整动画制作流程</h2>
+<h3 id="1951">19.5.1 动画规划与参考</h3>
+<p>动画制作前的准备：</p>
+<ol>
+<li>
+<p><strong>动作参考收集</strong>
+   - 真实猫咪追逐视频
+   - 卡通动画参考片段
+   - 动作分解图</p>
+</li>
+<li>
+<p><strong>动画时间表</strong></p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>帧数规划（24fps）：
+0-120帧  ：打盹状态
+120-240帧：发现蝴蝶
+240-480帧：追逐动作
+480-600帧：跳跃尝试
+600-720帧：观望结束
+</code></pre></div>
+            </article>
+            
+            <nav class="page-nav"><a href="chapter18.html" class="nav-link prev">← 第18章：写实角色综合项目</a><a href="CLAUDE.html" class="nav-link next">Untitled →</a></nav>
+        </main>
+    </div>
+</body>
+</html>

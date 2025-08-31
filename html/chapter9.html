@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="./">
+    <title>第9章：卡通角色制作</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/highlight.css">
+    <script src="assets/script.js" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                processEscapes: false,
+                packages: {'[+]': ['noerrors', 'ams']}
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            loader: {
+                load: ['[tex]/noerrors', '[tex]/ams']
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>目录</h3>
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div class="sidebar-search">
+                <input type="text" id="sidebar-search-input" placeholder="搜索..." autocomplete="off">
+            </div>
+            <div id="tree-container">
+                <nav class="tree-nav" role="tree">
+                    <div class="tree-item " >
+                        <a href="index.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Blender 速成教程</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter1.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第1章：Blender 界面与基础操作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter2.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第2章：基础建模技术</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter3.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第3章：材质与纹理基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter4.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第4章：硬表面建模</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter5.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第5章：有机建模与雕刻</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter6.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第6章：场景构建与优化</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter7.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第7章：角色建模基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter8.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第8章：写实角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item active" >
+                        <a href="chapter9.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第9章：卡通角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter10.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第10章：动画基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter11.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第11章：骨骼绑定系统</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter12.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第12章：角色动画进阶</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter13.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第13章：打斗动画制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter14.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第14章：物理模拟与动力学</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter15.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第15章：灯光与渲染</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter16.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第16章：合成与后期处理</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter17.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第17章：科幻场景综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter18.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第18章：写实角色综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter19.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第19章：卡通短片综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="CLAUDE.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Untitled</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <article>
+                <h1 id="9">第9章：卡通角色制作</h1>
+<p>在前一章中，我们探索了写实角色的制作流程，追求解剖学准确性和细节还原。本章将转向另一个极富创造力的领域——卡通角色制作。卡通角色不受现实约束，通过夸张的比例、简化的形状和鲜明的个性特征，能够传达更强烈的情感和更丰富的表现力。对于动画师而言，卡通角色不仅制作效率更高，而且在动画表现上具有更大的自由度。本章将系统介绍卡通角色的设计原则、建模技巧、材质制作和表情系统，帮助您掌握从概念到成品的完整卡通角色制作流程。</p>
+<h2 id="91">9.1 风格化设计原则</h2>
+<p>卡通角色的魅力在于其独特的风格化表现。不同于写实角色追求真实感，卡通角色通过艺术化的处理方式，将复杂的现实形态简化、夸张，创造出富有个性和辨识度的形象。</p>
+<h3 id="911">9.1.1 比例夸张与简化</h3>
+<p>卡通角色设计的核心是打破常规比例，通过夸张来强化角色特征。常见的比例变化包括：</p>
+<p><strong>头身比例调整</strong></p>
+<ul>
+<li>可爱型角色：2-3头身，大头小身体，营造萌感</li>
+<li>英雄型角色：6-8头身，宽肩窄腰，展现力量</li>
+<li>滑稽型角色：不规则比例，如极长的手臂或巨大的鼻子</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span>标准人体<span class="w"> </span><span class="p">(</span><span class="m">8</span>头身<span class="p">)</span><span class="w">          </span><span class="nf">Q版角色 </span><span class="p">(</span><span class="m">3</span>头身<span class="p">)</span>
+
+<span class="w">    </span><span class="n">O</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span>个头高<span class="w">              </span><span class="n">O</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span>个头高
+<span class="w">    </span><span class="o">|</span><span class="w">                          </span><span class="o">|</span>
+<span class="w">   </span><span class="o">/|</span>\<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">4</span>个头高<span class="w">            </span><span class="o">/|</span>\<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1.5</span>个头高
+
+<span class="w">   </span><span class="o">/|</span>\<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">4</span>个头高<span class="w">            </span><span class="o">/|</span>\<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1.5</span>个头高
+<span class="w">    </span><span class="o">|</span><span class="w">                          </span><span class="o">|</span>
+
+<span class="w">   </span><span class="o">/</span><span class="w"> </span>\<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">3</span>个头高<span class="w">            </span><span class="o">/</span><span class="w"> </span>\<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0.5</span>个头高
+</code></pre></div>
+
+<p><strong>五官比例设计</strong></p>
+<ul>
+<li>眼睛：占面部1/3到1/2，越大越显年轻可爱</li>
+<li>嘴巴：简化为线条或基本形状</li>
+<li>鼻子：点、线或小三角形即可</li>
+<li>耳朵：可完全省略或极度简化</li>
+</ul>
+<p><strong>肢体简化原则</strong></p>
+<ul>
+<li>手指：3-4根即可，甚至可用球体代替</li>
+<li>关节：隐藏或弱化肘部、膝盖细节</li>
+<li>肌肉：用简单体块表现，避免复杂解剖结构</li>
+</ul>
+<h3 id="912">9.1.2 形状语言与剪影设计</h3>
+<p>形状语言是卡通角色设计的视觉基础，不同的基本形状传达不同的性格特征：</p>
+<p><strong>基本形状心理学</strong></p>
+<ul>
+<li>圆形：友善、温和、可爱、无害</li>
+<li>方形：稳重、可靠、强壮、固执</li>
+<li>三角形：活跃、危险、聪明、不稳定</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>    圆形角色              方形角色              三角形角色
+
+      oooo                ████                    ▲
+     o    o              ██  ██                  ╱ ╲
+    o  ◡  o             ██ ─ ██                ╱   ╲
+     o    o              ██  ██               ╱  ◆  ╲
+      oooo                ████                ╱       ╲
+       oo                  ██                ╱─────────╲
+      o  o                █  █                   ╱ ╲
+     o    o              █    █                 ╱   ╲
+</code></pre></div>
+
+<p><strong>剪影测试法则</strong>
+优秀的卡通角色应该仅凭剪影就能被识别。在Blender中，可以通过以下方式测试：</p>
+<ol>
+<li>将角色材质设为纯黑</li>
+<li>使用正交视图观察</li>
+<li>检查是否能识别角色的：
+   - 基本姿态
+   - 性格特征
+   - 动作意图</li>
+</ol>
+<p><strong>形状组合策略</strong></p>
+<ul>
+<li>主形状：定义整体印象（如圆形的身体）</li>
+<li>次形状：增加细节变化（如三角形的头发）</li>
+<li>装饰形状：点缀个性特征（如星形的配饰）</li>
+</ul>
+<h3 id="913">9.1.3 色彩理论在卡通角色中的应用</h3>
+<p>卡通角色的色彩设计比写实角色更加大胆和象征化：</p>
+<p><strong>色彩数量控制</strong></p>
+<ul>
+<li>主色：占60-70%，定义角色基调</li>
+<li>辅色：占20-30%，提供对比和层次</li>
+<li>点缀色：占5-10%，突出重点部位</li>
+</ul>
+<p><strong>色彩心理与性格表达</strong></p>
+<ul>
+<li>暖色系（红、橙、黄）：活泼、热情、外向</li>
+<li>冷色系（蓝、绿、紫）：冷静、神秘、内向</li>
+<li>中性色（灰、棕、黑）：成熟、稳重、低调</li>
+</ul>
+<p><strong>色彩搭配原则</strong></p>
+<ol>
+<li>互补色搭配：强对比，适合主角</li>
+<li>类似色搭配：和谐统一，适合配角</li>
+<li>三色组搭配：平衡丰富，适合群体角色</li>
+</ol>
+<h2 id="92">9.2 简化拓扑技巧</h2>
+<p>卡通角色的拓扑结构追求简洁高效，既要保证造型美观，又要满足动画变形需求。</p>
+<h3 id="921">9.2.1 低面数建模策略</h3>
+<p><strong>面数规划指南</strong></p>
+<ul>
+<li>手游角色：2000-5000面</li>
+<li>主机游戏：5000-15000面</li>
+<li>动画电影：15000-50000面</li>
+</ul>
+<p><strong>关键区域面数分配</strong></p>
+<div class="codehilite"><pre><span></span><code>    头部 (40%)
+    ├── 面部 (25%)
+    │   ├── 眼部 (10%)
+    │   ├── 嘴部 (10%)
+    │   └── 其他 (5%)
+    └── 头发 (15%)
+
+    身体 (30%)
+    ├── 躯干 (15%)
+    └── 四肢 (15%)
+
+    服装配饰 (30%)
+</code></pre></div>
+
+<p><strong>简化技巧</strong></p>
+<ol>
+<li>使用Loop Tools的Circle功能创建规则圆形</li>
+<li>利用Decimate修改器的Planar模式保持形状</li>
+<li>手动删除不影响剪影的内部边线</li>
+<li>合并距离过近的顶点</li>
+</ol>
+<h3 id="922">9.2.2 关键边流布局</h3>
+<p>边流（Edge Flow）决定了模型的变形质量，卡通角色需要特别注意以下区域：</p>
+<p><strong>面部边流设计</strong></p>
+<div class="codehilite"><pre><span></span><code>    眼部环形边流           嘴部放射边流
+
+      ╭─────╮             ╱│╲
+     ╱ ╭───╮ ╲           ─ ◯ ─
+    │ │ ● │ │           ╲│╱
+     ╲ ╰───╯ ╱
+      ╰─────╯
+</code></pre></div>
+
+<p><strong>关节边流布置</strong></p>
+<ul>
+<li>肘部/膝盖：至少3条环形边</li>
+<li>肩部/髋部：放射状边流过渡</li>
+<li>手腕/脚踝：保持均匀分布</li>
+</ul>
+<p><strong>边流优化原则</strong></p>
+<ol>
+<li>避免三角面和五边以上多边形</li>
+<li>保持四边形的长宽比接近1:1</li>
+<li>关键变形区域增加支撑边</li>
+<li>非变形区域大胆简化</li>
+</ol>
+<h3 id="923">9.2.3 动画友好的拓扑结构</h3>
+<p><strong>变形预留设计</strong>
+在建模阶段就要考虑动画需求：</p>
+<ol>
+<li>关节处预留足够的几何体</li>
+<li>面部表情区域细分适中</li>
+<li>服装与身体保持适当间距</li>
+<li>避免穿插和过于贴合的结构</li>
+</ol>
+<p><strong>模块化建模思路</strong></p>
+<div class="codehilite"><pre><span></span><code>    角色结构分解
+
+    头部模块 ←→ 可替换发型
+         ↓
+    身体模块 ←→ 可替换服装
+         ↓
+    四肢模块 ←→ 可替换配饰
+</code></pre></div>
+
+<p><strong>拓扑检查清单</strong></p>
+<ul>
+<li>[ ] 所有面都是四边形</li>
+<li>[ ] 边流沿肌肉方向分布</li>
+<li>[ ] 关节有足够的环形边</li>
+<li>[ ] 对称性检查通过</li>
+<li>[ ] 法线方向统一朝外</li>
+</ul>
+<h2 id="93">9.3 卡通材质制作</h2>
+<p>卡通材质的核心是非真实感渲染（NPR），通过特殊的着色方式营造手绘或动画片效果。</p>
+<h3 id="931-toon-shader">9.3.1 Toon Shader基础</h3>
+<p><strong>ColorRamp节点实现卡通着色</strong></p>
+<p>在Shader Editor中构建基础卡通材质：</p>
+<ol>
+<li>添加ColorRamp节点控制明暗过渡</li>
+<li>设置为Constant插值模式</li>
+<li>调整色标位置创建分层效果</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">光照输入</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">ColorRamp</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="n">颜色输出</span>
+<span class="w">              </span><span class="err">↑</span>
+<span class="w">         </span><span class="o">[</span><span class="n">Constant模式</span><span class="o">]</span>
+<span class="w">         </span><span class="mi">2</span><span class="o">-</span><span class="mi">3</span><span class="n">个色阶即可</span>
+</code></pre></div>
+
+<p><strong>Shader to RGB节点的应用</strong></p>
+<p>Eevee渲染器特有的节点，将着色结果转换为颜色信息：</p>
+<ol>
+<li>连接Diffuse BSDF到Shader to RGB</li>
+<li>输出可进行进一步的颜色处理</li>
+<li>适合创建复杂的卡通效果</li>
+</ol>
+<h3 id="932">9.3.2 轮廓线渲染技术</h3>
+<p><strong>Solidify修改器方法</strong></p>
+<ol>
+<li>复制角色模型</li>
+<li>添加Solidify修改器</li>
+<li>设置Thickness为负值</li>
+<li>翻转法线</li>
+<li>应用纯黑材质</li>
+</ol>
+<p><strong>Freestyle线条渲染</strong>
+在渲染属性中启用Freestyle：</p>
+<ol>
+<li>设置线条宽度和颜色</li>
+<li>调整Edge Types选项</li>
+<li>使用Line Style自定义样式</li>
+<li>配合Collection控制渲染范围</li>
+</ol>
+<p><strong>节点组轮廓线</strong>
+创建可重用的轮廓线节点组：</p>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="n">Geometry节点</span>
+<span class="w">         </span><span class="err">↓</span>
+<span class="w">    </span><span class="o">[</span><span class="n">Backfacing检测</span><span class="o">]</span>
+<span class="w">         </span><span class="err">↓</span>
+<span class="w">    </span><span class="o">[</span><span class="n">宽度控制</span><span class="o">]</span>
+<span class="w">         </span><span class="err">↓</span>
+<span class="w">    </span><span class="n">Mix</span><span class="w"> </span><span class="n">Shader输出</span>
+</code></pre></div>
+
+<h3 id="933">9.3.3 风格化纹理绘制</h3>
+<p><strong>手绘纹理特征</strong></p>
+<ul>
+<li>色块分明，避免渐变</li>
+<li>笔触可见，保留手工感</li>
+<li>细节简化，突出重点</li>
+<li>色彩饱和度高</li>
+</ul>
+<p><strong>纹理绘制工作流</strong></p>
+<ol>
+<li>UV展开时考虑手绘便利性</li>
+<li>使用Texture Paint模式</li>
+<li>配合参考图层</li>
+<li>分层绘制（底色→阴影→高光→细节）</li>
+</ol>
+<p><strong>程序化纹理应用</strong>
+利用噪波和渐变创建卡通风格纹理：</p>
+<ul>
+<li>Noise Texture → ColorRamp：创建色块效果</li>
+<li>Wave Texture：制作条纹图案</li>
+<li>Voronoi Texture：生成细胞状图案</li>
+<li>Gradient Texture：简单渐变填充</li>
+</ul>
+<h2 id="94">9.4 表情变形目标</h2>
+<p>表情是卡通角色的灵魂，通过Shape Keys系统可以创建丰富的面部表情。</p>
+<h3 id="941-shape-keys">9.4.1 Shape Keys系统</h3>
+<p><strong>基础Shape Key设置</strong></p>
+<ol>
+<li>在Object Data属性中添加Shape Keys</li>
+<li>创建Basis（基础形态）</li>
+<li>添加新的Shape Key进行变形</li>
+<li>使用Value滑块控制变形程度</li>
+</ol>
+<p><strong>表情库规划</strong></p>
+<div class="codehilite"><pre><span></span><code>    基础表情集
+    ├── 眉毛组
+    │   ├── 眉毛上扬
+    │   ├── 眉毛下压
+    │   └── 眉毛倾斜
+    ├── 眼睛组
+    │   ├── 眨眼
+    │   ├── 眯眼
+    │   └── 瞪眼
+    └── 嘴部组
+        ├── 微笑
+        ├── 张嘴
+        └── 嘟嘴
+</code></pre></div>
+
+<p><strong>变形目标命名规范</strong></p>
+<ul>
+<li>使用描述性名称：如"Smile_L"、"Brow_Up_R"</li>
+<li>左右分离：便于不对称表情</li>
+<li>分组管理：按面部区域组织</li>
+</ul>
+<h3 id="942">9.4.2 面部控制器设置</h3>
+<p><strong>骨骼控制方案</strong></p>
+<ol>
+<li>创建面部骨骼系统</li>
+<li>使用Driver连接骨骼与Shape Keys</li>
+<li>设置Custom Shape提高可视性</li>
+<li>限制骨骼移动范围</li>
+</ol>
+<p><strong>控制器布局设计</strong></p>
+<div class="codehilite"><pre><span></span><code>    面部控制面板
+
+    [眉毛L] [眉毛R]
+     [眼L]   [眼R]
+        [鼻子]
+      [嘴角L][嘴角R]
+        [下巴]
+</code></pre></div>
+
+<p><strong>Driver设置技巧</strong></p>
+<ul>
+<li>使用表达式控制多个Shape Keys</li>
+<li>设置Min/Max限制防止过度变形</li>
+<li>创建预设表情的快捷键</li>
+<li>利用Custom Properties集中管理</li>
+</ul>
+<h3 id="943">9.4.3 表情库创建</h3>
+<p><strong>标准表情集</strong></p>
+<ol>
+<li>喜悦：嘴角上扬+眼睛眯起</li>
+<li>愤怒：眉毛下压+嘴唇紧闭</li>
+<li>悲伤：眉毛倾斜+嘴角下垂</li>
+<li>惊讶：眼睛瞪大+嘴巴张开</li>
+<li>恐惧：眉毛上扬+瞳孔收缩</li>
+<li>厌恶：鼻子皱起+嘴唇歪斜</li>
+</ol>
+<p><strong>表情混合原则</strong></p>
+<ul>
+<li>70%主表情 + 30%次表情</li>
+<li>渐进式过渡，避免突变</li>
+<li>保持表情的可读性</li>
+<li>考虑角色性格特征</li>
+</ul>
+<p><strong>表情测试方法</strong></p>
+<ol>
+<li>创建表情测试动画</li>
+<li>不同角度检查效果</li>
+<li>快速切换测试过渡</li>
+<li>导出表情参考表</li>
+</ol>
+<h2 id="_1">本章小结</h2>
+<p>本章全面介绍了卡通角色制作的核心技术和方法。我们学习了：</p>
+<ol>
+<li><strong>风格化设计原则</strong>：通过比例夸张、形状语言和色彩理论创造独特的卡通角色风格</li>
+<li><strong>简化拓扑技巧</strong>：掌握低面数建模策略，优化边流布局，创建动画友好的拓扑结构</li>
+<li><strong>卡通材质制作</strong>：运用Toon Shader、轮廓线技术和风格化纹理实现非真实感渲染</li>
+<li><strong>表情变形系统</strong>：通过Shape Keys和面部控制器创建生动的角色表情</li>
+</ol>
+<p>卡通角色制作的关键在于"简化而不简单"——通过艺术化的处理突出角色特征，用最少的面数实现最大的表现力。记住，好的卡通角色不仅要造型吸引人，更要为动画表演提供充分的可能性。</p>
+<h2 id="_2">练习题</h2>
+<h3 id="_3">基础题</h3>
+<p><strong>练习9.1：形状语言练习</strong>
+使用基本几何体（球体、立方体、圆锥）组合创建三个不同性格的卡通角色头部：友善型、强壮型、狡猾型。</p>
+<p><em>提示（Hint）：注意每种形状的比例和组合方式，友善型以圆形为主，强壮型以方形为主，狡猾型以三角形为主。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>友善型：使用大球体作为头部基础，添加小球体作为鼻子和脸颊，整体保持圆润。强壮型：使用立方体作为基础，稍作细分后调整成方下巴，添加方形的额头突起。狡猾型：使用倒三角形状，尖下巴，添加上扬的三角眉形。每个角色都应该有明确的剪影特征，即使全黑也能识别性格特点。</p>
+</details>
+<p><strong>练习9.2：拓扑简化练习</strong>
+将一个5000面的写实人头模型简化到1000面以下，同时保持基本的面部特征和良好的边流。</p>
+<p><em>提示（Hint）：使用Decimate修改器的Collapse模式，然后手动调整关键区域的拓扑。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>先使用Decimate修改器将面数降到1500左右，然后进入编辑模式，手动删除耳朵内部、鼻孔内部等不可见细节。保留眼部和嘴部的环形边流，确保表情变形需求。使用Limited Dissolve清理多余顶点，最终调整到1000面以下。检查所有面是否为四边形，必要时手动修正。</p>
+</details>
+<p><strong>练习9.3：基础卡通材质</strong>
+创建一个两色调（two-tone）的卡通着色材质，包含亮部和暗部两个明确的色块。</p>
+<p><em>提示（Hint）：使用Diffuse BSDF连接ColorRamp节点，设置为Constant模式。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>在Shader Editor中，添加Diffuse BSDF节点，将其连接到ColorRamp节点的Fac输入。设置ColorRamp为Constant模式，保留两个色标，左侧设为暗色（如深蓝），右侧设为亮色（如浅蓝）。调整色标位置到0.4左右，创建明确的明暗分界。将ColorRamp的Color输出连接到Material Output的Surface输入。</p>
+</details>
+<p><strong>练习9.4：创建眨眼Shape Key</strong>
+为一个角色模型创建完整的眨眼Shape Key，包括眼皮闭合和睫毛弯曲。</p>
+<p><em>提示（Hint）：使用Proportional Editing帮助平滑变形，注意上下眼皮的接触位置。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>首先添加Basis Shape Key，然后创建新的"Blink"Shape Key。进入编辑模式，选择上眼皮顶点，使用G+Z向下移动直到接触下眼皮。启用Proportional Editing（O键），调整影响范围使变形自然。睫毛部分跟随眼皮运动并稍微向内弯曲。Value设为1时应完全闭眼，0.5时为半眯眼状态。</p>
+</details>
+<h3 id="_4">挑战题</h3>
+<p><strong>练习9.5：风格参考转化</strong>
+选择一个知名动画风格（如迪士尼、皮克斯、吉卜力），分析其角色设计特点，并创建一个符合该风格的原创角色模型。</p>
+<p><em>提示（Hint）：重点观察该风格的比例规律、形状语言和细节处理方式。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>以迪士尼风格为例：大眼睛（占面部1/3），心形或圆形脸型，简化的鼻子（通常只是一个小突起），富有表现力的嘴部。身体比例约5-6头身，手脚稍大以增强表现力。建模时从球体开始，保持整体的圆润感。使用Subdivision Surface但保持较低的细分级别。色彩选择明亮饱和的色调，皮肤使用暖色调。最重要的是确保角色有"亲和力"和清晰的剪影。</p>
+</details>
+<p><strong>练习9.6：模块化角色系统</strong>
+设计一个模块化的卡通角色系统，包含可互换的头部（3种）、身体（2种）、服装（3套），确保所有组合都能正常工作。</p>
+<p><em>提示（Hint）：统一接口位置和尺寸，使用Collection组织不同模块。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>创建统一的连接标准：颈部使用16边圆环，直径固定。每个头部模型底部都以相同的颈部环结束。身体模型顶部对应相同规格。使用独立的Collection管理各模块，通过显示/隐藏切换组合。为每个模块创建统一的原点位置（如颈部中心）。服装使用Shrinkwrap修改器贴合不同身体。建立命名规范如Head_01、Body_A、Outfit_Casual等。可选：创建Python脚本自动化切换流程。</p>
+</details>
+<p><strong>练习9.7：表情预设系统</strong>
+创建一个包含6种基本表情的预设系统，并实现表情之间的平滑过渡动画。</p>
+<p><em>提示（Hint）：使用Driver或Action Editor管理多个Shape Keys的组合。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>为每个基本表情创建独立的Shape Keys组合。例如"Happy"包括：Smile=1.0、Eye_Squint=0.5、Brow_Raise=0.2。使用Custom Properties创建主控制滑块（0-1范围）。通过Driver将主控滑块连接到各个Shape Keys，使用表达式如：smile_value = happy_ctrl * 1.0。在Action Editor中为每个表情创建独立Action。制作测试动画：第0帧中性，第20帧快乐，第40帧悲伤，使用曲线编辑器调整过渡。确保任意两个表情间过渡自然，没有异常变形。</p>
+</details>
+<p><strong>练习9.8：NPR渲染综合</strong>
+创建一个完整的卡通渲染设置，包括：三色调着色、轮廓线、阴影图案填充、高光样式化，并渲染一个展示所有效果的转身动画。</p>
+<p><em>提示（Hint）：结合使用节点、Freestyle和合成技术。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>着色设置：使用ColorRamp创建三段式着色（亮、中、暗）。轮廓线：启用Freestyle，线宽2px，或使用反向Solidify方法。阴影图案：在ColorRamp暗部色阶后添加Mix节点，混合网格图案纹理（Wave Texture缩放调整）。高光样式化：使用Glossy BSDF通过ColorRamp离散化，创建卡通高光。合成设置：添加Glare节点增强高光，Color Balance调整整体色调。动画设置：360度转身展示，2秒时长，确保所有角度效果稳定。输出设置：1920x1080，30fps，使用Eevee渲染器以获得实时预览。</p>
+</details>
+<h2 id="gotchas">常见陷阱与错误（Gotchas）</h2>
+<h3 id="_5">建模阶段常见问题</h3>
+<ol>
+<li>
+<p><strong>过度细分陷阱</strong>
+   - 错误：认为卡通角色也需要高面数
+   - 正确：保持简洁，只在必要处添加细节
+   - 调试：使用Wireframe模式检查面数分布</p>
+</li>
+<li>
+<p><strong>比例失衡问题</strong>
+   - 错误：夸张过度导致角色怪异
+   - 正确：保持整体协调，夸张要有度
+   - 调试：使用参考球体检查头身比</p>
+</li>
+<li>
+<p><strong>拓扑流向错误</strong>
+   - 错误：随意布线导致变形异常
+   - 正确：沿肌肉和运动方向布置边流
+   - 调试：使用Subdivision预览检查平滑效果</p>
+</li>
+</ol>
+<h3 id="_6">材质制作常见问题</h3>
+<ol start="4">
+<li>
+<p><strong>ColorRamp设置错误</strong>
+   - 错误：使用Linear插值导致渐变
+   - 正确：使用Constant保持色块分明
+   - 调试：预览不同光照角度的效果</p>
+</li>
+<li>
+<p><strong>轮廓线闪烁</strong>
+   - 错误：Solidify厚度过小
+   - 正确：根据摄像机距离调整厚度
+   - 调试：渲染动画预览检查稳定性</p>
+</li>
+<li>
+<p><strong>节点连接混乱</strong>
+   - 错误：直接连接不兼容的节点类型
+   - 正确：使用Shader to RGB转换（Eevee）
+   - 调试：检查节点颜色匹配（绿色对绿色）</p>
+</li>
+</ol>
+<h3 id="shape-key">Shape Key常见问题</h3>
+<ol start="7">
+<li>
+<p><strong>变形穿模</strong>
+   - 错误：Shape Key变形过大
+   - 正确：限制Value范围在合理区间
+   - 调试：测试极限值检查问题</p>
+</li>
+<li>
+<p><strong>命名混乱</strong>
+   - 错误：使用无意义的默认名称
+   - 正确：采用描述性命名规范
+   - 调试：使用搜索功能快速定位</p>
+</li>
+<li>
+<p><strong>叠加冲突</strong>
+   - 错误：多个Shape Key同时影响相同区域
+   - 正确：规划互斥的变形区域
+   - 调试：逐个测试组合效果</p>
+</li>
+</ol>
+<h3 id="_7">动画准备问题</h3>
+<ol start="10">
+<li><strong>原点位置错误</strong><ul>
+<li>错误：原点偏离导致旋转异常</li>
+<li>正确：设置到角色重心或底部中心</li>
+<li>调试：使用Set Origin &gt; Origin to Geometry</li>
+</ul>
+</li>
+</ol>
+<h2 id="_8">最佳实践检查清单</h2>
+<h3 id="_9">设计阶段</h3>
+<ul>
+<li>[ ] 确定目标风格和参考</li>
+<li>[ ] 绘制概念草图和角色表</li>
+<li>[ ] 规划模块化组件</li>
+<li>[ ] 设定色彩方案</li>
+<li>[ ] 测试剪影辨识度</li>
+</ul>
+<h3 id="_10">建模阶段</h3>
+<ul>
+<li>[ ] 保持面数在目标范围内</li>
+<li>[ ] 所有面为四边形</li>
+<li>[ ] 检查法线方向统一</li>
+<li>[ ] 应用所有变换（Apply Scale/Rotation）</li>
+<li>[ ] 清理重复顶点和孤立点</li>
+<li>[ ] 命名所有对象和材质</li>
+</ul>
+<h3 id="_11">拓扑优化</h3>
+<ul>
+<li>[ ] 关节处有3+环形边</li>
+<li>[ ] 面部边流支持表情</li>
+<li>[ ] 避免极长或极扁的面</li>
+<li>[ ] 删除不可见的内部面</li>
+<li>[ ] 检查对称性（可用Mirror修改器）</li>
+</ul>
+<h3 id="_12">材质设置</h3>
+<ul>
+<li>[ ] 创建可重用的节点组</li>
+<li>[ ] 保存材质预设</li>
+<li>[ ] 测试不同光照条件</li>
+<li>[ ] 优化纹理分辨率</li>
+<li>[ ] 设置正确的色彩空间</li>
+</ul>
+<h3 id="shape-keys">Shape Keys配置</h3>
+<ul>
+<li>[ ] 创建完整的表情库</li>
+<li>[ ] 设置合理的Min/Max限制</li>
+<li>[ ] 测试所有表情组合</li>
+<li>[ ] 创建表情预设</li>
+<li>[ ] 记录Driver设置</li>
+</ul>
+<h3 id="_13">最终检查</h3>
+<ul>
+<li>[ ] 在目标平台测试性能</li>
+<li>[ ] 导出测试（FBX/glTF）</li>
+<li>[ ] 制作使用说明文档</li>
+<li>[ ] 备份源文件和预设</li>
+<li>[ ] 渲染角色展示图表</li>
+</ul>
+            </article>
+            
+            <nav class="page-nav"><a href="chapter8.html" class="nav-link prev">← 第8章：写实角色制作</a><a href="chapter10.html" class="nav-link next">第10章：动画基础 →</a></nav>
+        </main>
+    </div>
+</body>
+</html>

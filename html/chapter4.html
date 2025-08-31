@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="./">
+    <title>第4章：硬表面建模</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/highlight.css">
+    <script src="assets/script.js" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                processEscapes: false,
+                packages: {'[+]': ['noerrors', 'ams']}
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            loader: {
+                load: ['[tex]/noerrors', '[tex]/ams']
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>目录</h3>
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div class="sidebar-search">
+                <input type="text" id="sidebar-search-input" placeholder="搜索..." autocomplete="off">
+            </div>
+            <div id="tree-container">
+                <nav class="tree-nav" role="tree">
+                    <div class="tree-item " >
+                        <a href="index.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Blender 速成教程</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter1.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第1章：Blender 界面与基础操作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter2.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第2章：基础建模技术</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter3.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第3章：材质与纹理基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item active" >
+                        <a href="chapter4.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第4章：硬表面建模</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter5.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第5章：有机建模与雕刻</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter6.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第6章：场景构建与优化</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter7.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第7章：角色建模基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter8.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第8章：写实角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter9.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第9章：卡通角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter10.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第10章：动画基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter11.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第11章：骨骼绑定系统</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter12.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第12章：角色动画进阶</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter13.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第13章：打斗动画制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter14.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第14章：物理模拟与动力学</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter15.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第15章：灯光与渲染</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter16.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第16章：合成与后期处理</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter17.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第17章：科幻场景综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter18.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第18章：写实角色综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter19.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第19章：卡通短片综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="CLAUDE.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Untitled</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <article>
+                <h1 id="4">第4章：硬表面建模</h1>
+<h2 id="_1">本章概述</h2>
+<p>硬表面建模是3D制作中的核心技能之一，广泛应用于机械设计、建筑可视化、产品渲染等领域。与有机建模不同，硬表面建模追求精确的边缘、平整的表面和规则的几何形状。本章将深入探讨Blender中的硬表面建模技术，帮助您从CAD思维顺利过渡到多边形建模世界，掌握创建复杂机械结构和建筑场景的专业技巧。</p>
+<h2 id="_2">学习目标</h2>
+<p>完成本章学习后，您将能够：</p>
+<ul>
+<li>掌握硬表面建模的核心原则和工作流程</li>
+<li>熟练运用布尔运算创建复杂的机械结构</li>
+<li>理解并应用各种细节添加技术提升模型质量</li>
+<li>有效组织和管理大型场景项目</li>
+<li>避免常见的建模陷阱，提高工作效率</li>
+</ul>
+<h2 id="41">4.1 机械与建筑建模技巧</h2>
+<h3 id="411">4.1.1 硬表面建模基础原则</h3>
+<p>硬表面建模与有机建模的根本区别在于对精确性和规则性的追求。在Blender中进行硬表面建模时，需要特别注意以下几个核心原则：</p>
+<p><strong>精确性优先</strong>：硬表面模型通常代表人造物体，需要精确的尺寸和比例。善用数值输入（如按G后输入具体数值）和捕捉工具（Snap）确保精度。</p>
+<p><strong>拓扑规范</strong>：保持良好的四边形拓扑结构，避免三角面和多边形。这不仅有利于后续的细分曲面修改器应用，还能确保模型在不同渲染引擎中的兼容性。</p>
+<p><strong>边缘流控制</strong>：硬表面的特征是锐利的边缘和平整的表面。通过支撑边（Support Edges）和边缘折痕（Edge Crease）来控制细分后的边缘硬度。</p>
+<div class="codehilite"><pre><span></span><code>基础形体构建流程：
+    立方体/圆柱体
+         ↓
+    挤出/内插/倒角
+         ↓
+    添加支撑边
+         ↓
+    应用修改器
+         ↓
+    细节雕琢
+</code></pre></div>
+
+<h3 id="412">4.1.2 机械部件建模工作流</h3>
+<p>机械建模要求高度的对称性和模块化。以齿轮建模为例，展示完整的工作流程：</p>
+<p><strong>第一步：创建基础圆柱</strong>
+使用Shift+A添加圆柱体，设置合适的顶点数（如32或64）。这个数值决定了齿轮的平滑度。</p>
+<p><strong>第二步：齿形创建</strong>
+进入编辑模式，选择顶面，使用Individual Origins作为轴心点，按Alt+E进行挤出，然后缩放创建齿形。关键在于保持均匀的齿距。</p>
+<p><strong>第三步：中心孔洞</strong>
+使用Inset（I键）创建内圈，删除中心面，形成轴孔。注意保持孔洞的圆形度。</p>
+<p><strong>第四步：细节添加</strong>
+添加倒角修改器（Bevel Modifier）软化边缘，使用阵列修改器（Array Modifier）创建齿轮组。</p>
+<h3 id="413">4.1.3 建筑元素建模策略</h3>
+<p>建筑建模强调模块化和重复利用。墙体、窗户、门等元素应当作为独立模块制作，然后通过实例化组装。</p>
+<p><strong>模块化思维</strong>：将建筑拆分为可重复使用的组件。一扇标准窗户可以通过阵列修改器快速复制成整面窗墙。</p>
+<p><strong>比例参考</strong>：使用真实世界的尺寸作为参考。标准门高2.1米，窗台高0.9米，这些数据帮助保持建筑的真实感。</p>
+<p><strong>层级组织</strong>：使用集合（Collections）组织不同类型的建筑元素。如"结构"、"装饰"、"家具"等，便于后期管理和渲染。</p>
+<div class="codehilite"><pre><span></span><code>建筑建模层级示例：
+Building_01
+├── Structure
+│   ├── Walls
+│   ├── Floors
+│   └── Roof
+├── Windows
+│   ├── Window_Type_A
+│   └── Window_Type_B
+└── Details
+    ├── Doors
+    └── Decorations
+</code></pre></div>
+
+<h3 id="414">4.1.4 精度控制技术</h3>
+<p><strong>网格捕捉</strong>：启用磁力捕捉（Magnet图标），选择Vertex或Grid模式，确保顶点精确对齐。</p>
+<p><strong>数值输入</strong>：执行变换操作时直接输入数值。如G → X → 2.5将物体沿X轴移动2.5单位。</p>
+<p><strong>约束轴向</strong>：使用X、Y、Z键约束变换方向，Shift+X/Y/Z锁定平面移动。</p>
+<p><strong>测量工具</strong>：使用Measure工具（工具栏中的尺子图标）实时测量距离和角度。</p>
+<h2 id="42">4.2 布尔运算的高级应用</h2>
+<h3 id="421">4.2.1 布尔运算基础</h3>
+<p>布尔运算是硬表面建模的核心技术，通过物体间的交集、并集、差集运算创建复杂形状。Blender提供了强大的布尔修改器和布尔工具。</p>
+<p><strong>三种基本运算</strong>：</p>
+<ul>
+<li><strong>差集（Difference）</strong>：从主体中减去另一个物体，常用于创建孔洞和凹槽</li>
+<li><strong>并集（Union）</strong>：合并两个物体为一体，用于组合复杂形状</li>
+<li><strong>交集（Intersect）</strong>：保留两物体重叠部分，用于创建特殊形状</li>
+</ul>
+<p><strong>修改器 vs 工具</strong>：</p>
+<ul>
+<li>布尔修改器：非破坏性，可随时调整，适合迭代设计</li>
+<li>布尔工具（Ctrl+Shift+B）：直接修改几何体，适合最终确定的操作</li>
+</ul>
+<h3 id="422">4.2.2 布尔运算优化技巧</h3>
+<p><strong>清理拓扑</strong>：布尔运算后常产生不规则拓扑，需要手动清理：</p>
+<ul>
+<li>删除重复顶点（M → By Distance）</li>
+<li>溶解不必要的边（X → Dissolve Edges）</li>
+<li>重建问题区域的面</li>
+</ul>
+<p><strong>运算顺序优化</strong>：
+复杂的布尔运算应分步进行，避免一次性处理过多物体。建议工作流程：</p>
+<ol>
+<li>先处理大型切割</li>
+<li>再添加细节孔洞</li>
+<li>最后进行倒角和细化</li>
+</ol>
+<p><strong>性能优化策略</strong>：</p>
+<ul>
+<li>使用简化的切割物体（降低多边形数量）</li>
+<li>应用修改器前先备份原始模型</li>
+<li>对于重复的布尔运算，考虑使用实例化</li>
+</ul>
+<h3 id="423">4.2.3 复杂布尔运算案例</h3>
+<p><strong>案例：机械接口建模</strong></p>
+<p>创建一个带有螺丝孔和卡槽的机械接口板：</p>
+<ol>
+<li><strong>基础板体</strong>：创建立方体，调整比例为扁平状</li>
+<li><strong>螺丝孔阵列</strong>：
+   - 创建圆柱体作为切割工具
+   - 使用阵列修改器创建4个角落的孔位
+   - 应用布尔差集</li>
+<li><strong>中央卡槽</strong>：
+   - 创建长方体，旋转45度
+   - 布尔差集创建菱形槽</li>
+<li><strong>边缘倒角</strong>：
+   - 选择外边缘
+   - 应用倒角（Bevel）增加真实感</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>布尔运算层级关系：
+Main_Body
+├── Boolean_Holes (Difference)
+│   ├── Corner_Hole_1
+│   ├── Corner_Hole_2
+│   ├── Corner_Hole_3
+│   └── Corner_Hole_4
+├── Boolean_Slot (Difference)
+│   └── Center_Slot
+└── Bevel_Modifier
+</code></pre></div>
+
+<h3 id="424">4.2.4 布尔运算常见问题解决</h3>
+<p><strong>法线翻转</strong>：布尔运算后出现黑面，使用Shift+N重新计算法线。</p>
+<p><strong>共面问题</strong>：两个物体的面完全重合会导致布尔失败。解决方法：微调其中一个物体的位置（如0.001单位）。</p>
+<p><strong>非流形几何</strong>：检查并修复非流形边（Select → Select All by Trait → Non Manifold）。</p>
+<p><strong>Z-fighting闪烁</strong>：两个面过于接近导致渲染闪烁。通过微调位置或删除重叠面解决。</p>
+<h2 id="43">4.3 细节添加与优化</h2>
+<h3 id="431">4.3.1 细节层次理论</h3>
+<p>优秀的硬表面模型需要多层次的细节来增强真实感和视觉丰富度。细节分为三个层次：</p>
+<p><strong>主要形状（Primary）</strong>：定义物体的基本轮廓和功能，占视觉权重的70%。这是观察者第一眼识别物体的关键。</p>
+<p><strong>次要细节（Secondary）</strong>：功能性元素如按钮、接口、通风口等，占20%权重。这些细节支撑物体的功能性表达。</p>
+<p><strong>微观细节（Tertiary）</strong>：螺丝、铆钉、刻线等装饰性细节，占10%权重。近距离观察时才显现，增加精致感。</p>
+<div class="codehilite"><pre><span></span><code>细节添加优先级：
+优先级1: 主要形状完善
+    ↓
+优先级2: 功能性细节
+    ↓
+优先级3: 装饰性细节
+    ↓
+优先级4: 表面瑕疵
+</code></pre></div>
+
+<h3 id="432">4.3.2 面板线和凹槽技术</h3>
+<p>面板线是硬表面建模的标志性细节，正确的面板线能极大提升模型的机械感。</p>
+<p><strong>边缘选择法</strong>：</p>
+<ol>
+<li>选择需要添加面板线的边</li>
+<li>使用Bevel（Ctrl+B）创建斜面</li>
+<li>配合Inset创建凹陷效果</li>
+<li>调整Profile参数控制凹槽形状</li>
+</ol>
+<p><strong>修改器叠加法</strong>：</p>
+<ul>
+<li>Solidify修改器：创建厚度</li>
+<li>Bevel修改器：倒角处理</li>
+<li>Subdivision Surface：平滑表面</li>
+<li>注意修改器顺序对结果的影响</li>
+</ul>
+<p><strong>着色器辅助</strong>：
+使用法线贴图或置换贴图添加微小的面板线细节，适合远景渲染。</p>
+<h3 id="433">4.3.3 螺栓铆钉阵列</h3>
+<p>机械表面常见的螺栓和铆钉可以通过阵列技术高效创建：</p>
+<p><strong>基础螺栓制作</strong>：</p>
+<ol>
+<li>创建圆柱体作为螺栓头</li>
+<li>添加内凹细节（Inset + Extrude）</li>
+<li>创建十字或六角凹槽</li>
+<li>保存为资产便于重复使用</li>
+</ol>
+<p><strong>智能阵列部署</strong>：</p>
+<ul>
+<li>使用Array修改器沿曲线分布</li>
+<li>配合Simple Deform修改器适应曲面</li>
+<li>利用Geometry Nodes创建程序化分布</li>
+</ul>
+<p><strong>性能优化考虑</strong>：</p>
+<ul>
+<li>远处使用实例化而非实体几何</li>
+<li>近处使用高细节模型</li>
+<li>建立LOD（细节层次）系统</li>
+</ul>
+<h3 id="434">4.3.4 表面磨损和使用痕迹</h3>
+<p>真实感来自于不完美。添加使用痕迹让模型更有说服力：</p>
+<p><strong>边缘磨损</strong>：</p>
+<ul>
+<li>使用Vertex Paint标记磨损区域</li>
+<li>通过Weight Paint控制磨损强度</li>
+<li>配合材质节点实现程序化磨损</li>
+</ul>
+<p><strong>划痕和凹痕</strong>：</p>
+<ul>
+<li>使用Sculpt模式的Draw和Crease工具</li>
+<li>保持克制，避免过度</li>
+<li>集中在逻辑磨损区域（边角、把手等）</li>
+</ul>
+<p><strong>污渍和锈迹</strong>：</p>
+<ul>
+<li>主要通过材质和贴图实现</li>
+<li>使用Ambient Occlusion节点识别凹陷区域</li>
+<li>在凹陷处累积污垢效果</li>
+</ul>
+<h2 id="44">4.4 场景规划与管理</h2>
+<h3 id="441">4.4.1 大型场景组织策略</h3>
+<p>管理复杂的硬表面场景需要系统化的组织方法：</p>
+<p><strong>命名规范</strong>：</p>
+<div class="codehilite"><pre><span></span><code>对象命名示例：
+MECH_Engine_Main_HP
+│    │      │    └─ 细节级别(HP/LP)
+│    │      └─ 变体标识
+│    └─ 具体部件名
+└─ 类别前缀
+</code></pre></div>
+
+<p><strong>集合层级结构</strong>：</p>
+<ul>
+<li>按功能分组（结构/机械/装饰）</li>
+<li>按位置分区（前景/中景/背景）</li>
+<li>按材质分类（金属/塑料/玻璃）</li>
+</ul>
+<p><strong>颜色编码系统</strong>：
+使用Viewport Display颜色区分不同类型的对象，提高场景可读性。</p>
+<h3 id="442">4.4.2 实例化和链接</h3>
+<p><strong>实例化（Instancing）</strong>：</p>
+<ul>
+<li>Alt+D创建链接副本</li>
+<li>修改原始对象自动更新所有实例</li>
+<li>大幅降低内存占用</li>
+</ul>
+<p><strong>集合实例</strong>：</p>
+<ul>
+<li>将重复元素打包为集合</li>
+<li>使用Collection Instance部署</li>
+<li>适合创建大量重复的细节</li>
+</ul>
+<p><strong>库链接（Library Linking）</strong>：</p>
+<ul>
+<li>跨文件共享资产</li>
+<li>保持项目模块化</li>
+<li>便于团队协作</li>
+</ul>
+<h3 id="443">4.4.3 性能优化实践</h3>
+<p><strong>视口优化</strong>：</p>
+<ul>
+<li>使用Viewport Display控制显示细节</li>
+<li>隐藏当前不需要的对象</li>
+<li>使用Local View（/键）聚焦编辑</li>
+</ul>
+<p><strong>修改器管理</strong>：</p>
+<ul>
+<li>合理设置视口和渲染的细分级别</li>
+<li>暂时禁用高消耗修改器</li>
+<li>批量应用确定的修改器</li>
+</ul>
+<p><strong>代理和LOD系统</strong>：</p>
+<div class="codehilite"><pre><span></span><code>LOD级别设置：
+LOD0: 完整细节 (&lt; 10m)
+LOD1: 中等细节 (10-50m)  
+LOD2: 简化模型 (50-100m)
+LOD3: 极简模型 (&gt; 100m)
+</code></pre></div>
+
+<h3 id="444">4.4.4 版本控制和备份</h3>
+<p><strong>增量保存</strong>：</p>
+<ul>
+<li>使用Save As创建版本号</li>
+<li>关键节点前备份</li>
+<li>保留重要历史版本</li>
+</ul>
+<p><strong>外部资产管理</strong>：</p>
+<ul>
+<li>纹理文件相对路径</li>
+<li>打包外部数据（File → External Data → Pack All Into .blend）</li>
+<li>定期清理未使用数据</li>
+</ul>
+<p><strong>协作注意事项</strong>：</p>
+<ul>
+<li>统一单位和比例设置</li>
+<li>文档化特殊设置和插件依赖</li>
+<li>建立资产命名规范</li>
+</ul>
+<h2 id="_3">本章小结</h2>
+<p>硬表面建模是连接CAD精确思维与艺术创作的桥梁。本章介绍的技术要点包括：</p>
+<ol>
+<li><strong>建模原则</strong>：精确性、拓扑规范、边缘流控制构成硬表面建模的基础</li>
+<li><strong>布尔运算</strong>：掌握布尔运算的原理和优化方法，能够创建复杂的机械结构</li>
+<li><strong>细节层次</strong>：通过主要、次要、微观三层细节营造真实感</li>
+<li><strong>场景管理</strong>：系统化的组织方法确保大型项目的可维护性</li>
+</ol>
+<p>记住，优秀的硬表面模型不仅在于技术执行，更在于对真实世界物体的观察和理解。持续练习，建立自己的工作流程，逐步提高建模效率和质量。</p>
+<h2 id="_4">练习题</h2>
+<h3 id="_5">基础题</h3>
+<p><strong>练习4.1：基础机械部件</strong>
+创建一个标准的机械连接件，包含：</p>
+<ul>
+<li>主体为六边形柱体</li>
+<li>中心圆形通孔</li>
+<li>四个角落的螺栓孔</li>
+<li>所有边缘倒角处理</li>
+</ul>
+<p><em>提示：从圆柱体开始，将顶点数设为6创建六边形</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>添加圆柱体，设置Vertices为6</li>
+<li>按S + Shift+Z缩放高度至合适比例</li>
+<li>进入编辑模式，选择上下两个面，使用Inset创建内圈</li>
+<li>删除中心面形成通孔</li>
+<li>选择四个角落位置，使用Inset + Extrude创建螺栓孔</li>
+<li>选择所有外边缘，Ctrl+B添加倒角</li>
+<li>添加Subdivision Surface修改器，调整视口级别为2</li>
+</ol>
+</details>
+<p><strong>练习4.2：建筑窗户模块</strong>
+设计一个可重复使用的窗户模块：</p>
+<ul>
+<li>外框尺寸1.5m × 2m</li>
+<li>包含窗框分割（十字形）</li>
+<li>窗框厚度0.1m</li>
+<li>添加窗台细节</li>
+</ul>
+<p><em>提示：使用布尔运算创建窗框结构</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>创建立方体，缩放至1.5×2×0.1米</li>
+<li>复制并缩小为1.3×1.8×0.15米作为切割工具</li>
+<li>使用布尔差集创建外框</li>
+<li>创建两个细长立方体作为十字分割</li>
+<li>使用布尔并集添加分割条</li>
+<li>底部添加突出的窗台（挤出或添加立方体）</li>
+<li>所有锐利边缘添加支撑边保持硬度</li>
+</ol>
+</details>
+<p><strong>练习4.3：面板线细节</strong>
+在一个2×2米的平板上添加科幻风格的面板线：</p>
+<ul>
+<li>创建对称的几何图案</li>
+<li>面板线宽度0.02m，深度0.01m  </li>
+<li>包含至少3种不同的线条样式</li>
+</ul>
+<p><em>提示：使用Edge Select和Bevel工具</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>创建2×2米平板</li>
+<li>进入编辑模式，使用Knife工具(K)绘制面板线路径</li>
+<li>选择创建的边，使用Bevel设置宽度0.02m</li>
+<li>选择倒角后的面，向内挤出-0.01m</li>
+<li>对不同区域的线条调整Bevel的Profile参数</li>
+<li>添加Subdivision Surface查看最终效果</li>
+<li>使用Mirror修改器确保对称</li>
+</ol>
+</details>
+<h3 id="_6">挑战题</h3>
+<p><strong>练习4.4：复杂机械装配体</strong>
+创建一个功能性的机械传动装置，包含：</p>
+<ul>
+<li>至少3个互相咬合的齿轮</li>
+<li>支撑框架结构</li>
+<li>轴承和固定螺栓</li>
+<li>合理的装配关系</li>
+</ul>
+<p><em>提示：先规划齿轮比例关系，确保齿数匹配</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>齿轮创建：
+   - 大齿轮：32齿，半径2单位
+   - 中齿轮：24齿，半径1.5单位
+   - 小齿轮：16齿，半径1单位</li>
+<li>齿轮齿数和半径保持比例确保正确咬合</li>
+<li>创建支撑框架：
+   - 使用立方体和圆柱体组合
+   - 布尔运算创建轴承孔</li>
+<li>添加细节：
+   - 每个轴承位置添加模拟轴承圈
+   - 框架连接处添加螺栓阵列
+   - 所有部件进行倒角处理</li>
+<li>组装时使用捕捉确保精确对位</li>
+<li>创建简单的旋转动画验证装配</li>
+</ol>
+</details>
+<p><strong>练习4.5：建筑立面设计</strong>
+设计一个现代办公楼的完整立面（10层，每层3米）：</p>
+<ul>
+<li>模块化的窗户系统</li>
+<li>入口大厅设计</li>
+<li>屋顶机房和装饰结构</li>
+<li>合理的结构支撑表现</li>
+</ul>
+<p><em>提示：充分利用阵列修改器和实例化</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>基础结构：
+   - 创建30米高的主体框架
+   - 使用阵列修改器复制楼层板</li>
+<li>窗户系统：
+   - 设计标准窗户模块
+   - 使用阵列修改器创建窗户墙
+   - 入口层使用不同的窗户设计</li>
+<li>入口大厅：
+   - 创建双层通高空间
+   - 添加雨棚结构
+   - 玻璃幕墙细节</li>
+<li>屋顶设计：
+   - 机房使用简化的盒体
+   - 添加空调、天线等设备
+   - 女儿墙和防水细节</li>
+<li>结构表现：
+   - 在转角处显示结构柱
+   - 适当位置添加结构梁的暗示</li>
+</ol>
+</details>
+<p><strong>练习4.6：科幻控制台</strong>
+设计一个科幻风格的控制台面板：</p>
+<ul>
+<li>多层次的操作界面</li>
+<li>各种按钮、旋钮、显示屏</li>
+<li>复杂但有序的线缆管理</li>
+<li>发光元素的几何设计</li>
+</ul>
+<p><em>提示：层次感是关键，从大到小逐步添加细节</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>主体框架：
+   - 倾斜的操作台面（约30度）
+   - 多层次的面板区域划分
+   - 使用布尔运算创建凹陷区域</li>
+<li>控制元素：
+   - 大型主控制旋钮（圆柱+刻度线）
+   - 按钮阵列（不同大小和高度）
+   - 滑动控制条（长方体+凹槽）</li>
+<li>显示区域：
+   - 主显示屏（倾斜内嵌）
+   - 小型指示灯阵列
+   - 数字显示窗口</li>
+<li>细节添加：
+   - 面板之间的分割线
+   - 通风格栅（阵列修改器）
+   - 线缆槽道（路径+曲线）</li>
+<li>材质预备：
+   - 为发光元素预留独立面
+   - 标记不同材质区域</li>
+</ol>
+</details>
+<p><strong>练习4.7：模块化武器系统</strong>
+创建一个可自定义的科幻武器平台：</p>
+<ul>
+<li>模块化的枪身、枪管、瞄具</li>
+<li>可更换的弹匣和配件</li>
+<li>机械细节如导轨、散热片</li>
+<li>符合人体工程学的设计</li>
+</ul>
+<p><em>提示：研究真实武器的功能结构，保持设计的合理性</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>核心枪身：
+   - 基础形体使用多个立方体组合
+   - 布尔运算创建握把轮廓
+   - 添加扳机护圈和扳机</li>
+<li>模块化组件：
+   - 枪管：圆柱体+散热片阵列
+   - 瞄具：简化的几何形状组合
+   - 弹匣：倒角的长方体+卡槽细节</li>
+<li>机械细节：
+   - 皮卡汀尼导轨（重复的梯形凹槽）
+   - 螺栓和铆钉点缀
+   - 弹射窗口和机械结构暗示</li>
+<li>人体工程学：
+   - 握把符合手掌曲线
+   - 平衡重心位置
+   - 操作按钮的合理布局</li>
+<li>组装验证：
+   - 各模块可独立分离
+   - 接口位置标准化
+   - 创建多个配置展示模块化</li>
+</ol>
+</details>
+<h2 id="_7">常见陷阱与错误</h2>
+<h3 id="_8">布尔运算陷阱</h3>
+<p><strong>问题1：布尔运算后的拓扑混乱</strong></p>
+<ul>
+<li>原因：复杂的布尔运算产生大量三角面和长条面</li>
+<li>解决：运算后立即清理拓扑，必要时局部重建</li>
+</ul>
+<p><strong>问题2：共面Z-fighting</strong></p>
+<ul>
+<li>原因：两个物体的面完全重合</li>
+<li>解决：微调位置避免完全重合（偏移0.001单位）</li>
+</ul>
+<p><strong>问题3：法线方向错误</strong></p>
+<ul>
+<li>原因：布尔运算可能翻转法线</li>
+<li>解决：运算后检查并重新计算法线（Shift+N）</li>
+</ul>
+<h3 id="_9">建模精度问题</h3>
+<p><strong>问题4：尺寸不统一</strong></p>
+<ul>
+<li>原因：未注意单位设置或比例</li>
+<li>解决：开始建模前设置正确的单位系统</li>
+</ul>
+<p><strong>问题5：顶点未对齐</strong></p>
+<ul>
+<li>原因：手动调整位置不精确</li>
+<li>解决：启用顶点捕捉，使用数值输入</li>
+</ul>
+<h3 id="_10">性能优化误区</h3>
+<p><strong>问题6：过度细分</strong></p>
+<ul>
+<li>原因：过早应用高级别细分</li>
+<li>解决：保持低模编辑，渲染时才提高细分</li>
+</ul>
+<p><strong>问题7：修改器堆叠过多</strong></p>
+<ul>
+<li>原因：不必要的修改器累积</li>
+<li>解决：定期应用确定的修改器，合并步骤</li>
+</ul>
+<h3 id="_11">工作流程问题</h3>
+<p><strong>问题8：缺乏备份</strong></p>
+<ul>
+<li>原因：过度自信，忽视版本管理</li>
+<li>解决：养成增量保存习惯，关键步骤前备份</li>
+</ul>
+<p><strong>问题9：命名混乱</strong></p>
+<ul>
+<li>原因：使用默认命名</li>
+<li>解决：建立命名规范，立即重命名新对象</li>
+</ul>
+<h2 id="_12">最佳实践检查清单</h2>
+<h3 id="_13">建模前准备</h3>
+<ul>
+<li>[ ] 设置正确的单位系统（公制/英制）</li>
+<li>[ ] 确定目标多边形预算</li>
+<li>[ ] 收集充足的参考图片</li>
+<li>[ ] 规划模型的模块化结构</li>
+<li>[ ] 建立命名规范</li>
+</ul>
+<h3 id="_14">建模过程中</h3>
+<ul>
+<li>[ ] 保持四边形拓扑为主</li>
+<li>[ ] 定期检查法线方向</li>
+<li>[ ] 使用支撑边控制硬度</li>
+<li>[ ] 避免过长的面和极点</li>
+<li>[ ] 及时清理重复顶点</li>
+<li>[ ] 合理使用镜像对称</li>
+</ul>
+<h3 id="_15">细节添加阶段</h3>
+<ul>
+<li>[ ] 遵循主次三级细节原则</li>
+<li>[ ] 确保细节的逻辑合理性</li>
+<li>[ ] 控制细节密度均衡</li>
+<li>[ ] 为贴图预留UV空间</li>
+<li>[ ] 标记不同材质区域</li>
+</ul>
+<h3 id="_16">优化和整理</h3>
+<ul>
+<li>[ ] 应用确定的修改器</li>
+<li>[ ] 删除隐藏的内部面</li>
+<li>[ ] 合并距离过近的顶点</li>
+<li>[ ] 检查非流形几何</li>
+<li>[ ] 优化面数分布</li>
+</ul>
+<h3 id="_17">项目管理</h3>
+<ul>
+<li>[ ] 使用集合组织场景</li>
+<li>[ ] 实例化重复元素</li>
+<li>[ ] 定期清理未使用数据</li>
+<li>[ ] 保存增量版本</li>
+<li>[ ] 记录特殊设置和依赖</li>
+</ul>
+<h3 id="_18">质量检查</h3>
+<ul>
+<li>[ ] 模型比例真实</li>
+<li>[ ] 没有穿插和间隙</li>
+<li>[ ] 边缘倒角自然</li>
+<li>[ ] 细节分布合理</li>
+<li>[ ] 性能指标达标</li>
+</ul>
+<p>通过遵循这份检查清单，您可以确保硬表面建模项目的专业质量，避免常见问题，提高工作效率。记住，优秀的硬表面建模不仅是技术的展现，更是对细节的执着追求和对真实世界的深刻理解。</p>
+            </article>
+            
+            <nav class="page-nav"><a href="chapter3.html" class="nav-link prev">← 第3章：材质与纹理基础</a><a href="chapter5.html" class="nav-link next">第5章：有机建模与雕刻 →</a></nav>
+        </main>
+    </div>
+</body>
+</html>

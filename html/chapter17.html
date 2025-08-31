@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="./">
+    <title>第17章：科幻场景综合项目</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/highlight.css">
+    <script src="assets/script.js" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                processEscapes: false,
+                packages: {'[+]': ['noerrors', 'ams']}
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            loader: {
+                load: ['[tex]/noerrors', '[tex]/ams']
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>目录</h3>
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div class="sidebar-search">
+                <input type="text" id="sidebar-search-input" placeholder="搜索..." autocomplete="off">
+            </div>
+            <div id="tree-container">
+                <nav class="tree-nav" role="tree">
+                    <div class="tree-item " >
+                        <a href="index.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Blender 速成教程</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter1.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第1章：Blender 界面与基础操作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter2.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第2章：基础建模技术</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter3.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第3章：材质与纹理基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter4.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第4章：硬表面建模</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter5.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第5章：有机建模与雕刻</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter6.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第6章：场景构建与优化</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter7.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第7章：角色建模基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter8.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第8章：写实角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter9.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第9章：卡通角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter10.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第10章：动画基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter11.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第11章：骨骼绑定系统</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter12.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第12章：角色动画进阶</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter13.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第13章：打斗动画制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter14.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第14章：物理模拟与动力学</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter15.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第15章：灯光与渲染</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter16.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第16章：合成与后期处理</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item active" >
+                        <a href="chapter17.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第17章：科幻场景综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter18.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第18章：写实角色综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter19.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第19章：卡通短片综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="CLAUDE.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Untitled</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <article>
+                <h1 id="17">第17章：科幻场景综合项目</h1>
+<p>本章将带领您完成一个完整的科幻场景项目——"轨道空间站"。通过这个综合项目，您将整合前面章节学到的建模、材质、灯光和动画技术，创建一个专业级的科幻场景。项目涵盖从概念设计到最终渲染的完整工作流程，重点训练模块化建模思维和大型场景管理能力。</p>
+<h2 id="_1">项目概述与规划</h2>
+<h3 id="_2">项目目标</h3>
+<p>我们将创建一个位于地球轨道上的科幻空间站场景，包含以下要素：</p>
+<ul>
+<li>主体空间站结构（居住舱、实验室、对接口）</li>
+<li>太阳能电池板阵列</li>
+<li>通信天线系统</li>
+<li>货运飞船</li>
+<li>地球背景</li>
+<li>动态镜头漫游</li>
+</ul>
+<h3 id="_3">项目规模评估</h3>
+<div class="codehilite"><pre><span></span><code>场景复杂度分析：
+┌─────────────────────────────────┐
+│ 总体规模：                       │
+│ - 多边形数量：500万-800万        │
+│ - 纹理资源：2-4GB               │
+│ - 渲染时间：每帧3-5分钟         │
+│                                 │
+│ 模块数量：                       │
+│ - 主要模块：15-20个              │
+│ - 细节部件：50-80个              │
+│ - 材质种类：20-30种              │
+└─────────────────────────────────┘
+</code></pre></div>
+
+<h3 id="_4">时间规划</h3>
+<p>制作周期建议：40-60小时</p>
+<ul>
+<li>概念设计：4-6小时</li>
+<li>建模制作：20-25小时</li>
+<li>材质制作：8-10小时</li>
+<li>灯光设置：4-5小时</li>
+<li>动画制作：4-6小时</li>
+<li>渲染后期：4-8小时</li>
+</ul>
+<h3 id="_5">文件组织结构</h3>
+<div class="codehilite"><pre><span></span><code>项目文件夹结构：
+SpaceStation_Project/
+├── 01_References/          # 参考图片
+│   ├── Concept/
+│   ├── Technical/
+│   └── Mood/
+├── 02_Models/              # 模型文件
+│   ├── Modules/
+│   ├── Details/
+│   └── Assets/
+├── 03_Textures/            # 纹理文件
+│   ├── Metal/
+│   ├── Panel/
+│   └── Decals/
+├── 04_Scenes/              # 场景文件
+│   ├── Assembly/
+│   ├── Lighting/
+│   └── Animation/
+└── 05_Renders/             # 渲染输出
+    ├── Test/
+    └── Final/
+</code></pre></div>
+
+<h3 id="_6">技术规范</h3>
+<p><strong>建模规范：</strong></p>
+<ul>
+<li>使用米制单位（1单位 = 1米）</li>
+<li>保持合理的多边形密度</li>
+<li>模块化设计，便于重复使用</li>
+<li>清晰的命名规则</li>
+</ul>
+<p><strong>性能目标：</strong></p>
+<ul>
+<li>视窗流畅度：30+ FPS</li>
+<li>内存占用：&lt; 16GB</li>
+<li>渲染时间：&lt; 5分钟/帧（1080p）</li>
+</ul>
+<h2 id="_7">概念设计与参考收集</h2>
+<h3 id="_8">设计理念</h3>
+<p>空间站设计原则：</p>
+<ol>
+<li><strong>功能性优先</strong>：每个模块都有明确的功能定位</li>
+<li><strong>模块化结构</strong>：便于扩展和维护</li>
+<li><strong>视觉层次</strong>：主次分明的细节分布</li>
+<li><strong>科学合理性</strong>：符合基本的物理和工程逻辑</li>
+</ol>
+<h3 id="_9">参考收集策略</h3>
+<p><strong>主要参考来源：</strong></p>
+<ul>
+<li>国际空间站（ISS）技术资料</li>
+<li>科幻电影概念设计（《星际穿越》、《地心引力》）</li>
+<li>NASA公开的空间站设计方案</li>
+<li>硬科幻小说插图</li>
+</ul>
+<h3 id="_10">概念草图绘制</h3>
+<div class="codehilite"><pre><span></span><code>空间站布局示意图：
+      [太阳能板]
+           |
+    ┌──────┼──────┐
+    │      │      │
+[对接口]─[核心舱]─[实验室]
+    │      │      │
+    └──────┼──────┘
+           |
+      [居住舱]
+</code></pre></div>
+
+<h3 id="_11">风格定位</h3>
+<p><strong>视觉风格特征：</strong></p>
+<ul>
+<li>色调：冷色调为主（蓝、灰、白）</li>
+<li>材质：金属、碳纤维、玻璃</li>
+<li>细节：技术感强，功能性装饰</li>
+<li>氛围：专业、冷峻、未来感</li>
+</ul>
+<h3 id="_12">模块功能设计</h3>
+<p><strong>核心舱（Command Module）：</strong></p>
+<ul>
+<li>控制中心</li>
+<li>生命支持系统</li>
+<li>通信设备</li>
+</ul>
+<p><strong>实验室（Laboratory Module）：</strong></p>
+<ul>
+<li>科学实验设备</li>
+<li>观察窗</li>
+<li>机械臂</li>
+</ul>
+<p><strong>居住舱（Habitat Module）：</strong></p>
+<ul>
+<li>睡眠区</li>
+<li>健身区</li>
+<li>餐饮区</li>
+</ul>
+<p><strong>对接口（Docking Port）：</strong></p>
+<ul>
+<li>标准对接机构</li>
+<li>气闸舱</li>
+<li>货物转运区</li>
+</ul>
+<h2 id="_13">模块化建模流程</h2>
+<h3 id="_14">基础模块制作</h3>
+<p><strong>核心建模技术：</strong></p>
+<ol>
+<li>使用Array修改器创建重复结构</li>
+<li>利用Mirror修改器保证对称性</li>
+<li>Boolean运算创建复杂开口</li>
+<li>Solidify修改器制作壳体结构</li>
+</ol>
+<h3 id="_15">标准化接口设计</h3>
+<div class="codehilite"><pre><span></span><code>模块接口规范：
+┌─────────────┐
+│  外径：4m   │
+│  内径：3.5m │
+│  深度：0.5m │
+└─────────────┘
+</code></pre></div>
+
+<p><strong>接口建模步骤：</strong></p>
+<ol>
+<li>创建标准圆柱体（Shift+A → Mesh → Cylinder）</li>
+<li>设置32个顶点，半径2m</li>
+<li>应用Solidify修改器，厚度0.25m</li>
+<li>添加连接法兰细节</li>
+<li>创建密封圈凹槽</li>
+</ol>
+<h3 id="_16">主体结构建模</h3>
+<p><strong>舱体建模工作流：</strong></p>
+<div class="codehilite"><pre><span></span><code>建模流程图：
+基础形状 → 切割开口 → 添加加强筋 → 
+细节雕刻 → 拓扑优化 → UV展开
+</code></pre></div>
+
+<p><strong>步骤详解：</strong></p>
+<ol>
+<li>
+<p><strong>基础形状创建</strong>
+   - 从圆柱体开始
+   - 调整比例（长度8-12m）
+   - 细分表面（Subdivision Level 2）</p>
+</li>
+<li>
+<p><strong>功能性开口</strong>
+   - 舷窗位置规划
+   - 舱门开口切割
+   - 设备安装口</p>
+</li>
+<li>
+<p><strong>结构加强</strong>
+   - 外部加强筋
+   - 内部框架
+   - 连接点加固</p>
+</li>
+</ol>
+<h3 id="_17">细节部件制作</h3>
+<p><strong>太阳能电池板：</strong></p>
+<ol>
+<li>创建平面（10m × 3m）</li>
+<li>使用Array修改器创建单元格</li>
+<li>添加边框和支架</li>
+<li>制作旋转机构</li>
+</ol>
+<p><strong>通信天线：</strong></p>
+<ol>
+<li>基础支架建模</li>
+<li>抛物面天线制作</li>
+<li>馈源和接收器</li>
+<li>线缆细节</li>
+</ol>
+<p><strong>推进器组件：</strong></p>
+<ol>
+<li>喷口建模</li>
+<li>燃料管路</li>
+<li>控制阀门</li>
+<li>安装支架</li>
+</ol>
+<h3 id="_18">模块组装技术</h3>
+<p><strong>组装原则：</strong></p>
+<ul>
+<li>使用Collection管理模块</li>
+<li>保持模块独立性</li>
+<li>建立父子关系</li>
+<li>使用实例化减少内存占用</li>
+</ul>
+<p><strong>对齐技术：</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 伪代码示例（概念说明）</span>
+<span class="c1"># 使用Snap功能精确对齐</span>
+
+<span class="mf">1.</span> <span class="n">开启Vertex</span> <span class="n">Snap</span>
+<span class="mf">2.</span> <span class="n">选择连接点</span>
+<span class="mf">3.</span> <span class="n">移动到目标位置</span>
+<span class="mf">4.</span> <span class="n">应用变换</span>
+</code></pre></div>
+
+<h3 id="lod">细节层次管理（LOD）</h3>
+<p><strong>LOD策略：</strong></p>
+<ul>
+<li>LOD0：完整细节（近景）</li>
+<li>LOD1：中等细节（中景）</li>
+<li>LOD2：简化模型（远景）</li>
+</ul>
+<p><strong>实现方法：</strong></p>
+<ol>
+<li>使用Decimate修改器</li>
+<li>手动简化拓扑</li>
+<li>代理模型替换</li>
+</ol>
+<h2 id="_19">材质与灯光设计</h2>
+<h3 id="_20">科幻材质库构建</h3>
+<p><strong>基础材质类型：</strong></p>
+<ol>
+<li><strong>金属材质</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code>材质节点设置：
+Base Color: 0.8, 0.8, 0.85
+Metallic: 1.0
+Roughness: 0.3-0.5
+</code></pre></div>
+
+<ol start="2">
+<li>
+<p><strong>碳纤维材质</strong>
+   - 使用Wave Texture创建纹理
+   - 添加各向异性反射
+   - 细微的法线贴图</p>
+</li>
+<li>
+<p><strong>玻璃材质</strong>
+   - Transmission: 1.0
+   - IOR: 1.45
+   - 添加轻微污渍</p>
+</li>
+<li>
+<p><strong>发光材质</strong>
+   - Emission强度：5-10
+   - 颜色：冷白光或蓝光
+   - 用于指示灯和显示屏</p>
+</li>
+</ol>
+<h3 id="_21">纹理制作流程</h3>
+<p><strong>PBR纹理工作流：</strong></p>
+<ol>
+<li>
+<p><strong>Base Color贴图</strong>
+   - 基础颜色信息
+   - 污渍和磨损</p>
+</li>
+<li>
+<p><strong>Normal贴图</strong>
+   - 表面细节
+   - 铆钉和螺丝</p>
+</li>
+<li>
+<p><strong>Roughness贴图</strong>
+   - 反射强度控制
+   - 磨损区域处理</p>
+</li>
+<li>
+<p><strong>Metallic贴图</strong>
+   - 金属/非金属区分
+   - 涂装区域标记</p>
+</li>
+</ol>
+<h3 id="_22">贴花系统应用</h3>
+<p><strong>贴花类型：</strong></p>
+<ul>
+<li>警告标识</li>
+<li>技术标记</li>
+<li>国旗和徽标</li>
+<li>编号系统</li>
+</ul>
+<p><strong>应用技术：</strong></p>
+<ol>
+<li>使用Shrinkwrap修改器</li>
+<li>设置正确的UV映射</li>
+<li>Alpha通道处理</li>
+<li>法线传递设置</li>
+</ol>
+<h3 id="_23">环境光设置</h3>
+<p><strong>三层光照系统：</strong></p>
+<div class="codehilite"><pre><span></span><code>光照布局：
+         [主光源-太阳]
+              ↓
+    [环境光-地球反射]
+              ↓
+     [补光-空间站发光]
+</code></pre></div>
+
+<p><strong>主光源（太阳光）：</strong></p>
+<ul>
+<li>类型：Sun Light</li>
+<li>强度：5.0</li>
+<li>颜色：略微偏暖</li>
+<li>角度：根据轨道位置</li>
+</ul>
+<p><strong>环境光（HDRI）：</strong></p>
+<ul>
+<li>使用太空HDRI贴图</li>
+<li>强度：0.3-0.5</li>
+<li>添加地球反射光</li>
+</ul>
+<p><strong>局部光源：</strong></p>
+<ul>
+<li>舷窗内部光</li>
+<li>推进器光效</li>
+<li>指示灯系统</li>
+</ul>
+<h3 id="_24">体积光效果</h3>
+<p><strong>空间尘埃效果：</strong></p>
+<ol>
+<li>添加Volume Scatter</li>
+<li>密度：0.001-0.005</li>
+<li>各向异性：0.8</li>
+</ol>
+<p><strong>引擎尾焰：</strong></p>
+<ol>
+<li>使用Volume Emission</li>
+<li>配合粒子系统</li>
+<li>动画控制强度</li>
+</ol>
+<h2 id="_25">镜头动画与渲染</h2>
+<h3 id="_26">镜头规划</h3>
+<p><strong>镜头类型设计：</strong></p>
+<ol>
+<li>
+<p><strong>建立镜头（Establishing Shot）</strong>
+   - 远景展示整体
+   - 缓慢推进
+   - 持续8-10秒</p>
+</li>
+<li>
+<p><strong>细节镜头（Detail Shots）</strong>
+   - 展示关键部件
+   - 特写镜头
+   - 每个3-5秒</p>
+</li>
+<li>
+<p><strong>动态镜头（Dynamic Shots）</strong>
+   - 环绕飞行
+   - 穿越内部
+   - 追踪飞船对接</p>
+</li>
+</ol>
+<h3 id="_27">相机动画技术</h3>
+<p><strong>相机路径设置：</strong></p>
+<ol>
+<li>创建贝塞尔曲线</li>
+<li>添加Follow Path约束</li>
+<li>调整速度曲线</li>
+<li>设置注视目标</li>
+</ol>
+<p><strong>镜头语言运用：</strong></p>
+<div class="codehilite"><pre><span></span><code>镜头运动类型：
+推进（Dolly In）→ 营造压迫感
+拉远（Dolly Out）→ 展示环境
+环绕（Orbit）→ 展示整体结构
+摇镜（Pan）→ 引导视线
+</code></pre></div>
+
+<h3 id="_28">动画元素添加</h3>
+<p><strong>旋转动画：</strong></p>
+<ul>
+<li>太阳能板缓慢旋转</li>
+<li>天线跟踪运动</li>
+<li>空间站自转</li>
+</ul>
+<p><strong>粒子效果：</strong></p>
+<ul>
+<li>推进器尾焰</li>
+<li>大气粒子</li>
+<li>微陨石</li>
+</ul>
+<p><strong>程序动画：</strong></p>
+<ul>
+<li>使用Drivers控制</li>
+<li>噪波调制器</li>
+<li>表达式动画</li>
+</ul>
+<h3 id="_29">渲染设置优化</h3>
+<p><strong>Cycles渲染设置：</strong></p>
+<div class="codehilite"><pre><span></span><code>推荐设置：
+Samples: 256-512
+Denoising: OptiX
+Light Paths:
+  Max Bounces: 8
+  Diffuse: 4
+  Glossy: 4
+  Transmission: 8
+</code></pre></div>
+
+<p><strong>Eevee实时渲染：</strong></p>
+<div class="codehilite"><pre><span></span><code>性能设置：
+Viewport Samples: 32
+Render Samples: 64
+Screen Space Reflections: ON
+Ambient Occlusion: ON
+Bloom: ON
+</code></pre></div>
+
+<h3 id="_30">渲染层管理</h3>
+<p><strong>多层渲染策略：</strong></p>
+<ol>
+<li><strong>前景层</strong>：空间站主体</li>
+<li><strong>中景层</strong>：飞船和碎片</li>
+<li><strong>背景层</strong>：地球和星空</li>
+<li><strong>特效层</strong>：光效和粒子</li>
+</ol>
+<p><strong>通道输出：</strong></p>
+<ul>
+<li>Diffuse Direct/Indirect</li>
+<li>Glossy Direct/Indirect</li>
+<li>Z-Depth</li>
+<li>Normal</li>
+<li>Object ID</li>
+<li>Cryptomatte</li>
+</ul>
+<h3 id="_31">批量渲染管理</h3>
+<p><strong>渲染农场设置：</strong></p>
+<ol>
+<li>场景优化和打包</li>
+<li>纹理路径检查</li>
+<li>渲染设置锁定</li>
+<li>输出格式选择（EXR推荐）</li>
+</ol>
+<h2 id="_32">本章小结</h2>
+<p>本章通过"轨道空间站"项目，系统展示了大型科幻场景的完整制作流程。关键要点包括：</p>
+<ol>
+<li><strong>项目管理</strong>：合理的规划和文件组织是大型项目成功的基础</li>
+<li><strong>模块化思维</strong>：通过标准化接口和模块化设计提高效率</li>
+<li><strong>细节平衡</strong>：在视觉效果和性能之间找到平衡点</li>
+<li><strong>技术整合</strong>：综合运用建模、材质、灯光、动画等技术</li>
+<li><strong>工作流程</strong>：从概念到成品的专业制作流程</li>
+</ol>
+<p>掌握这些技术后，您将能够独立完成专业级的科幻场景制作，并将这些方法应用到其他类型的项目中。</p>
+<h2 id="_33">练习题</h2>
+<h3 id="_34">基础题</h3>
+<p><strong>练习17.1：模块化建模</strong>
+创建一个标准化的空间站舱段模块，要求：</p>
+<ul>
+<li>长度6米，直径4米</li>
+<li>两端有标准对接口</li>
+<li>至少包含2个舷窗</li>
+<li>添加外部细节（天线、把手等）</li>
+</ul>
+<p><em>提示：先创建基础形状，再使用Boolean切割开口</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>创建圆柱体（直径4m，长度6m）</li>
+<li>使用Solidify修改器创建壳体（厚度0.2m）</li>
+<li>创建舷窗开口：
+   - 添加UV Sphere，缩放为舷窗大小
+   - 定位到舱体表面
+   - 使用Boolean Difference切割</li>
+<li>复制标准对接口到两端</li>
+<li>使用Array修改器添加外部加强筋</li>
+<li>手动添加细节部件（天线、把手、管线）</li>
+</ol>
+</details>
+<p><strong>练习17.2：科幻材质制作</strong>
+创建一套空间站外壳材质，包括：</p>
+<ul>
+<li>主体金属材质</li>
+<li>隔热瓦材质  </li>
+<li>太阳能电池板材质</li>
+<li>发光指示灯材质</li>
+</ul>
+<p><em>提示：使用Principled BSDF节点，注意Metallic和Roughness参数</em></p>
+<details>
+<summary>参考答案</summary>
+<p>金属材质设置：</p>
+<ul>
+<li>Base Color: (0.7, 0.7, 0.75)</li>
+<li>Metallic: 1.0</li>
+<li>Roughness: 0.4</li>
+<li>添加Noise Texture连接到Roughness模拟磨损</li>
+</ul>
+<p>隔热瓦材质：</p>
+<ul>
+<li>Base Color: (0.9, 0.9, 0.85)</li>
+<li>Metallic: 0.0</li>
+<li>Roughness: 0.8</li>
+<li>使用Brick Texture创建瓦片图案</li>
+</ul>
+<p>太阳能板：</p>
+<ul>
+<li>Base Color: (0.1, 0.1, 0.3)</li>
+<li>Metallic: 0.8</li>
+<li>Roughness: 0.2</li>
+<li>添加Grid Texture模拟电池单元</li>
+</ul>
+<p>发光材质：</p>
+<ul>
+<li>使用Emission Shader</li>
+<li>强度: 5-10</li>
+<li>颜色: 根据功能选择（绿色=正常，红色=警告）</li>
+</ul>
+</details>
+<p><strong>练习17.3：简单相机动画</strong>
+创建一个10秒的相机环绕动画：</p>
+<ul>
+<li>相机围绕空间站旋转360度</li>
+<li>保持注视空间站中心</li>
+<li>开始和结束使用缓动</li>
+</ul>
+<p><em>提示：使用Empty对象作为旋转中心</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>在空间站中心创建Empty对象</li>
+<li>将相机设为Empty的子对象</li>
+<li>相机局部位置设为(0, -20, 5)</li>
+<li>为相机添加Track To约束，目标为Empty</li>
+<li>为Empty的Z旋转设置关键帧：
+   - 第1帧: 0°
+   - 第250帧: 360°</li>
+<li>在Graph Editor中调整曲线，添加缓动效果</li>
+<li>调整相机焦距获得理想构图</li>
+</ol>
+</details>
+<h3 id="_35">挑战题</h3>
+<p><strong>练习17.4：完整空间站组装</strong>
+使用模块化方法组装一个完整的空间站，要求：</p>
+<ul>
+<li>至少包含5个不同功能的舱段</li>
+<li>合理的结构布局</li>
+<li>使用Collection组织场景</li>
+<li>总多边形数控制在100万以内</li>
+</ul>
+<p><em>提示：充分利用实例化和Linked Duplicate</em></p>
+<details>
+<summary>参考答案</summary>
+<p>组装策略：</p>
+<ol>
+<li>
+<p>创建基础模块库：
+   - 核心舱（控制中心）
+   - 居住舱（2个实例）
+   - 实验舱
+   - 货运舱
+   - 节点舱（连接器）</p>
+</li>
+<li>
+<p>场景组织：
+   - Collection "Modules"：存放所有舱段
+   - Collection "Solar_Panels"：太阳能板阵列
+   - Collection "Details"：小型部件
+   - Collection "Lights"：灯光系统</p>
+</li>
+<li>
+<p>优化技术：
+   - 使用Alt+D创建Linked Duplicate
+   - 相同模块共享数据
+   - 远景模型使用简化版本
+   - 隐藏视野外的细节</p>
+</li>
+<li>
+<p>多边形优化：
+   - 主体模块：每个10-20万面
+   - 细节部件：每个1000-5000面
+   - 使用Decimate修改器优化远景模型</p>
+</li>
+</ol>
+</details>
+<p><strong>练习17.5：动态对接序列</strong>
+制作一个货运飞船与空间站对接的动画序列（20秒）：</p>
+<ul>
+<li>飞船从远处接近</li>
+<li>对准对接口</li>
+<li>缓慢对接</li>
+<li>对接完成后的稳定</li>
+</ul>
+<p><em>提示：使用多个Empty对象控制不同阶段的运动</em></p>
+<details>
+<summary>参考答案</summary>
+<p>动画分解：</p>
+<ol>
+<li>
+<p>接近阶段（0-8秒）：
+   - 飞船从(-50, 0, 0)移动到(-10, 0, 0)
+   - 速度逐渐减慢
+   - 添加微小的姿态调整</p>
+</li>
+<li>
+<p>对准阶段（8-14秒）：
+   - 使用Copy Rotation约束对齐角度
+   - Influence从0动画到1
+   - 横向微调位置</p>
+</li>
+<li>
+<p>对接阶段（14-19秒）：
+   - 极慢速推进最后2米
+   - 添加轻微振动（Noise修改器）
+   - RCS推进器闪烁</p>
+</li>
+<li>
+<p>锁定阶段（19-20秒）：
+   - 飞船完全静止
+   - 对接环旋转动画
+   - 指示灯从红变绿</p>
+</li>
+</ol>
+<p>关键技术：</p>
+<ul>
+<li>使用Graph Editor精细调整速度曲线</li>
+<li>添加次要动画（天线摆动、推进器光效）</li>
+<li>使用Drivers关联推进器亮度与速度</li>
+</ul>
+</details>
+<p><strong>练习17.6：完整场景渲染输出</strong>
+设置并渲染一个包含所有元素的最终场景：</p>
+<ul>
+<li>地球背景合成</li>
+<li>体积光效果</li>
+<li>多层渲染输出</li>
+<li>后期合成处理</li>
+</ul>
+<p><em>提示：使用Compositor节点系统</em></p>
+<details>
+<summary>参考答案</summary>
+<p>渲染设置：</p>
+<ol>
+<li>
+<p>场景准备：
+   - 检查所有纹理路径
+   - 优化修改器堆栈
+   - 设置渲染分辨率（1920×1080）</p>
+</li>
+<li>
+<p>分层策略：
+   - View Layer 1: 空间站主体
+   - View Layer 2: 地球和背景
+   - View Layer 3: 粒子效果
+   - View Layer 4: 体积光</p>
+</li>
+<li>
+<p>Compositor节点设置：
+   - 使用Alpha Over合并图层
+   - 添加Glare节点创建光晕
+   - Color Balance调整整体色调
+   - 添加轻微的Lens Distortion
+   - 使用Curves调整对比度</p>
+</li>
+<li>
+<p>输出设置：
+   - 文件格式：OpenEXR（保留所有通道）
+   - 色彩管理：Filmic
+   - 备份输出：PNG序列</p>
+</li>
+<li>
+<p>优化技巧：
+   - 使用Persistent Data
+   - 开启GPU渲染
+   - 合理设置采样数
+   - 使用Denoising减少噪点</p>
+</li>
+</ol>
+</details>
+<h2 id="_36">常见陷阱与错误</h2>
+<h3 id="_37">建模阶段</h3>
+<p><strong>问题1：模块接口不匹配</strong></p>
+<ul>
+<li>原因：没有使用统一的标准</li>
+<li>解决：创建标准接口模板，所有模块复制使用</li>
+</ul>
+<p><strong>问题2：场景过于复杂导致卡顿</strong></p>
+<ul>
+<li>原因：细节过多，没有优化</li>
+<li>解决：使用LOD系统，隐藏不必要的细节</li>
+</ul>
+<p><strong>问题3：比例失调</strong></p>
+<ul>
+<li>原因：没有设定统一的单位系统</li>
+<li>解决：开始前设定场景单位，使用参考物体</li>
+</ul>
+<h3 id="_38">材质阶段</h3>
+<p><strong>问题4：金属材质看起来像塑料</strong></p>
+<ul>
+<li>原因：Roughness值过高，Metallic值过低</li>
+<li>解决：金属材质Metallic应为1.0，Roughness在0.1-0.5之间</li>
+</ul>
+<p><strong>问题5：贴图模糊</strong></p>
+<ul>
+<li>原因：贴图分辨率过低或UV展开不当</li>
+<li>解决：使用高分辨率贴图（至少2K），优化UV布局</li>
+</ul>
+<h3 id="_39">渲染阶段</h3>
+<p><strong>问题6：渲染时间过长</strong></p>
+<ul>
+<li>原因：采样数过高，场景未优化</li>
+<li>解决：使用自适应采样，开启Denoising，简化不可见几何体</li>
+</ul>
+<p><strong>问题7：内存溢出</strong></p>
+<ul>
+<li>原因：纹理过大，几何体过多</li>
+<li>解决：压缩纹理，使用实例化，分层渲染</li>
+</ul>
+<h2 id="_40">最佳实践检查清单</h2>
+<h3 id="_41">项目规划</h3>
+<ul>
+<li>[ ] 制定明确的项目目标和范围</li>
+<li>[ ] 创建合理的时间计划</li>
+<li>[ ] 建立规范的文件组织结构</li>
+<li>[ ] 收集充足的参考资料</li>
+</ul>
+<h3 id="_42">建模规范</h3>
+<ul>
+<li>[ ] 使用统一的单位系统</li>
+<li>[ ] 保持合理的多边形密度</li>
+<li>[ ] 模块化设计，接口标准化</li>
+<li>[ ] 清晰的命名规则</li>
+<li>[ ] 定期保存和备份</li>
+</ul>
+<h3 id="_43">材质优化</h3>
+<ul>
+<li>[ ] 使用PBR工作流程</li>
+<li>[ ] 纹理尺寸适中（2K-4K）</li>
+<li>[ ] 复用材质减少内存占用</li>
+<li>[ ] 正确设置UV映射</li>
+</ul>
+<h3 id="_44">场景管理</h3>
+<ul>
+<li>[ ] 使用Collection组织对象</li>
+<li>[ ] 合理使用实例化</li>
+<li>[ ] 实施LOD策略</li>
+<li>[ ] 定期清理无用数据</li>
+</ul>
+<h3 id="_45">渲染输出</h3>
+<ul>
+<li>[ ] 选择合适的渲染引擎</li>
+<li>[ ] 优化采样设置</li>
+<li>[ ] 使用渲染层分离元素</li>
+<li>[ ] 输出必要的合成通道</li>
+<li>[ ] 保存项目文件和渲染预设</li>
+</ul>
+            </article>
+            
+            <nav class="page-nav"><a href="chapter16.html" class="nav-link prev">← 第16章：合成与后期处理</a><a href="chapter18.html" class="nav-link next">第18章：写实角色综合项目 →</a></nav>
+        </main>
+    </div>
+</body>
+</html>

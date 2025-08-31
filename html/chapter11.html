@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="./">
+    <title>第11章：骨骼绑定系统</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/highlight.css">
+    <script src="assets/script.js" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                processEscapes: false,
+                packages: {'[+]': ['noerrors', 'ams']}
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            loader: {
+                load: ['[tex]/noerrors', '[tex]/ams']
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>目录</h3>
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div class="sidebar-search">
+                <input type="text" id="sidebar-search-input" placeholder="搜索..." autocomplete="off">
+            </div>
+            <div id="tree-container">
+                <nav class="tree-nav" role="tree">
+                    <div class="tree-item " >
+                        <a href="index.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Blender 速成教程</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter1.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第1章：Blender 界面与基础操作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter2.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第2章：基础建模技术</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter3.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第3章：材质与纹理基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter4.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第4章：硬表面建模</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter5.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第5章：有机建模与雕刻</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter6.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第6章：场景构建与优化</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter7.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第7章：角色建模基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter8.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第8章：写实角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter9.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第9章：卡通角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter10.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第10章：动画基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item active" >
+                        <a href="chapter11.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第11章：骨骼绑定系统</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter12.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第12章：角色动画进阶</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter13.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第13章：打斗动画制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter14.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第14章：物理模拟与动力学</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter15.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第15章：灯光与渲染</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter16.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第16章：合成与后期处理</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter17.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第17章：科幻场景综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter18.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第18章：写实角色综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter19.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第19章：卡通短片综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="CLAUDE.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Untitled</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <article>
+                <h1 id="11">第11章：骨骼绑定系统</h1>
+<h2 id="_1">章节大纲</h2>
+<h3 id="111">11.1 引言与基础概念</h3>
+<ul>
+<li>骨骼绑定的作用与重要性</li>
+<li>从 CAD 装配到角色绑定的思维转换</li>
+<li>Blender 骨骼系统架构</li>
+</ul>
+<h3 id="112">11.2 骨架创建与编辑</h3>
+<ul>
+<li>Armature 对象基础</li>
+<li>骨骼的添加、删除与连接</li>
+<li>骨骼命名规范与镜像</li>
+<li>骨骼层级关系</li>
+<li>Edit Mode vs Pose Mode</li>
+</ul>
+<h3 id="113-ikfk">11.3 IK/FK 系统详解</h3>
+<ul>
+<li>正向运动学（FK）原理</li>
+<li>反向运动学（IK）原理</li>
+<li>IK 链的设置与调试</li>
+<li>IK/FK 切换系统</li>
+<li>极向目标（Pole Target）</li>
+</ul>
+<h3 id="114">11.4 约束系统深入</h3>
+<ul>
+<li>常用约束类型详解</li>
+<li>约束堆栈与优先级</li>
+<li>驱动器（Drivers）基础</li>
+<li>自定义属性与控制器</li>
+</ul>
+<h3 id="115">11.5 权重绘制技巧</h3>
+<ul>
+<li>自动权重 vs 手动权重</li>
+<li>权重绘制工具详解</li>
+<li>权重传递与镜像</li>
+<li>变形问题诊断与修复</li>
+</ul>
+<h3 id="116">11.6 本章小结</h3>
+<h3 id="117">11.7 练习题</h3>
+<h3 id="118">11.8 常见陷阱与错误</h3>
+<h3 id="119">11.9 最佳实践检查清单</h3>
+<hr />
+<h2 id="111_1">11.1 引言与基础概念</h2>
+<p>骨骼绑定是将 3D 模型转化为可动角色的关键技术。如果说建模赋予了角色形体，那么骨骼绑定则赋予了角色生命。本章将深入探讨 Blender 的骨骼系统，从基础的骨架创建到复杂的 IK/FK 系统，再到精细的权重调整，帮助您掌握专业级的角色绑定技术。</p>
+<p>对于有 CAD 背景的学习者，可以将骨骼绑定理解为一种特殊的"装配系统"。与 CAD 中的装配约束类似，骨骼系统通过父子关系、约束和驱动器来控制模型的运动。但与机械装配不同的是，角色绑定需要考虑有机体的柔性变形，这就是权重系统发挥作用的地方。</p>
+<h3 id="_2">骨骼绑定的核心组件</h3>
+<div class="codehilite"><pre><span></span><code>    [控制器层]
+         |
+    [骨骼层]
+         |
+    [权重层]
+         |
+    [网格层]
+</code></pre></div>
+
+<ol>
+<li><strong>Armature（骨架）</strong>：包含所有骨骼的容器对象</li>
+<li><strong>Bone（骨骼）</strong>：构成骨架的基本单元</li>
+<li><strong>Constraint（约束）</strong>：控制骨骼运动的规则</li>
+<li><strong>Weight（权重）</strong>：定义网格顶点受骨骼影响的程度</li>
+</ol>
+<h3 id="_3">工作模式概览</h3>
+<p>Blender 的骨骼系统有三种主要工作模式：</p>
+<ul>
+<li><strong>Edit Mode（编辑模式）</strong>：创建和修改骨骼结构</li>
+<li><strong>Pose Mode（姿态模式）</strong>：设置骨骼姿态和动画</li>
+<li><strong>Weight Paint Mode（权重绘制模式）</strong>：调整骨骼对网格的影响</li>
+</ul>
+<h2 id="112_1">11.2 骨架创建与编辑</h2>
+<h3 id="armature">Armature 对象基础</h3>
+<p>在 Blender 中创建骨架的第一步是添加 Armature 对象。与网格对象不同，Armature 是一种特殊的对象类型，专门用于容纳和管理骨骼。</p>
+<div class="codehilite"><pre><span></span><code>创建流程：
+Shift+A → Armature → Single Bone
+
+基础骨骼结构：
+     Head（头部）
+        |
+    [骨骼体]
+        |
+     Tail（尾部）
+</code></pre></div>
+
+<h3 id="_4">骨骼的基本操作</h3>
+<p><strong>添加骨骼</strong></p>
+<ul>
+<li>在 Edit Mode 下，使用 E 键挤出新骨骼</li>
+<li>Shift+A 添加独立骨骼</li>
+<li>细分骨骼：选中骨骼后按 W → Subdivide</li>
+</ul>
+<p><strong>连接与断开</strong></p>
+<ul>
+<li>Alt+P：清除父子关系</li>
+<li>Ctrl+P：建立父子关系</li>
+<li>Connected（连接）：子骨骼头部与父骨骼尾部相连</li>
+<li>Keep Offset（保持偏移）：保持相对位置的父子关系</li>
+</ul>
+<p><strong>骨骼命名规范</strong></p>
+<p>良好的命名规范对于复杂绑定至关重要：</p>
+<div class="codehilite"><pre><span></span><code>标准命名格式：
+[部位]_[功能]_[方向]
+
+示例：
+arm_upper_L  （左上臂）
+leg_IK_R     （右腿IK控制器）
+spine_01     （脊椎第一节）
+</code></pre></div>
+
+<h3 id="_5">骨骼镜像与对称</h3>
+<p>Blender 提供了强大的镜像功能，可以大大提高绑定效率：</p>
+<ol>
+<li><strong>X-Axis Mirror</strong>：在编辑模式下启用，自动镜像操作</li>
+<li><strong>命名自动识别</strong>：使用 .L/.R 或 _L/_R 后缀</li>
+<li><strong>Symmetrize</strong>：将一侧骨骼镜像到另一侧</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>镜像工作流：
+
+1. 创建左侧骨骼链
+2. 添加 .L 后缀
+3. 选中所有左侧骨骼
+4. Armature → Symmetrize
+</code></pre></div>
+
+<h3 id="_6">骨骼显示选项</h3>
+<p>不同的显示方式适用于不同的工作场景：</p>
+<ul>
+<li><strong>Octahedral（八面体）</strong>：默认显示，清晰展示方向</li>
+<li><strong>Stick（棍状）</strong>：简洁显示，适合复杂骨架</li>
+<li><strong>B-Bone（贝塞尔骨骼）</strong>：可弯曲骨骼，适合脊椎等部位</li>
+<li><strong>Envelope（包络）</strong>：显示骨骼影响范围</li>
+<li><strong>Wire（线框）</strong>：最简显示，减少视觉干扰</li>
+</ul>
+<h3 id="_7">骨骼层级关系</h3>
+<p>合理的层级结构是高效绑定的基础：</p>
+<div class="codehilite"><pre><span></span><code>典型人体骨骼层级：
+Root
+├── Pelvis
+│   ├── Spine_01
+│   │   ├── Spine_02
+│   │   │   ├── Spine_03
+│   │   │   │   ├── Neck
+│   │   │   │   │   └── Head
+│   │   │   │   ├── Shoulder_L
+│   │   │   │   │   └── Arm_Upper_L
+│   │   │   │   │       └── Arm_Lower_L
+│   │   │   │   │           └── Hand_L
+│   │   │   │   └── Shoulder_R
+│   │   │   │       └── Arm_Upper_R
+│   │   │   │           └── Arm_Lower_R
+│   │   │   │               └── Hand_R
+│   ├── Leg_Upper_L
+│   │   └── Leg_Lower_L
+│   │       └── Foot_L
+│   └── Leg_Upper_R
+│       └── Leg_Lower_R
+│           └── Foot_R
+</code></pre></div>
+
+<h3 id="_8">骨骼组与层</h3>
+<p>Blender 提供 32 个骨骼层和无限的骨骼组，用于组织复杂骨架：</p>
+<p><strong>骨骼层分配建议</strong>：</p>
+<ul>
+<li>Layer 1：主要变形骨骼</li>
+<li>Layer 2：IK 控制器</li>
+<li>Layer 3：FK 控制器</li>
+<li>Layer 4：辅助骨骼</li>
+<li>Layer 5：面部骨骼</li>
+</ul>
+<p><strong>骨骼组（Bone Groups）</strong>：</p>
+<ul>
+<li>用于视觉区分和批量选择</li>
+<li>可自定义颜色主题</li>
+<li>常见分组：IK控制、FK控制、变形骨骼、辅助骨骼</li>
+</ul>
+<h2 id="113-ikfk_1">11.3 IK/FK 系统详解</h2>
+<h3 id="fk">正向运动学（FK）原理</h3>
+<p>FK 是最直观的动画方式，通过逐级旋转父骨骼来控制子骨骼的位置。这种方式类似于真实的关节运动。</p>
+<div class="codehilite"><pre><span></span><code>FK 链示例（手臂）：
+肩膀旋转 → 影响整条手臂
+  ↓
+上臂旋转 → 影响前臂和手
+  ↓
+前臂旋转 → 只影响手
+  ↓
+手部旋转 → 独立运动
+</code></pre></div>
+
+<p><strong>FK 的优势</strong>：</p>
+<ul>
+<li>精确的弧线运动控制</li>
+<li>适合摆臂、挥手等动作</li>
+<li>不会产生意外的求解结果</li>
+</ul>
+<p><strong>FK 的劣势</strong>：</p>
+<ul>
+<li>定位末端需要调整多个关节</li>
+<li>难以保持接触点固定（如手扶墙）</li>
+</ul>
+<h3 id="ik">反向运动学（IK）原理</h3>
+<p>IK 通过指定末端位置，自动计算中间关节的旋转角度。这在制作接触性动作时特别有用。</p>
+<div class="codehilite"><pre><span></span><code>IK 链设置（腿部）：
+
+1. 创建 IK 目标骨骼（通常独立于主骨架）
+2. 为小腿骨骼添加 IK 约束
+3. 设置链长（Chain Length）= 2
+4. 添加极向目标控制膝盖朝向
+</code></pre></div>
+
+<p><strong>IK 求解器类型</strong>：</p>
+<ul>
+<li><strong>Standard</strong>：默认求解器，适合大多数情况</li>
+<li><strong>iTaSC</strong>：高级求解器，提供更多控制选项</li>
+<li><strong>Spline IK</strong>：适合脊椎、尾巴等连续弯曲</li>
+</ul>
+<h3 id="ik_1">IK 链的设置与调试</h3>
+<p><strong>基础 IK 设置步骤</strong>：</p>
+<ol>
+<li><strong>准备骨骼链</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code>大腿骨骼 (thigh)
+   ↓
+小腿骨骼 (shin) ← 添加 IK 约束
+   ↓
+脚部骨骼 (foot)
+</code></pre></div>
+
+<ol start="2">
+<li>
+<p><strong>创建控制器</strong>
+   - IK 目标骨骼（IK_foot）
+   - 极向目标骨骼（Pole_knee）</p>
+</li>
+<li>
+<p><strong>约束参数调整</strong>
+   - <strong>Chain Length</strong>：IK 链长度（通常为 2）
+   - <strong>Pole Angle</strong>：极向旋转偏移
+   - <strong>Iterations</strong>：求解迭代次数（默认 500）
+   - <strong>Influence</strong>：约束影响权重</p>
+</li>
+</ol>
+<h3 id="pole-target">极向目标（Pole Target）详解</h3>
+<p>极向目标控制 IK 链的弯曲方向，对于膝盖、手肘等关节至关重要。</p>
+<div class="codehilite"><pre><span></span><code>极向目标位置计算：
+     膝盖
+      /\
+     /  \
+大腿/    \小腿
+   /      \
+  /   ←d→  \
+ 髋         踝
+
+极向目标应放置在距离 d 的位置
+通常 d = 大腿长度
+</code></pre></div>
+
+<p><strong>极向目标调试技巧</strong>：</p>
+<ol>
+<li>使用骨骼的自定义形状提高可见性</li>
+<li>为极向目标添加限制约束，防止异常位置</li>
+<li>使用 "Pole Angle" 修正初始偏移</li>
+</ol>
+<h3 id="ikfk">IK/FK 切换系统</h3>
+<p>专业绑定通常需要 IK 和 FK 可以灵活切换，以适应不同的动画需求。</p>
+<p><strong>实现 IK/FK 切换的方法</strong>：</p>
+<ol>
+<li><strong>双骨骼链方案</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code>变形骨骼链（DEF）
+├── FK 控制链
+└── IK 控制链
+
+使用 Copy Rotation 约束混合两种控制
+</code></pre></div>
+
+<ol start="2">
+<li>
+<p><strong>约束影响权重方案</strong>
+   - 使用自定义属性控制 IK 约束的 Influence
+   - 0 = 纯 FK，1 = 纯 IK</p>
+</li>
+<li>
+<p><strong>驱动器自动切换</strong></p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 驱动器表达式示例</span>
+<span class="n">var</span> <span class="o">*</span> <span class="n">ik_influence</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">var</span><span class="p">)</span> <span class="o">*</span> <span class="n">fk_influence</span>
+</code></pre></div>
+
+<h3 id="ik-stretch">IK 拉伸（Stretch）</h3>
+<p>IK 拉伸允许骨骼链超出原始长度，创造夸张的卡通效果。</p>
+<p><strong>设置 IK 拉伸</strong>：</p>
+<ol>
+<li>在 IK 约束中启用 "Stretch"</li>
+<li>调整骨骼的 IK Stretch 属性</li>
+<li>使用 "Lock IK X/Y/Z" 限制特定轴向</li>
+</ol>
+<h3 id="spline-ik">Spline IK 详解</h3>
+<p>Spline IK 适合创建柔性的连续弯曲，如脊椎、触手、绳索等。</p>
+<div class="codehilite"><pre><span></span><code>Spline IK 工作流：
+
+1. 创建骨骼链（如 10 节脊椎）
+2. 创建贝塞尔曲线作为引导
+3. 为最后一节骨骼添加 Spline IK 约束
+4. 使用曲线控制点调整形状
+</code></pre></div>
+
+<p><strong>Spline IK 高级选项</strong>：</p>
+<ul>
+<li><strong>Y Stretch</strong>：沿曲线拉伸骨骼</li>
+<li><strong>Use Curve Radius</strong>：使用曲线半径缩放骨骼</li>
+<li><strong>Offset</strong>：沿曲线偏移骨骼链起点</li>
+</ul>
+<h2 id="114_1">11.4 约束系统深入</h2>
+<p>约束是 Blender 骨骼系统的核心，它们定义了骨骼之间的关系和运动规则。理解并熟练运用约束系统是创建复杂绑定的关键。</p>
+<h3 id="_9">常用约束类型详解</h3>
+<p><strong>变换约束（Transform Constraints）</strong></p>
+<ol>
+<li>
+<p><strong>Copy Location/Rotation/Scale</strong>
+   - 复制目标对象的变换
+   - 可选择特定轴向和空间
+   - 支持偏移和反向</p>
+</li>
+<li>
+<p><strong>Limit Location/Rotation/Scale</strong>
+   - 限制骨骼的活动范围
+   - 创建关节限制（如肘关节只能向一个方向弯曲）</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>肘关节限制示例：
+Limit Rotation:
+X: Min -10° Max 150°
+Y: 锁定
+Z: 锁定
+</code></pre></div>
+
+<ol start="3">
+<li><strong>Copy Transforms</strong>
+   - 完全复制目标的所有变换
+   - 常用于创建镜像动作</li>
+</ol>
+<p><strong>跟踪约束（Tracking Constraints）</strong></p>
+<ol>
+<li><strong>Track To</strong>
+   - 使骨骼始终指向目标
+   - 用于眼睛跟踪、瞄准等效果</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>眼球跟踪设置：
+Track Axis: -Z
+Up Axis: Y
+Target: Eye_Target
+</code></pre></div>
+
+<ol start="2">
+<li>
+<p><strong>Damped Track</strong>
+   - Track To 的简化版本
+   - 自动选择最短旋转路径
+   - 避免翻转问题</p>
+</li>
+<li>
+<p><strong>Locked Track</strong>
+   - 锁定一个轴向的跟踪
+   - 适合炮塔等受限旋转</p>
+</li>
+</ol>
+<p><strong>关系约束（Relationship Constraints）</strong></p>
+<ol>
+<li>
+<p><strong>Child Of</strong>
+   - 动态改变父子关系
+   - 支持动画切换父对象
+   - 用于拾取、放下物体</p>
+</li>
+<li>
+<p><strong>Floor</strong>
+   - 防止骨骼穿透地面
+   - 自动碰撞检测</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>脚部地面约束：
+Target: Ground_Plane
+Sticky: 启用（脚不会滑动）
+Use Rotation: 启用（适应斜坡）
+</code></pre></div>
+
+<ol start="3">
+<li><strong>Shrinkwrap</strong>
+   - 将骨骼投影到网格表面
+   - 用于面部表情、衣物贴合</li>
+</ol>
+<h3 id="_10">约束堆栈与优先级</h3>
+<p>约束按照列表顺序依次计算，理解这个顺序对于复杂绑定至关重要。</p>
+<div class="codehilite"><pre><span></span><code>约束计算顺序示例：
+
+1. Limit Rotation（限制基础旋转）
+   ↓
+
+2. IK（计算 IK 解）
+   ↓
+
+3. Copy Rotation（叠加额外旋转）
+   ↓
+
+4. Limit Rotation（最终限制）
+
+结果 = 每步约束的累积效果
+</code></pre></div>
+
+<p><strong>约束空间（Space）选择</strong>：</p>
+<ul>
+<li><strong>World Space</strong>：世界坐标系</li>
+<li><strong>Local Space</strong>：骨骼自身坐标系</li>
+<li><strong>Pose Space</strong>：考虑骨骼约束后的坐标系</li>
+<li><strong>Local With Parent</strong>：相对父骨骼的局部空间</li>
+<li><strong>Custom Space</strong>：自定义对象空间</li>
+</ul>
+<h3 id="drivers">驱动器（Drivers）基础</h3>
+<p>驱动器允许使用数学表达式或 Python 脚本控制属性。</p>
+<p><strong>创建驱动器的方法</strong>：</p>
+<ol>
+<li>右键点击属性 → Add Driver</li>
+<li>在 Graph Editor 中切换到 Drivers 模式</li>
+<li>设置驱动器变量和表达式</li>
+</ol>
+<p><strong>驱动器变量类型</strong>：</p>
+<ul>
+<li><strong>Transform Channel</strong>：读取对象变换值</li>
+<li><strong>Single Property</strong>：读取任意属性</li>
+<li><strong>Distance</strong>：计算两对象距离</li>
+<li><strong>Rotational Difference</strong>：计算旋转差异</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="err">常用驱动器表达式：</span>
+
+<span class="err">线性映射：</span>
+<span class="k">var</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5</span>
+
+<span class="err">限制范围：</span>
+<span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">var</span><span class="p">))</span>
+
+<span class="err">条件切换：</span>
+<span class="mi">1</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="k">var</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.5</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="err">正弦波动：</span>
+<span class="nb">sin</span><span class="p">(</span><span class="k">var</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">3.14159</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="_11">自定义属性与控制器</h3>
+<p>自定义属性让绑定更加用户友好，将复杂的控制集中到简单的滑块。</p>
+<p><strong>创建自定义属性</strong>：</p>
+<ol>
+<li>在 Pose Mode 选择骨骼</li>
+<li>在属性面板 → Custom Properties → New</li>
+<li>设置类型、范围、默认值</li>
+</ol>
+<p><strong>常见自定义属性应用</strong>：</p>
+<div class="codehilite"><pre><span></span><code>IK/FK 切换器：
+Property: IK_FK_Switch
+Type: Float
+Min: 0, Max: 1
+0 = FK, 1 = IK
+
+手指卷曲控制：
+Property: Finger_Curl
+Type: Float  
+Min: 0, Max: 1
+驱动所有手指关节旋转
+
+面部表情滑块：
+Property: Smile
+Type: Float
+Min: -1, Max: 1
+驱动嘴角形变键
+</code></pre></div>
+
+<h3 id="_12">高级约束技巧</h3>
+<p><strong>Action 约束</strong></p>
+<ul>
+<li>将属性值映射到动作</li>
+<li>用于复杂的预设动画</li>
+<li>实现姿态库功能</li>
+</ul>
+<p><strong>Transformation 约束</strong></p>
+<ul>
+<li>将一种变换映射到另一种</li>
+<li>如：将位移转换为旋转</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>齿轮联动示例：
+Source: Location X
+Destination: Rotation Z
+比例调整实现不同传动比
+</code></pre></div>
+
+<p><strong>Armature 约束</strong></p>
+<ul>
+<li>使网格受多个骨架影响</li>
+<li>用于模块化角色系统</li>
+<li>实现衣物、配饰的独立绑定</li>
+</ul>
+<h2 id="115_1">11.5 权重绘制技巧</h2>
+<p>权重决定了网格顶点受骨骼影响的程度，是实现自然变形的关键。良好的权重分布能让角色动作流畅自然，而糟糕的权重会导致各种变形问题。</p>
+<h3 id="_13">权重基础概念</h3>
+<div class="codehilite"><pre><span></span><code>权重值范围：0.0 - 1.0
+0.0 = 不受影响（蓝色）
+0.5 = 中等影响（绿色）
+1.0 = 完全影响（红色）
+
+权重归一化规则：
+每个顶点的所有权重之和 = 1.0
+</code></pre></div>
+
+<h3 id="vs">自动权重 vs 手动权重</h3>
+<p><strong>自动权重（Automatic Weights）</strong></p>
+<p>绑定网格的快速方法：</p>
+<ol>
+<li>选择网格</li>
+<li>Shift 选择骨架</li>
+<li>Ctrl+P → With Automatic Weights</li>
+</ol>
+<p><strong>自动权重的优缺点</strong>：</p>
+<ul>
+<li>优点：快速、适合初始设置</li>
+<li>缺点：可能产生不理想的分布，特别是复杂几何体</li>
+</ul>
+<p><strong>常见自动权重问题</strong>：</p>
+<ul>
+<li>骨骼热力图计算失败</li>
+<li>权重溢出到不相关区域</li>
+<li>关节处权重分布不均</li>
+</ul>
+<h3 id="_14">权重绘制工具详解</h3>
+<p>进入 Weight Paint Mode 后，可以使用各种画笔工具调整权重。</p>
+<p><strong>基础画笔类型</strong>：</p>
+<ol>
+<li>
+<p><strong>Draw（绘制）</strong>
+   - 直接绘制权重值
+   - Mix 模式：混合现有权重
+   - Add 模式：增加权重
+   - Subtract 模式：减少权重</p>
+</li>
+<li>
+<p><strong>Blur（模糊）</strong>
+   - 平滑权重过渡
+   - 消除硬边界
+   - 改善变形质量</p>
+</li>
+<li>
+<p><strong>Average（平均）</strong>
+   - 平均周围顶点权重
+   - 创建均匀分布</p>
+</li>
+<li>
+<p><strong>Smear（涂抹）</strong>
+   - 拖动权重分布
+   - 延伸权重区域</p>
+</li>
+</ol>
+<p><strong>画笔设置优化</strong>：</p>
+<div class="codehilite"><pre><span></span><code>关节处理设置：
+Radius: 50px
+Strength: 0.2
+Falloff: Smooth
+
+大面积调整：
+Radius: 200px
+Strength: 1.0
+Falloff: Constant
+</code></pre></div>
+
+<h3 id="_15">权重绘制工作流程</h3>
+<p><strong>标准工作流程</strong>：</p>
+<ol>
+<li><strong>粗调阶段</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">使用自动权重作为基础</span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">切换到</span><span class="w"> </span><span class="n">Weight</span><span class="w"> </span><span class="n">Paint</span><span class="w"> </span><span class="n">Mode</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">逐个检查主要骨骼</span>
+<span class="mf">4.</span><span class="w"> </span><span class="n">修复明显问题区域</span>
+</code></pre></div>
+
+<ol start="2">
+<li><strong>精调阶段</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">专注关节区域</span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">测试极限姿态</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">平滑权重过渡</span>
+<span class="mf">4.</span><span class="w"> </span><span class="n">消除权重孤岛</span>
+</code></pre></div>
+
+<ol start="3">
+<li><strong>验证阶段</strong></li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="mf">1.</span><span class="w"> </span><span class="n">完整动作测试</span>
+<span class="mf">2.</span><span class="w"> </span><span class="n">检查权重归一化</span>
+<span class="mf">3.</span><span class="w"> </span><span class="n">清理零权重顶点</span>
+<span class="mf">4.</span><span class="w"> </span><span class="n">优化权重分布</span>
+</code></pre></div>
+
+<h3 id="_16">关节权重处理技巧</h3>
+<p>关节是权重绘制的难点，需要特别关注。</p>
+<p><strong>肘关节/膝关节处理</strong>：</p>
+<div class="codehilite"><pre><span></span><code>理想权重分布：
+      上臂/大腿
+         1.0
+     0.75 | 0.75
+    0.5   |   0.5
+     0.25 | 0.25
+         0.0
+      下臂/小腿
+</code></pre></div>
+
+<p><strong>肩部权重处理</strong>：</p>
+<ul>
+<li>肩胛骨区域需要额外骨骼</li>
+<li>使用多层权重混合</li>
+<li>考虑锁骨的影响</li>
+</ul>
+<p><strong>手指关节优化</strong>：</p>
+<ul>
+<li>每个关节单独调整</li>
+<li>保持权重对称</li>
+<li>使用 "Limit Total" 防止超标</li>
+</ul>
+<h3 id="_17">权重传递与镜像</h3>
+<p><strong>权重传递（Transfer Weights）</strong>：
+用于将权重从一个网格复制到另一个：</p>
+<ol>
+<li>选择源网格（已有权重）</li>
+<li>选择目标网格</li>
+<li>Weight Paint → Weights → Transfer Weights</li>
+</ol>
+<p><strong>传递选项</strong>：</p>
+<ul>
+<li><strong>Nearest Vertex</strong>：最近顶点</li>
+<li><strong>Nearest Face</strong>：最近面</li>
+<li><strong>Nearest Volume</strong>：体积映射</li>
+<li><strong>Surface Mapping</strong>：表面映射</li>
+</ul>
+<p><strong>权重镜像</strong>：
+对于对称模型，可以镜像权重：</p>
+<ol>
+<li>确保顶点组命名正确（.L/.R）</li>
+<li>Weight Paint → Weights → Mirror</li>
+<li>选择镜像轴和选项</li>
+</ol>
+<h3 id="_18">权重层管理</h3>
+<p>Blender 支持多个权重层，用于不同用途：</p>
+<p><strong>顶点组操作</strong>：</p>
+<ul>
+<li><strong>Assign</strong>：分配权重</li>
+<li><strong>Remove</strong>：移除权重</li>
+<li><strong>Select/Deselect</strong>：选择权重顶点</li>
+<li><strong>Normalize</strong>：归一化权重</li>
+<li><strong>Clean</strong>：清理小权重值</li>
+</ul>
+<p><strong>权重工具集</strong>：</p>
+<div class="codehilite"><pre><span></span><code>Normalize All：
+确保所有顶点权重和为 1.0
+
+Clean：
+删除低于阈值的权重
+阈值通常设为 0.01
+
+Limit Total：
+限制每个顶点的骨骼影响数
+游戏引擎通常限制为 4
+</code></pre></div>
+
+<h3 id="_19">变形问题诊断与修复</h3>
+<p><strong>常见变形问题</strong>：</p>
+<ol>
+<li>
+<p><strong>糖葫芦效应</strong>
+   - 现象：关节处出现尖锐突出
+   - 原因：权重过度集中
+   - 解决：平滑权重过渡</p>
+</li>
+<li>
+<p><strong>橡皮管效应</strong>
+   - 现象：弯曲时体积损失
+   - 原因：线性权重分布
+   - 解决：保留体积的权重分布</p>
+</li>
+<li>
+<p><strong>权重溢出</strong>
+   - 现象：不相关部位随之运动
+   - 原因：权重意外分配
+   - 解决：使用遮罩限制绘制区域</p>
+</li>
+</ol>
+<p><strong>诊断工具</strong>：</p>
+<div class="codehilite"><pre><span></span><code>显示选项：
+[<span class="w"> </span>]<span class="w"> </span><span class="k">Show</span><span class="w"> </span><span class="nv">Zero</span><span class="w"> </span><span class="nv">Weights</span>（显示零权重）
+[✓]<span class="w"> </span><span class="k">Show</span><span class="w"> </span><span class="nv">Weight</span><span class="w"> </span><span class="nv">Contours</span>（显示权重轮廓）
+[<span class="w"> </span>]<span class="w"> </span><span class="nv">Use</span><span class="w"> </span><span class="nv">Multi</span><span class="o">-</span><span class="nv">Paint</span>（多骨骼绘制）
+
+测试方法：
+
+<span class="mi">1</span>.<span class="w"> </span>极限旋转测试（<span class="mi">180</span>°弯曲）
+<span class="mi">2</span>.<span class="w"> </span>组合动作测试
+<span class="mi">3</span>.<span class="w"> </span>快速动作测试
+</code></pre></div>
+
+<h3 id="_20">高级权重技术</h3>
+<p><strong>多分辨率权重</strong>：
+使用 Multiresolution 修改器时的权重策略：</p>
+<ol>
+<li>在低分辨率网格上设置权重</li>
+<li>细分后自动插值</li>
+<li>必要时在高分辨率微调</li>
+</ol>
+<p><strong>权重代理（Weight Proxy）</strong>：
+为复杂模型创建简化代理：</p>
+<ol>
+<li>创建低面数代理网格</li>
+<li>在代理上绘制权重</li>
+<li>传递权重到高模</li>
+</ol>
+<p><strong>程序化权重</strong>：
+使用 Python 脚本生成权重：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 伪代码示例</span>
+<span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">:</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">calculate_distance</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">bone</span><span class="p">)</span>
+    <span class="n">weight</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">distance</span> <span class="o">*</span> <span class="n">falloff</span><span class="p">)</span>
+    <span class="n">assign_weight</span><span class="p">(</span><span class="n">vertex</span><span class="p">,</span> <span class="n">bone</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="116_1">11.6 本章小结</h2>
+<p>骨骼绑定系统是角色动画的基础设施，本章我们深入学习了从骨架创建到权重调整的完整工作流程。</p>
+<h3 id="_21">核心概念回顾</h3>
+<ol>
+<li>
+<p><strong>骨骼系统架构</strong>
+   - Armature 作为骨骼容器
+   - 骨骼的父子层级关系
+   - Edit Mode、Pose Mode、Weight Paint Mode 的不同用途</p>
+</li>
+<li>
+<p><strong>IK/FK 系统</strong>
+   - FK：自上而下的关节控制，适合弧线运动
+   - IK：自下而上的末端控制，适合接触性动作
+   - IK/FK 切换实现灵活的动画控制</p>
+</li>
+<li>
+<p><strong>约束系统</strong>
+   - 变换约束控制位置、旋转、缩放
+   - 跟踪约束实现自动朝向
+   - 关系约束定义复杂的骨骼关系
+   - 约束堆栈顺序决定最终效果</p>
+</li>
+<li>
+<p><strong>权重系统</strong>
+   - 权重值 0-1 定义骨骼影响程度
+   - 自动权重提供初始分布
+   - 手动绘制精细调整变形
+   - 权重归一化确保正确变形</p>
+</li>
+</ol>
+<h3 id="_22">关键技术要点</h3>
+<ul>
+<li><strong>命名规范</strong>：使用 .L/.R 后缀实现自动镜像</li>
+<li><strong>骨骼组织</strong>：利用骨骼层和骨骼组管理复杂骨架</li>
+<li><strong>极向目标</strong>：控制 IK 链的弯曲方向</li>
+<li><strong>驱动器</strong>：使用表达式创建智能控制</li>
+<li><strong>自定义属性</strong>：简化复杂控制为用户友好界面</li>
+<li><strong>权重传递</strong>：在不同网格间共享权重数据</li>
+</ul>
+<h3 id="_23">工作流程最佳实践</h3>
+<ol>
+<li>先规划骨骼结构，考虑动画需求</li>
+<li>使用对称建模和镜像工具提高效率</li>
+<li>为不同用途创建独立的控制器</li>
+<li>逐步测试绑定，避免累积问题</li>
+<li>保存多个版本，方便回退修改</li>
+</ol>
+<h2 id="117_1">11.7 练习题</h2>
+<h3 id="_24">基础题（理解概念）</h3>
+<p><strong>练习 1：骨骼层级理解</strong>
+创建一个简单的机械臂骨架，包含基座、大臂、小臂和夹爪。要求正确设置父子关系，使整个机械臂可以通过基座控制。</p>
+<p><em>提示（Hint）：思考真实机械臂的运动关系，基座是根骨骼。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>创建骨骼链：</p>
+<ol>
+<li>添加 Armature 对象</li>
+<li>在 Edit Mode 下创建骨骼：
+   - Base（基座）
+   - Upper_Arm（大臂）作为 Base 的子骨骼
+   - Lower_Arm（小臂）作为 Upper_Arm 的子骨骼
+   - Gripper（夹爪）作为 Lower_Arm 的子骨骼</li>
+<li>使用 Connected 选项保持骨骼连接</li>
+<li>在 Pose Mode 测试，旋转 Base 应带动整个机械臂</li>
+</ol>
+<p>关键点：正确的父子关系确保了运动的传递性。</p>
+</details>
+<p><strong>练习 2：IK 链设置</strong>
+为人物腿部设置基础 IK 系统，包括大腿、小腿和脚部，能够通过移动脚部控制器来摆放腿部姿态。</p>
+<p><em>提示（Hint）：IK 约束应添加到小腿骨骼，链长为 2。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>设置步骤：</p>
+<ol>
+<li>创建腿部骨骼链：Thigh → Shin → Foot</li>
+<li>创建独立的 IK_Foot 控制器骨骼</li>
+<li>选择 Shin 骨骼，添加 IK 约束：
+   - Target: Armature
+   - Bone: IK_Foot
+   - Chain Length: 2</li>
+<li>创建 Pole_Knee 骨骼作为极向目标</li>
+<li>在 IK 约束中设置 Pole Target</li>
+</ol>
+<p>测试：移动 IK_Foot 应该自动计算大腿和小腿的旋转。</p>
+</details>
+<p><strong>练习 3：约束应用</strong>
+创建一个眼球跟踪系统，使两个眼球始终看向一个目标对象。</p>
+<p><em>提示（Hint）：使用 Track To 或 Damped Track 约束。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>实现方法：</p>
+<ol>
+<li>创建两个眼球骨骼：Eye_L 和 Eye_R</li>
+<li>创建一个目标骨骼：Eye_Target</li>
+<li>为每个眼球骨骼添加 Damped Track 约束：
+   - Target: Armature
+   - Bone: Eye_Target</li>
+<li>调整 Track Axis 确保眼球朝向正确</li>
+</ol>
+<p>优化：可以添加 Limit Rotation 约束限制眼球转动范围，避免不自然的极限角度。</p>
+</details>
+<p><strong>练习 4：基础权重绘制</strong>
+为一个简单的圆柱体模型（如手臂）设置两段骨骼并调整权重，实现平滑的弯曲效果。</p>
+<p><em>提示（Hint）：关注中间关节处的权重过渡。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>权重设置流程：</p>
+<ol>
+<li>创建圆柱体网格（细分足够）</li>
+<li>添加两段骨骼：Upper 和 Lower</li>
+<li>使用自动权重绑定</li>
+<li>进入 Weight Paint Mode：
+   - 选择 Upper 骨骼
+   - 在关节处使用 Blur 画笔平滑过渡
+   - 确保关节处权重约为 0.5</li>
+<li>对 Lower 骨骼重复上述过程</li>
+<li>测试弯曲，调整权重避免挤压变形</li>
+</ol>
+<p>关键：关节处的权重应该是渐变的，避免硬边界。</p>
+</details>
+<h3 id="_25">挑战题（深入应用）</h3>
+<p><strong>练习 5：IK/FK 切换系统</strong>
+设计并实现一个手臂的 IK/FK 切换系统，通过一个自定义属性在两种控制模式间平滑切换。</p>
+<p><em>提示（Hint）：需要三条骨骼链：变形链、FK 控制链、IK 控制链。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>完整实现方案：</p>
+<ol>
+<li>
+<p><strong>创建三条骨骼链</strong>：
+   - DEF_Upper_Arm, DEF_Lower_Arm, DEF_Hand（变形链）
+   - FK_Upper_Arm, FK_Lower_Arm, FK_Hand（FK 控制链）
+   - IK_Upper_Arm, IK_Lower_Arm, IK_Hand（IK 控制链）</p>
+</li>
+<li>
+<p><strong>设置 IK 系统</strong>：
+   - 为 IK_Lower_Arm 添加 IK 约束
+   - 创建 IK_Hand_Target 作为 IK 目标</p>
+</li>
+<li>
+<p><strong>创建切换控制</strong>：
+   - 在主控制器上添加自定义属性 "IK_FK_Switch"（0-1）</p>
+</li>
+<li>
+<p><strong>设置约束混合</strong>：
+   - DEF 骨骼添加两个 Copy Rotation 约束
+   - 第一个复制 FK 骨骼，第二个复制 IK 骨骼
+   - 使用驱动器控制约束影响：</p>
+<ul>
+<li>FK 约束：1 - IK_FK_Switch</li>
+<li>IK 约束：IK_FK_Switch</li>
+</ul>
+</li>
+<li>
+<p><strong>位置匹配</strong>（可选）：
+   - 添加脚本实现 IK/FK 位置自动匹配</p>
+</li>
+</ol>
+<p>这个系统允许动画师根据需要选择最合适的控制方式。</p>
+</details>
+<p><strong>练习 6：面部绑定基础</strong>
+为一个简化的卡通脸部创建基础表情控制系统，包括眉毛、眼睛和嘴巴的基本控制。</p>
+<p><em>提示（Hint）：考虑使用骨骼配合形态键（Shape Keys）。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>面部绑定方案：</p>
+<ol>
+<li>
+<p><strong>骨骼布局</strong>：
+   - 眉毛：每侧 2-3 个骨骼
+   - 眼皮：上下各 3-4 个骨骼
+   - 嘴巴：上唇 5 个，下唇 5 个，嘴角 2 个</p>
+</li>
+<li>
+<p><strong>控制器设置</strong>：
+   - 创建主面部控制器
+   - 添加自定义属性：</p>
+<ul>
+<li>Brow_Height（-1 到 1）</li>
+<li>Brow_Rotation（-1 到 1）</li>
+<li>Eye_Blink（0 到 1）</li>
+<li>Mouth_Smile（-1 到 1）</li>
+</ul>
+</li>
+<li>
+<p><strong>驱动器连接</strong>：
+   - Brow_Height 驱动眉毛骨骼的 Y 位置
+   - Eye_Blink 驱动眼皮骨骼旋转
+   - Mouth_Smile 驱动嘴角骨骼位置</p>
+</li>
+<li>
+<p><strong>形态键辅助</strong>（可选）：
+   - 创建细微表情的形态键
+   - 用骨骼驱动形态键值</p>
+</li>
+<li>
+<p><strong>约束优化</strong>：
+   - 添加 Limit 约束防止过度变形
+   - 使用 Copy Location 保持对称</p>
+</li>
+</ol>
+<p>这个系统提供了基础的表情控制，可以进一步扩展。</p>
+</details>
+<p><strong>练习 7：复杂约束链</strong>
+创建一个坦克履带系统，履带板沿着路径移动并自动调整角度适应地形。</p>
+<p><em>提示（Hint）：结合 Follow Path、Array 修改器和约束系统。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>履带系统实现：</p>
+<ol>
+<li>
+<p><strong>基础设置</strong>：
+   - 创建履带路径（贝塞尔曲线）
+   - 创建单个履带板模型
+   - 使用 Array 修改器沿曲线复制</p>
+</li>
+<li>
+<p><strong>骨骼系统</strong>：
+   - 为每个履带板创建骨骼
+   - 使用 Follow Path 约束沿路径移动
+   - 设置不同的 Offset 值分布履带板</p>
+</li>
+<li>
+<p><strong>地形适应</strong>：
+   - 添加 Shrinkwrap 约束投影到地面
+   - 使用 Floor 约束防止穿透
+   - Track To 约束保持履带板朝向</p>
+</li>
+<li>
+<p><strong>驱动系统</strong>：
+   - 创建主控制器
+   - 添加 "Speed" 自定义属性
+   - 用驱动器连接到 Follow Path 的 Offset</p>
+</li>
+<li>
+<p><strong>优化</strong>：
+   - 使用 Python 脚本批量设置约束
+   - 创建 LOD 系统优化性能</p>
+</li>
+</ol>
+<p>这个系统展示了多种约束的组合应用。</p>
+</details>
+<p><strong>练习 8：高级权重问题解决</strong>
+处理一个肩部区域的复杂权重问题，包括锁骨、肩胛骨和上臂的协调运动，避免常见的肩部变形问题。</p>
+<p><em>提示（Hint）：需要辅助骨骼和多层权重混合。</em></p>
+<details>
+<summary>参考答案</summary>
+<p>肩部权重解决方案：</p>
+<ol>
+<li>
+<p><strong>骨骼结构</strong>：
+   - Clavicle（锁骨）
+   - Scapula（肩胛骨）- 作为辅助骨骼
+   - Shoulder（肩关节）
+   - Upper_Arm（上臂）</p>
+</li>
+<li>
+<p><strong>骨骼关系</strong>：
+   - Clavicle 是 Spine 的子骨骼
+   - Shoulder 是 Clavicle 的子骨骼
+   - Upper_Arm 是 Shoulder 的子骨骼
+   - Scapula 通过约束跟随 Upper_Arm 旋转</p>
+</li>
+<li>
+<p><strong>权重分配策略</strong>：
+   - 锁骨区域：100% Clavicle
+   - 肩胛区域：70% Scapula，30% Spine
+   - 肩关节：渐变混合 Shoulder 和 Upper_Arm
+   - 腋下：特殊处理避免挤压</p>
+</li>
+<li>
+<p><strong>辅助骨骼设置</strong>：
+   - Scapula 使用 Copy Rotation 约束
+   - 只复制部分旋转（如 30%）
+   - 添加 Limit Rotation 防止过度</p>
+</li>
+<li>
+<p><strong>权重绘制技巧</strong>：
+   - 使用 Add 模式逐层构建
+   - 在极限姿势下测试
+   - 使用 Blur 平滑过渡区域
+   - 手动修正问题区域</p>
+</li>
+<li>
+<p><strong>测试姿势</strong>：
+   - T-Pose 到 A-Pose
+   - 手臂前伸、侧平举、上举
+   - 肩部环绕运动</p>
+</li>
+</ol>
+<p>这个方案解决了肩部的主要变形问题，创造自然的肩部运动。</p>
+</details>
+<h2 id="118_1">11.8 常见陷阱与错误</h2>
+<h3 id="_26">骨骼创建阶段</h3>
+<ol>
+<li>
+<p><strong>错误的骨骼方向</strong>
+   - 问题：骨骼 Roll 值不正确导致奇怪的旋转
+   - 解决：使用 Ctrl+N 重新计算 Roll 值</p>
+</li>
+<li>
+<p><strong>断开的骨骼链</strong>
+   - 问题：忘记连接骨骼导致运动不连贯
+   - 解决：检查 Connected 选项或使用 Alt+P/Ctrl+P 重建关系</p>
+</li>
+<li>
+<p><strong>命名不规范</strong>
+   - 问题：无法使用自动镜像功能
+   - 解决：严格遵循 .L/.R 命名规范</p>
+</li>
+</ol>
+<h3 id="ik_2">IK 设置问题</h3>
+<ol start="4">
+<li>
+<p><strong>IK 链长度错误</strong>
+   - 问题：Chain Length 设置不当导致意外骨骼参与计算
+   - 解决：仔细计算需要的骨骼数量</p>
+</li>
+<li>
+<p><strong>极向翻转</strong>
+   - 问题：IK 链突然翻转到另一侧
+   - 解决：正确设置 Pole Target 和 Pole Angle</p>
+</li>
+<li>
+<p><strong>IK 拉伸失控</strong>
+   - 问题：骨骼无限拉伸导致变形
+   - 解决：合理设置 IK Stretch 值或禁用</p>
+</li>
+</ol>
+<h3 id="_27">约束使用错误</h3>
+<ol start="7">
+<li>
+<p><strong>约束顺序混乱</strong>
+   - 问题：约束执行顺序不当产生错误结果
+   - 解决：理解约束堆栈，调整顺序</p>
+</li>
+<li>
+<p><strong>空间设置错误</strong>
+   - 问题：Local/World Space 混淆导致异常行为
+   - 解决：根据需求选择正确的空间</p>
+</li>
+<li>
+<p><strong>循环依赖</strong>
+   - 问题：约束形成循环导致系统崩溃
+   - 解决：检查依赖关系，避免循环引用</p>
+</li>
+</ol>
+<h3 id="_28">权重问题</h3>
+<ol start="10">
+<li>
+<p><strong>权重未归一化</strong></p>
+<ul>
+<li>问题：顶点权重总和不等于 1 导致变形异常</li>
+<li>解决：使用 Normalize All 工具</li>
+</ul>
+</li>
+<li>
+<p><strong>权重孤岛</strong></p>
+<ul>
+<li>问题：孤立的高权重点造成尖刺</li>
+<li>解决：使用 Smooth 或手动修正</li>
+</ul>
+</li>
+<li>
+<p><strong>过多骨骼影响</strong></p>
+<ul>
+<li>问题：游戏引擎限制每顶点骨骼数</li>
+<li>解决：使用 Limit Total 限制为 4 或更少</li>
+</ul>
+</li>
+</ol>
+<h2 id="119_1">11.9 最佳实践检查清单</h2>
+<h3 id="_29">规划阶段</h3>
+<ul>
+<li>[ ] 明确角色的运动需求和限制</li>
+<li>[ ] 设计清晰的骨骼命名规范</li>
+<li>[ ] 规划骨骼层和组的组织结构</li>
+<li>[ ] 确定需要 IK 还是 FK 控制</li>
+<li>[ ] 考虑游戏引擎或渲染器的限制</li>
+</ul>
+<h3 id="_30">骨骼创建</h3>
+<ul>
+<li>[ ] 使用正确的骨骼方向和 Roll 值</li>
+<li>[ ] 保持合理的骨骼大小和比例</li>
+<li>[ ] 正确设置父子关系</li>
+<li>[ ] 应用 .L/.R 命名规范</li>
+<li>[ ] 创建必要的辅助骨骼</li>
+</ul>
+<h3 id="ikfk_1">IK/FK 设置</h3>
+<ul>
+<li>[ ] 正确设置 IK 链长度</li>
+<li>[ ] 添加极向目标控制</li>
+<li>[ ] 测试极限位置避免翻转</li>
+<li>[ ] 实现 IK/FK 切换（如需要）</li>
+<li>[ ] 限制不自然的运动范围</li>
+</ul>
+<h3 id="_31">约束配置</h3>
+<ul>
+<li>[ ] 选择合适的约束类型</li>
+<li>[ ] 正确设置约束空间</li>
+<li>[ ] 优化约束执行顺序</li>
+<li>[ ] 避免循环依赖</li>
+<li>[ ] 添加必要的限制约束</li>
+</ul>
+<h3 id="_32">权重调整</h3>
+<ul>
+<li>[ ] 从自动权重开始</li>
+<li>[ ] 重点优化关节区域</li>
+<li>[ ] 确保权重归一化</li>
+<li>[ ] 测试极限姿势</li>
+<li>[ ] 限制每顶点骨骼数</li>
+</ul>
+<h3 id="_33">控制器设计</h3>
+<ul>
+<li>[ ] 创建直观的控制器形状</li>
+<li>[ ] 添加有用的自定义属性</li>
+<li>[ ] 设置合理的数值范围</li>
+<li>[ ] 提供视觉反馈</li>
+<li>[ ] 隐藏不必要的骨骼</li>
+</ul>
+<h3 id="_34">测试验证</h3>
+<ul>
+<li>[ ] 测试所有运动范围</li>
+<li>[ ] 检查变形质量</li>
+<li>[ ] 验证性能影响</li>
+<li>[ ] 确保文件组织清晰</li>
+<li>[ ] 记录特殊设置和限制</li>
+</ul>
+<h3 id="_35">优化与完成</h3>
+<ul>
+<li>[ ] 清理未使用的骨骼</li>
+<li>[ ] 优化骨骼数量</li>
+<li>[ ] 锁定完成的骨骼层</li>
+<li>[ ] 创建使用说明文档</li>
+<li>[ ] 备份最终版本</li>
+</ul>
+<hr />
+<p>通过本章的学习，您已经掌握了 Blender 骨骼绑定系统的核心技术。骨骼绑定是一个需要大量实践的技能，建议您从简单的模型开始，逐步挑战更复杂的角色。下一章我们将学习如何使用这些绑定系统创建生动的角色动画。</p>
+            </article>
+            
+            <nav class="page-nav"><a href="chapter10.html" class="nav-link prev">← 第10章：动画基础</a><a href="chapter12.html" class="nav-link next">第12章：角色动画进阶 →</a></nav>
+        </main>
+    </div>
+</body>
+</html>

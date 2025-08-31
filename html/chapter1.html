@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="./">
+    <title>第1章：Blender 界面与基础操作</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/highlight.css">
+    <script src="assets/script.js" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                processEscapes: false,
+                packages: {'[+]': ['noerrors', 'ams']}
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            loader: {
+                load: ['[tex]/noerrors', '[tex]/ams']
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>目录</h3>
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div class="sidebar-search">
+                <input type="text" id="sidebar-search-input" placeholder="搜索..." autocomplete="off">
+            </div>
+            <div id="tree-container">
+                <nav class="tree-nav" role="tree">
+                    <div class="tree-item " >
+                        <a href="index.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Blender 速成教程</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item active" >
+                        <a href="chapter1.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第1章：Blender 界面与基础操作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter2.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第2章：基础建模技术</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter3.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第3章：材质与纹理基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter4.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第4章：硬表面建模</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter5.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第5章：有机建模与雕刻</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter6.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第6章：场景构建与优化</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter7.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第7章：角色建模基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter8.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第8章：写实角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter9.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第9章：卡通角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter10.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第10章：动画基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter11.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第11章：骨骼绑定系统</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter12.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第12章：角色动画进阶</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter13.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第13章：打斗动画制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter14.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第14章：物理模拟与动力学</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter15.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第15章：灯光与渲染</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter16.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第16章：合成与后期处理</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter17.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第17章：科幻场景综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter18.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第18章：写实角色综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter19.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第19章：卡通短片综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="CLAUDE.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Untitled</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <article>
+                <h1 id="1blender">第1章：Blender 界面与基础操作</h1>
+<p>欢迎踏入 Blender 的世界！作为具有 CAD 软件背景的学习者，您已经拥有了宝贵的 3D 思维能力。本章将帮助您理解 Blender 与传统 CAD 软件的核心差异，快速掌握界面操作，并建立高效的工作流程。完成本章学习后，您将能够自如地在 Blender 界面中导航，理解其独特的操作逻辑，并为后续的建模学习打下坚实基础。</p>
+<h2 id="11-cad">1.1 从 CAD 到多边形建模的思维转换</h2>
+<h3 id="111">1.1.1 核心理念差异</h3>
+<p>在 CAD 软件中，您习惯了参数化建模——通过精确的数值定义几何体，每个尺寸都可以精确控制和修改。而 Blender 采用的多边形建模是一种更加自由、艺术化的方法。</p>
+<p><strong>参数化建模的特点：</strong></p>
+<ul>
+<li>基于约束和参数</li>
+<li>精确的尺寸控制</li>
+<li>历史记录可编辑</li>
+<li>适合工程设计</li>
+</ul>
+<p><strong>多边形建模的特点：</strong></p>
+<ul>
+<li>基于点、边、面的直接操作</li>
+<li>灵活的形状塑造</li>
+<li>破坏性编辑为主</li>
+<li>适合艺术创作</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>CAD 思维：                     Blender 思维：
+┌─────────────┐               ┌─────────────┐
+│  定义尺寸   │               │  雕塑形状   │
+│     ↓       │               │     ↓       │
+│  创建草图   │               │  推拉顶点   │
+│     ↓       │               │     ↓       │
+│  拉伸/旋转  │               │  细化网格   │
+│     ↓       │               │     ↓       │
+│  精确装配   │               │  艺术调整   │
+└─────────────┘               └─────────────┘
+</code></pre></div>
+
+<h3 id="112">1.1.2 精度观念的转变</h3>
+<p>在 CAD 中，0.001mm 的误差可能导致装配失败。在 Blender 中，视觉效果才是最重要的。这并不意味着 Blender 不能精确建模——它提供了完整的数值输入系统，但工作重心从"精确"转向了"合适"。</p>
+<p><strong>精度使用场景对比：</strong></p>
+<ul>
+<li>CAD：每个尺寸都必须精确定义</li>
+<li>Blender：只在需要时使用精确数值（如建筑可视化）</li>
+<li>CAD：公差是关键参数</li>
+<li>Blender："看起来对"就是对的</li>
+</ul>
+<h3 id="113">1.1.3 工作流程的根本差异</h3>
+<p>CAD 工作流程通常是线性的：草图→特征→装配。Blender 的工作流程更像雕塑：粗模→细化→调整，随时可以回到任何阶段修改。</p>
+<p><strong>典型工作流程对比：</strong></p>
+<div class="codehilite"><pre><span></span><code>CAD 制作齿轮：
+
+1. 绘制齿形轮廓（精确参数）
+2. 阵列复制
+3. 拉伸成型
+4. 添加轴孔
+
+Blender 制作齿轮：
+
+1. 创建圆柱体
+2. 细分边缘
+3. 挤出齿形
+4. 阵列修改器
+</code></pre></div>
+
+<h3 id="114-vs">1.1.4 修改器 vs 特征树</h3>
+<p>CAD 的特征树记录了每个操作的历史，可以随时修改参数。Blender 的修改器系统类似，但更加灵活：</p>
+<ul>
+<li><strong>非破坏性</strong>：修改器可以随时调整或移除</li>
+<li><strong>可堆叠</strong>：多个修改器可以组合使用</li>
+<li><strong>实时预览</strong>：立即看到效果</li>
+<li><strong>可应用</strong>：最终可以"烘焙"成几何体</li>
+</ul>
+<h2 id="12">1.2 界面布局与自定义</h2>
+<h3 id="121-blender">1.2.1 初识 Blender 界面</h3>
+<p>打开 Blender，您会看到一个功能密集但组织清晰的界面。与 CAD 软件的功能区或工具栏不同，Blender 采用了高度模块化的编辑器系统。</p>
+<div class="codehilite"><pre><span></span><code>┌─────────────────────────────────────────────────┐
+│  顶栏 (Top Bar)：文件、编辑、渲染等主菜单        │
+├──────────┬─────────────────────────┬────────────┤
+│          │                         │            │
+│  工具栏  │      3D 视口            │   属性    │
+│   (T)    │   (主要工作区域)        │  编辑器   │
+│          │                         │    (N)    │
+│          │                         │            │
+├──────────┴─────────────────────────┴────────────┤
+│          时间轴 (Timeline)                      │
+├──────────────────────────────────────────────────┤
+│          状态栏：信息提示、统计数据              │
+└──────────────────────────────────────────────────┘
+</code></pre></div>
+
+<h3 id="122">1.2.2 编辑器类型详解</h3>
+<p>Blender 的每个区域都是一个独立的编辑器，可以切换为不同类型：</p>
+<p><strong>主要编辑器类型：</strong></p>
+<ul>
+<li><strong>3D 视口</strong>：主要建模区域</li>
+<li><strong>着色器编辑器</strong>：材质节点编辑</li>
+<li><strong>UV 编辑器</strong>：纹理映射</li>
+<li><strong>图像编辑器</strong>：纹理绘制</li>
+<li><strong>大纲视图</strong>：场景层级管理</li>
+<li><strong>属性编辑器</strong>：对象属性设置</li>
+</ul>
+<p>每个编辑器都可以通过左上角的图标切换类型，这种灵活性让您可以根据当前任务定制界面。</p>
+<h3 id="123">1.2.3 工作区概念</h3>
+<p>工作区是预设的界面布局，针对特定任务优化：</p>
+<ul>
+<li><strong>Layout</strong>：通用布局</li>
+<li><strong>Modeling</strong>：建模专用</li>
+<li><strong>Sculpting</strong>：雕刻模式</li>
+<li><strong>UV Editing</strong>：UV展开</li>
+<li><strong>Texture Paint</strong>：纹理绘制</li>
+<li><strong>Shading</strong>：材质编辑</li>
+<li><strong>Animation</strong>：动画制作</li>
+<li><strong>Rendering</strong>：渲染设置</li>
+<li><strong>Compositing</strong>：后期合成</li>
+<li><strong>Scripting</strong>：脚本开发</li>
+</ul>
+<p>您可以通过顶部标签快速切换工作区，也可以创建自定义工作区。</p>
+<h3 id="124">1.2.4 界面自定义技巧</h3>
+<p><strong>分割与合并区域：</strong></p>
+<ul>
+<li>右键点击区域边界 → 分割区域</li>
+<li>拖动角标合并区域</li>
+<li>按住 Shift 拖动创建新窗口</li>
+</ul>
+<p><strong>界面缩放：</strong></p>
+<ul>
+<li>Ctrl + 鼠标中键拖动：缩放界面</li>
+<li>Home 键：重置界面缩放</li>
+</ul>
+<p><strong>保存启动文件：</strong></p>
+<ol>
+<li>调整界面到理想状态</li>
+<li>文件 → 默认 → 保存启动文件</li>
+<li>下次启动时自动加载您的布局</li>
+</ol>
+<h2 id="13">1.3 视图导航与物体操作</h2>
+<h3 id="131-3d">1.3.1 3D 视图导航基础</h3>
+<p>Blender 的视图导航与大多数 CAD 软件相似，但有其独特之处：</p>
+<p><strong>基础导航操作：</strong></p>
+<ul>
+<li><strong>旋转视图</strong>：鼠标中键拖动</li>
+<li><strong>平移视图</strong>：Shift + 鼠标中键拖动  </li>
+<li><strong>缩放视图</strong>：滚轮 或 Ctrl + 鼠标中键拖动</li>
+</ul>
+<p><strong>视图对齐：</strong></p>
+<ul>
+<li>数字键盘 7：顶视图</li>
+<li>数字键盘 1：前视图</li>
+<li>数字键盘 3：右视图</li>
+<li>数字键盘 9：翻转当前视图</li>
+<li>数字键盘 5：正交/透视切换</li>
+<li>数字键盘 0：相机视图</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>        7 (顶)
+         ↑
+    ←─ 1(前) 3(右)→
+
+   Ctrl+对应数字 = 相反视图
+</code></pre></div>
+
+<h3 id="132">1.3.2 物体选择技巧</h3>
+<p><strong>基础选择：</strong></p>
+<ul>
+<li>左键点击：选择物体</li>
+<li>Shift + 左键：添加到选择</li>
+<li>A：全选/取消全选</li>
+<li>Alt + A：取消全选</li>
+<li>Ctrl + I：反选</li>
+</ul>
+<p><strong>高级选择：</strong></p>
+<ul>
+<li>B：框选工具</li>
+<li>C：圆形笔刷选择</li>
+<li>Alt + 左键：选择边环（编辑模式）</li>
+<li>Ctrl + Alt + 左键：选择并环（编辑模式）</li>
+<li>L：选择相连元素（编辑模式）</li>
+</ul>
+<h3 id="133">1.3.3 变换操作核心</h3>
+<p>Blender 的变换工具极其强大，掌握它们是高效建模的关键：</p>
+<p><strong>基础变换快捷键：</strong></p>
+<ul>
+<li>G (Grab)：移动</li>
+<li>R (Rotate)：旋转  </li>
+<li>S (Scale)：缩放</li>
+</ul>
+<p><strong>轴向约束：</strong></p>
+<ul>
+<li>G/R/S + X/Y/Z：沿轴操作</li>
+<li>G/R/S + Shift + X/Y/Z：在平面内操作</li>
+<li>G/R/S + X + X：沿局部轴操作</li>
+</ul>
+<p><strong>精确输入：</strong></p>
+<ul>
+<li>G + 5：移动5个单位</li>
+<li>R + 90：旋转90度</li>
+<li>S + 2：放大2倍</li>
+<li>S + 0.5：缩小到一半</li>
+</ul>
+<h3 id="134">1.3.4 坐标系统理解</h3>
+<p>Blender 提供多种坐标系统，理解它们对精确操作至关重要：</p>
+<ul>
+<li><strong>全局 (Global)</strong>：世界坐标系</li>
+<li><strong>局部 (Local)</strong>：物体自身坐标系</li>
+<li><strong>法线 (Normal)</strong>：基于面法线方向</li>
+<li><strong>万向 (Gimbal)</strong>：欧拉旋转坐标</li>
+<li><strong>视图 (View)</strong>：基于当前视角</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>坐标系选择场景：
+┌────────────┬────────────────────┐
+│ 全局       │ 场景对齐操作       │
+│ 局部       │ 沿物体自身轴操作   │
+│ 法线       │ 沿表面方向操作     │
+│ 视图       │ 屏幕空间操作       │
+└────────────┴────────────────────┘
+</code></pre></div>
+
+<h3 id="135-3d">1.3.5 3D 游标的妙用</h3>
+<p>3D 游标是 Blender 独特的功能，它不仅是新物体的生成点，还是变换操作的参考点：</p>
+<p><strong>3D 游标操作：</strong></p>
+<ul>
+<li>Shift + 右键：放置3D游标</li>
+<li>Shift + S：游标吸附菜单</li>
+<li>Shift + C：游标回到原点</li>
+</ul>
+<p><strong>游标作为轴心：</strong></p>
+<ol>
+<li>设置轴心点为3D游标</li>
+<li>执行旋转/缩放操作</li>
+<li>物体将围绕游标变换</li>
+</ol>
+<h2 id="14">1.4 快捷键系统</h2>
+<h3 id="141-blender">1.4.1 Blender 快捷键哲学</h3>
+<p>Blender 的快捷键设计遵循"一键一功能"原则，大多数操作都可以通过单个按键触发。这与 CAD 软件的 Ctrl+Shift+Alt 组合键形成鲜明对比。初学时可能不适应，但熟练后效率极高。</p>
+<p><strong>快捷键设计逻辑：</strong></p>
+<ul>
+<li><strong>动词优先</strong>：G(移动)、R(旋转)、S(缩放)</li>
+<li><strong>语义关联</strong>：E(挤出Extrude)、I(内插Inset)、B(框选Box)</li>
+<li><strong>模态操作</strong>：按键后进入特定模式，可继续输入参数</li>
+<li><strong>可组合性</strong>：G → X → 5 = 沿X轴移动5单位</li>
+</ul>
+<h3 id="142">1.4.2 必备快捷键速查表</h3>
+<p><strong>物体模式快捷键：</strong></p>
+<div class="codehilite"><pre><span></span><code>创建与删除：
+Shift + A      添加物体菜单
+X             删除菜单
+Alt + D       关联复制
+Shift + D     独立复制
+
+变换操作：
+G             移动 (Grab)
+R             旋转 (Rotate)  
+S             缩放 (Scale)
+Alt + G/R/S   清除变换
+
+应用变换：
+Ctrl + A      应用菜单
+
+显示控制：
+H             隐藏选中
+Alt + H       显示所有
+/             局部视图
+</code></pre></div>
+
+<p><strong>编辑模式快捷键：</strong></p>
+<div class="codehilite"><pre><span></span><code>模式切换：
+Tab           切换编辑模式
+1/2/3         点/边/面选择模式
+
+基础编辑：
+E             挤出
+I             内插面
+Ctrl + R      环切
+K             切割工具
+F             填充面
+
+高级编辑：
+Alt + M       合并菜单
+V             顶点菜单
+Ctrl + E      边菜单
+Ctrl + F      面菜单
+
+选择操作：
+Alt + 左键     选择循环
+Ctrl + +/-    扩展/收缩选择
+Ctrl + L      选择相连
+</code></pre></div>
+
+<h3 id="143">1.4.3 模态操作深入理解</h3>
+<p>模态操作是 Blender 的精髓。当您按下 G、R 或 S 后，进入了一个特殊的输入模式：</p>
+<p><strong>模态操作流程：</strong></p>
+<ol>
+<li><strong>触发</strong>：按下操作键 (G/R/S)</li>
+<li><strong>约束</strong>：可选择轴向 (X/Y/Z)</li>
+<li><strong>数值</strong>：可输入精确值</li>
+<li><strong>确认</strong>：左键或回车确认，右键或 ESC 取消</li>
+</ol>
+<p><strong>高级模态技巧：</strong></p>
+<div class="codehilite"><pre><span></span><code>GG           沿边滑动
+RR           轨迹球旋转
+Alt + G      清除位置
+Shift + 慢速  精细调整
+Ctrl + 吸附   网格吸附
+</code></pre></div>
+
+<h3 id="144">1.4.4 快捷键自定义</h3>
+<p>虽然默认快捷键经过精心设计，但您仍可以根据个人习惯自定义：</p>
+<p><strong>自定义步骤：</strong></p>
+<ol>
+<li>编辑 → 偏好设置 → 键位映射</li>
+<li>搜索要修改的功能</li>
+<li>点击快捷键字段</li>
+<li>按下新的组合键</li>
+<li>保存偏好设置</li>
+</ol>
+<p><strong>自定义建议：</strong></p>
+<ul>
+<li>保留核心快捷键 (G/R/S)</li>
+<li>只修改不常用或冲突的键</li>
+<li>可以导入/导出键位方案</li>
+<li>考虑使用行业兼容键位</li>
+</ul>
+<h3 id="145">1.4.5 快捷键学习策略</h3>
+<p><strong>渐进式学习法：</strong></p>
+<ol>
+<li><strong>第一周</strong>：只记住 G/R/S 和 Tab</li>
+<li><strong>第二周</strong>：加入 E、X、Shift+D</li>
+<li><strong>第三周</strong>：学习选择快捷键</li>
+<li><strong>第四周</strong>：掌握编辑模式快捷键</li>
+</ol>
+<p><strong>肌肉记忆训练：</strong></p>
+<ul>
+<li>刻意重复使用快捷键</li>
+<li>避免依赖菜单</li>
+<li>制作个人速查卡片</li>
+<li>每天练习5分钟基础操作</li>
+</ul>
+<h2 id="15">1.5 本章小结</h2>
+<p>恭喜您完成了 Blender 基础操作的学习！让我们回顾本章的关键要点：</p>
+<h3 id="_1">核心概念总结</h3>
+<ol>
+<li>
+<p><strong>思维模式转换</strong>：从 CAD 的参数化精确建模转向 Blender 的艺术化多边形建模，理解"视觉优先"的工作理念。</p>
+</li>
+<li>
+<p><strong>界面系统</strong>：Blender 采用高度模块化的编辑器系统，每个区域都可以自定义，工作区预设帮助快速切换任务环境。</p>
+</li>
+<li>
+<p><strong>视图导航</strong>：掌握中键导航三要素（旋转、平移、缩放），熟练使用数字键盘快速定位视图。</p>
+</li>
+<li>
+<p><strong>变换操作</strong>：G/R/S 三大变换工具配合轴向约束和数值输入，实现精确控制。</p>
+</li>
+<li>
+<p><strong>快捷键系统</strong>：理解模态操作逻辑，通过单键触发功能，组合实现复杂操作。</p>
+</li>
+</ol>
+<h3 id="_2">关键操作公式</h3>
+<div class="codehilite"><pre><span></span><code>基础变换公式：
+操作键 + 轴向(可选) + 数值(可选) = 精确变换
+
+示例：
+G + X + 2 = 沿X轴移动2单位
+R + Z + 45 = 绕Z轴旋转45度
+S + Shift + Z + 0.5 = 在XY平面缩放50%
+</code></pre></div>
+
+<h3 id="cad">与 CAD 软件的对比速查</h3>
+<p>| CAD 概念 | Blender 对应 | 主要区别 |</p>
+<table>
+<thead>
+<tr>
+<th>CAD 概念</th>
+<th>Blender 对应</th>
+<th>主要区别</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>草图</td>
+<td>边线建模</td>
+<td>直接3D操作</td>
+</tr>
+<tr>
+<td>约束</td>
+<td>吸附/对齐</td>
+<td>非参数化</td>
+</tr>
+<tr>
+<td>特征树</td>
+<td>修改器堆栈</td>
+<td>可选择性应用</td>
+</tr>
+<tr>
+<td>装配</td>
+<td>父子关系</td>
+<td>更灵活的层级</td>
+</tr>
+<tr>
+<td>工程图</td>
+<td>渲染输出</td>
+<td>着重视觉表现</td>
+</tr>
+</tbody>
+</table>
+<h2 id="16">1.6 练习题</h2>
+<h3 id="_3">基础题（熟悉操作）</h3>
+<p><strong>练习 1.1：界面定制</strong>
+创建一个专门用于建模的自定义工作区，要求：</p>
+<ul>
+<li>左侧为3D视口</li>
+<li>右上为大纲视图</li>
+<li>右下为属性编辑器</li>
+<li>保存为"我的建模"工作区</li>
+</ul>
+<p><em>提示：拖动区域边角进行分割，点击左上角图标切换编辑器类型</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>从默认 Layout 工作区开始</li>
+<li>将鼠标悬停在右侧区域的左上角</li>
+<li>当光标变为十字时，向左拖动创建新区域</li>
+<li>点击新区域左上角的图标，选择"大纲视图"</li>
+<li>在右下区域保持属性编辑器不变</li>
+<li>点击工作区标签旁的"+"号</li>
+<li>选择"复制当前"并命名为"我的建模"</li>
+</ol>
+</details>
+<p><strong>练习 1.2：精确变换</strong>
+创建一个立方体，执行以下操作：</p>
+<ol>
+<li>移动到坐标 (3, 2, 0)</li>
+<li>绕Z轴旋转30度</li>
+<li>仅在XY平面缩放为原来的1.5倍</li>
+</ol>
+<p><em>提示：使用G/R/S配合轴向约束和数值输入</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>Shift+A → 网格 → 立方体</li>
+<li>G → 输入 3, 2, 0 → 回车</li>
+<li>R → Z → 30 → 回车  </li>
+<li>S → Shift+Z → 1.5 → 回车</li>
+</ol>
+<p>注意：也可以在属性面板(N)直接输入数值</p>
+</details>
+<p><strong>练习 1.3：视图导航训练</strong>
+不使用鼠标，仅用快捷键完成：</p>
+<ol>
+<li>切换到前视图</li>
+<li>切换到顶视图</li>
+<li>切换到相机视图</li>
+<li>在透视和正交之间切换</li>
+</ol>
+<p><em>提示：使用数字键盘</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>数字键盘 1（前视图）</li>
+<li>数字键盘 7（顶视图）</li>
+<li>数字键盘 0（相机视图）</li>
+<li>数字键盘 5（正交/透视切换）</li>
+</ol>
+<p>如果没有数字键盘，可以在偏好设置中启用"模拟数字键盘"</p>
+</details>
+<h3 id="_4">挑战题（深入理解）</h3>
+<p><strong>练习 1.4：3D游标应用</strong>
+使用3D游标作为旋转中心，创建一个由6个立方体组成的圆形阵列：</p>
+<ol>
+<li>放置3D游标在 (5, 0, 0)</li>
+<li>在原点创建立方体</li>
+<li>设置轴心点为3D游标</li>
+<li>旋转复制形成圆形阵列</li>
+</ol>
+<p><em>提示：使用Shift+D复制，R旋转，重复操作</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>Shift+右键点击，将3D游标移到 (5, 0, 0)</li>
+<li>Shift+A → 网格 → 立方体</li>
+<li>在顶部菜单选择轴心点为"3D游标"</li>
+<li>Shift+D → R → Z → 60 → 回车</li>
+<li>Shift+R 重复上一步操作4次</li>
+<li>最终得到6个立方体围成的圆形</li>
+</ol>
+<p>高级方法：使用阵列修改器配合空物体</p>
+</details>
+<p><strong>练习 1.5：快捷键组合挑战</strong>
+仅使用快捷键，不点击任何界面按钮，完成以下任务：</p>
+<ol>
+<li>删除默认立方体</li>
+<li>添加一个圆柱体</li>
+<li>进入编辑模式</li>
+<li>仅选择顶面</li>
+<li>挤出并缩放到0.5</li>
+<li>返回物体模式</li>
+</ol>
+<p><em>提示：充分运用Tab、Alt+左键、E、S等快捷键</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>X → 删除</li>
+<li>Shift+A → 网格 → 圆柱体</li>
+<li>Tab（进入编辑模式）</li>
+<li>Alt+A（取消全选），3（切换到面模式），选择顶面</li>
+<li>E → S → 0.5 → 回车</li>
+<li>Tab（返回物体模式）</li>
+</ol>
+<p>这个练习训练了模式切换和基础建模操作的快捷键使用</p>
+</details>
+<p><strong>练习 1.6：工作流程设计</strong>
+设计一个简单的"齿轮"模型工作流程，对比 CAD 和 Blender 的不同approach：</p>
+<ul>
+<li>列出 CAD 方法的步骤</li>
+<li>列出 Blender 方法的步骤</li>
+<li>分析两种方法的优劣</li>
+</ul>
+<p><em>提示：考虑参数化vs直接建模的差异</em></p>
+<details>
+<summary>参考答案</summary>
+<p><strong>CAD 方法：</strong></p>
+<ol>
+<li>绘制齿形轮廓草图（精确齿形参数）</li>
+<li>定义齿数、模数等参数</li>
+<li>圆形阵列齿形</li>
+<li>拉伸到指定厚度</li>
+<li>添加中心轴孔特征</li>
+<li>可随时修改参数重新生成</li>
+</ol>
+<p><strong>Blender 方法：</strong></p>
+<ol>
+<li>创建圆柱体作为基础</li>
+<li>顶部添加循环边（Ctrl+R）</li>
+<li>选择间隔的面，挤出形成齿</li>
+<li>使用阵列修改器（可选）</li>
+<li>添加细分曲面平滑（可选）</li>
+<li>破坏性编辑后难以修改齿数</li>
+</ol>
+<p><strong>分析：</strong></p>
+<ul>
+<li>CAD：精确、可参数化修改、适合工程制造</li>
+<li>Blender：快速、直观、适合视觉表现</li>
+<li>选择取决于最终用途：制造选CAD，渲染选Blender</li>
+</ul>
+</details>
+<p><strong>练习 1.7：自定义快捷键规划</strong>
+根据您的 CAD 使用习惯，设计一套个性化快捷键方案：</p>
+<ol>
+<li>列出您在 CAD 中最常用的 5 个操作</li>
+<li>找到 Blender 中的对应功能</li>
+<li>设计不冲突的快捷键映射</li>
+<li>评估是否值得修改默认设置</li>
+</ol>
+<p><em>提示：平衡个人习惯与 Blender 标准</em></p>
+<details>
+<summary>参考答案</summary>
+<p>示例方案（基于 SolidWorks 用户）：</p>
+<p><strong>常用 CAD 操作映射：</strong></p>
+<ol>
+<li>
+<p>智能尺寸 → Blender 的数值输入
+   - 保持默认（操作后直接输入数字）</p>
+</li>
+<li>
+<p>拉伸凸台 → Blender 的挤出(E)
+   - 保持默认 E 键</p>
+</li>
+<li>
+<p>旋转视图 → Blender 的中键
+   - 保持默认</p>
+</li>
+<li>
+<p>正视于 → Blender 的 Shift+数字键盘
+   - 可考虑添加 Ctrl+1/2/3 作为补充</p>
+</li>
+<li>
+<p>配合 → Blender 的吸附
+   - 可添加快捷键给吸附菜单</p>
+</li>
+</ol>
+<p><strong>建议：</strong>
+初期保持 Blender 默认键位，仅添加而不替换，避免教程不兼容问题</p>
+</details>
+<p><strong>练习 1.8：模态操作深度探索</strong>
+探索以下高级模态操作组合，记录每个操作的效果：</p>
+<ol>
+<li>GG（双击G）</li>
+<li>RR（双击R）  </li>
+<li>S → Shift+Z → Shift+X</li>
+<li>G → X → X（X按两次）</li>
+</ol>
+<p><em>提示：实际操作并观察物体行为的变化</em></p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li><strong>GG</strong>：边滑动模式，顶点沿相连的边移动</li>
+<li><strong>RR</strong>：轨迹球旋转，自由3D旋转而非单轴</li>
+<li><strong>S → Shift+Z → Shift+X</strong>：仅沿Y轴缩放（排除了Z和X）</li>
+<li><strong>G → X → X</strong>：从全局X轴切换到局部X轴</li>
+</ol>
+<p>这些组合展示了 Blender 模态系统的强大和灵活性，熟练掌握可大幅提升建模效率</p>
+</details>
+<h2 id="17">1.7 常见陷阱与错误</h2>
+<h3 id="1">陷阱1：数字键盘缺失</h3>
+<p><strong>问题</strong>：笔记本电脑没有数字键盘，无法使用视图快捷键
+<strong>解决</strong>：</p>
+<ul>
+<li>偏好设置 → 输入 → 模拟数字键盘</li>
+<li>使用视图菜单</li>
+<li>自定义替代快捷键</li>
+</ul>
+<h3 id="2">陷阱2：比例编辑意外开启</h3>
+<p><strong>问题</strong>：移动一个顶点时周围顶点都在移动
+<strong>解决</strong>：</p>
+<ul>
+<li>按 O 键关闭比例编辑</li>
+<li>检查顶部工具栏的比例编辑图标</li>
+<li>滚轮可调整影响范围</li>
+</ul>
+<h3 id="3">陷阱3：物体原点偏移</h3>
+<p><strong>问题</strong>：旋转/缩放时物体以奇怪的点为中心
+<strong>解决</strong>：</p>
+<ul>
+<li>右键 → 设置原点 → 原点到几何中心</li>
+<li>理解原点（橙色点）vs 几何中心的区别</li>
+<li>使用 Ctrl+Shift+Alt+C 快速设置原点</li>
+</ul>
+<h3 id="4">陷阱4：局部视图困惑</h3>
+<p><strong>问题</strong>：场景中的其他物体突然消失
+<strong>解决</strong>：</p>
+<ul>
+<li>按 / 键退出局部视图</li>
+<li>检查大纲视图中的眼睛图标</li>
+<li>Alt+H 显示所有隐藏物体</li>
+</ul>
+<h3 id="5">陷阱5：单位设置混淆</h3>
+<p><strong>问题</strong>：模型尺寸与预期不符
+<strong>解决</strong>：</p>
+<ul>
+<li>场景属性 → 单位 → 选择合适的单位系统</li>
+<li>注意 Blender 默认单位是"Blender 单位"</li>
+<li>N 键打开侧栏查看实际尺寸</li>
+</ul>
+<h2 id="18">1.8 最佳实践检查清单</h2>
+<p>在开始任何 Blender 项目前，请确认以下事项：</p>
+<h3 id="_5">✅ 项目设置</h3>
+<ul>
+<li>[ ] 设置正确的单位系统（公制/英制）</li>
+<li>[ ] 调整视图裁剪范围（避免大场景消失）</li>
+<li>[ ] 保存启动文件（包含您的界面设置）</li>
+<li>[ ] 设置自动保存间隔</li>
+</ul>
+<h3 id="_6">✅ 界面优化</h3>
+<ul>
+<li>[ ] 根据任务选择合适的工作区</li>
+<li>[ ] 显示必要的叠加层（线框、法线等）</li>
+<li>[ ] 调整视口着色模式</li>
+<li>[ ] 开启相关的工具设置</li>
+</ul>
+<h3 id="_7">✅ 操作习惯</h3>
+<ul>
+<li>[ ] 经常使用 Ctrl+S 保存</li>
+<li>[ ] 增量保存重要版本（Ctrl+Shift+S）</li>
+<li>[ ] 命名物体和集合（而非 Cube.001）</li>
+<li>[ ] 及时应用变换（Ctrl+A）</li>
+</ul>
+<h3 id="_8">✅ 快捷键掌握</h3>
+<ul>
+<li>[ ] 熟练使用 G/R/S 基础变换</li>
+<li>[ ] 掌握轴向约束（X/Y/Z）</li>
+<li>[ ] 会使用数值输入精确控制</li>
+<li>[ ] 了解 Tab 模式切换</li>
+</ul>
+<h3 id="_9">✅ 视图管理</h3>
+<ul>
+<li>[ ] 能快速切换标准视图</li>
+<li>[ ] 理解正交vs透视的适用场景</li>
+<li>[ ] 会使用局部视图隔离物体</li>
+<li>[ ] 掌握视图对焦（数字键盘.）</li>
+</ul>
+<h3 id="_10">✅ 学习资源</h3>
+<ul>
+<li>[ ] 收藏 Blender 官方手册</li>
+<li>[ ] 加入社区论坛</li>
+<li>[ ] 准备快捷键速查表</li>
+<li>[ ] 建立练习项目文件夹</li>
+</ul>
+<hr />
+<p><strong>下一步：</strong> 掌握了界面和基础操作后，我们将在<a href="chapter2.html">第2章</a>深入学习 Blender 的核心——多边形建模技术。您将学习如何真正开始创建3D模型，从简单的物体到复杂的形状，逐步掌握 Blender 强大的建模工具集。</p>
+            </article>
+            
+            <nav class="page-nav"><a href="index.html" class="nav-link prev">← Blender 速成教程</a><a href="chapter2.html" class="nav-link next">第2章：基础建模技术 →</a></nav>
+        </main>
+    </div>
+</body>
+</html>

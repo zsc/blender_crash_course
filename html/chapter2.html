@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="./">
+    <title>第2章：基础建模技术</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/highlight.css">
+    <script src="assets/script.js" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                processEscapes: false,
+                packages: {'[+]': ['noerrors', 'ams']}
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            loader: {
+                load: ['[tex]/noerrors', '[tex]/ams']
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>目录</h3>
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div class="sidebar-search">
+                <input type="text" id="sidebar-search-input" placeholder="搜索..." autocomplete="off">
+            </div>
+            <div id="tree-container">
+                <nav class="tree-nav" role="tree">
+                    <div class="tree-item " >
+                        <a href="index.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Blender 速成教程</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter1.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第1章：Blender 界面与基础操作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item active" >
+                        <a href="chapter2.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第2章：基础建模技术</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter3.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第3章：材质与纹理基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter4.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第4章：硬表面建模</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter5.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第5章：有机建模与雕刻</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter6.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第6章：场景构建与优化</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter7.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第7章：角色建模基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter8.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第8章：写实角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter9.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第9章：卡通角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter10.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第10章：动画基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter11.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第11章：骨骼绑定系统</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter12.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第12章：角色动画进阶</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter13.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第13章：打斗动画制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter14.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第14章：物理模拟与动力学</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter15.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第15章：灯光与渲染</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter16.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第16章：合成与后期处理</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter17.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第17章：科幻场景综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter18.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第18章：写实角色综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter19.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第19章：卡通短片综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="CLAUDE.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Untitled</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <article>
+                <h1 id="2">第2章：基础建模技术</h1>
+<h2 id="_1">章节大纲</h2>
+<h3 id="21">2.1 开篇段落</h3>
+<ul>
+<li>从CAD精确建模到多边形自由建模的思维转换</li>
+<li>本章学习目标</li>
+</ul>
+<h3 id="22">2.2 多边形建模基础</h3>
+<ul>
+<li>2.2.1 点、边、面的概念与操作</li>
+<li>2.2.2 基本几何体的创建与修改</li>
+<li>2.2.3 拓扑结构的重要性</li>
+<li>2.2.4 四边面与三角面的使用场景</li>
+</ul>
+<h3 id="23">2.3 编辑模式详解</h3>
+<ul>
+<li>2.3.1 选择工具与技巧</li>
+<li>2.3.2 变换操作：移动、旋转、缩放</li>
+<li>2.3.3 基础建模工具</li>
+<li>挤出（Extrude）</li>
+<li>内插面（Inset）</li>
+<li>环切（Loop Cut）</li>
+<li>倒角（Bevel）</li>
+<li>细分（Subdivide）</li>
+<li>2.3.4 高级编辑技巧</li>
+<li>比例编辑</li>
+<li>吸附功能</li>
+<li>法线方向管理</li>
+</ul>
+<h3 id="24">2.4 修改器系统入门</h3>
+<ul>
+<li>2.4.1 修改器的概念与优势</li>
+<li>2.4.2 常用修改器介绍</li>
+<li>细分曲面（Subdivision Surface）</li>
+<li>镜像（Mirror）</li>
+<li>阵列（Array）</li>
+<li>实体化（Solidify）</li>
+<li>布尔（Boolean）</li>
+<li>2.4.3 修改器堆栈管理</li>
+<li>2.4.4 应用修改器的时机</li>
+</ul>
+<h3 id="25">2.5 建模工作流程</h3>
+<ul>
+<li>2.5.1 参考图的使用</li>
+<li>2.5.2 从简单到复杂的建模策略</li>
+<li>2.5.3 模块化建模思想</li>
+<li>2.5.4 建模精度与效率平衡</li>
+</ul>
+<h3 id="26">2.6 本章小结</h3>
+<h3 id="27">2.7 练习题</h3>
+<h3 id="28">2.8 常见陷阱与错误</h3>
+<h3 id="29">2.9 最佳实践检查清单</h3>
+<hr />
+<h2 id="21_1">2.1 开篇段落</h2>
+<p>欢迎来到 Blender 建模世界的核心——多边形建模。如果您习惯了 FreeCAD 等 CAD 软件的参数化精确建模，这一章将帮助您完成一个重要的思维转换：从基于约束和尺寸的设计，转向基于形态和拓扑的创作。</p>
+<p>在 CAD 软件中，我们通过精确的数值定义几何体；而在 Blender 中，我们像雕塑家一样，通过推拉顶点、边和面来塑造形体。这种方式虽然在精度上有所妥协，但却赋予了我们无限的创作自由。本章将系统介绍 Blender 的基础建模技术，包括多边形操作、编辑模式工具、修改器系统以及高效的建模工作流程。</p>
+<p><strong>学习目标：</strong></p>
+<ul>
+<li>掌握多边形建模的基本概念和操作</li>
+<li>熟练使用编辑模式中的各种建模工具</li>
+<li>理解修改器的工作原理并能灵活应用</li>
+<li>建立从概念到模型的完整工作流程</li>
+<li>培养良好的建模习惯和拓扑意识</li>
+</ul>
+<h2 id="22_1">2.2 多边形建模基础</h2>
+<h3 id="221">2.2.1 点、边、面的概念与操作</h3>
+<p>在 Blender 的多边形建模世界中，所有的 3D 模型都由三个基本元素构成：</p>
+<p><strong>顶点（Vertex）</strong>：三维空间中的一个点，是构成模型的最基本单位。每个顶点都有 X、Y、Z 三个坐标值。</p>
+<p><strong>边（Edge）</strong>：连接两个顶点的直线段。边定义了模型的轮廓和结构线。</p>
+<p><strong>面（Face）</strong>：由三个或更多顶点围成的平面区域。面是模型的"皮肤"，决定了模型的表面。</p>
+<div class="codehilite"><pre><span></span><code>      顶点 (V)
+         <span class="k">*</span>
+        /|\
+       / | \
+      /  |  \
+     /   |   \
+    <span class="gs">*----*</span>----*
+   边 (E)    面 (F)
+</code></pre></div>
+
+<p>在编辑模式中，使用数字键 1、2、3 可以快速切换选择模式：</p>
+<ul>
+<li><strong>1</strong> - 顶点选择模式</li>
+<li><strong>2</strong> - 边选择模式  </li>
+<li><strong>3</strong> - 面选择模式</li>
+</ul>
+<p>您也可以同时激活多个选择模式（Shift + 数字键），这在复杂建模中非常有用。</p>
+<h3 id="222">2.2.2 基本几何体的创建与修改</h3>
+<p>Blender 提供了一系列基础几何体（Primitives）作为建模的起点：</p>
+<ul>
+<li><strong>立方体（Cube）</strong>：最常用的起始形状，适合硬表面建模</li>
+<li><strong>球体（UV Sphere / Ico Sphere）</strong>：UV球体有经纬线结构，Ico球体基于二十面体</li>
+<li><strong>圆柱体（Cylinder）</strong>：机械零件的理想起点</li>
+<li><strong>圆环（Torus）</strong>：轮胎、甜甜圈等环形物体</li>
+<li><strong>平面（Plane）</strong>：地面、墙壁等平面物体</li>
+<li><strong>圆形（Circle）</strong>：创建2D轮廓，用于挤出或旋转</li>
+<li><strong>猴头（Suzanne）</strong>：Blender 的吉祥物，用于测试材质和灯光</li>
+</ul>
+<p>创建几何体时（Shift + A），可以在左下角的操作面板中调整初始参数，如细分级别、尺寸等。这些参数只在创建时可调，一旦进行其他操作就无法修改。</p>
+<h3 id="223">2.2.3 拓扑结构的重要性</h3>
+<p>拓扑（Topology）指的是顶点、边、面的连接方式和分布规律。良好的拓扑结构对于模型的变形、细分和渲染至关重要。</p>
+<p><strong>良好拓扑的特征：</strong></p>
+<ul>
+<li>以四边面为主（利于细分）</li>
+<li>边流顺畅，跟随形体轮廓</li>
+<li>在需要变形的区域有足够的边环</li>
+<li>避免极点（连接5条或更多边的顶点）过于集中</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>良好拓扑示例：          不良拓扑示例：
+┌─┬─┬─┬─┐            ╱│╲ ╱│╲
+├─┼─┼─┼─┤           ╱ │ ╳ │ ╲
+├─┼─┼─┼─┤          ╱  │╱ ╲│  ╲
+├─┼─┼─┼─┤         ╱   ╳   ╳   ╲
+└─┴─┴─┴─┘        ╱───┴───┴───╲
+均匀四边面           三角面过多，布线混乱
+</code></pre></div>
+
+<h3 id="224">2.2.4 四边面与三角面的使用场景</h3>
+<p><strong>四边面（Quads）优势：</strong></p>
+<ul>
+<li>细分时产生平滑、可预测的结果</li>
+<li>便于添加边环和进行循环选择</li>
+<li>适合有机建模和需要变形的模型</li>
+<li>利于 UV 展开</li>
+</ul>
+<p><strong>三角面（Tris）使用场景：</strong></p>
+<ul>
+<li>游戏引擎最终都会将模型三角化</li>
+<li>平面区域可以使用三角面</li>
+<li>某些特殊拓扑结构的连接处</li>
+</ul>
+<p><strong>N边面（N-gons，超过4边）：</strong></p>
+<ul>
+<li>建模过程中的临时状态</li>
+<li>平面硬表面可以保留</li>
+<li>最终应转换为四边面或三角面</li>
+</ul>
+<h2 id="23_1">2.3 编辑模式详解</h2>
+<h3 id="231">2.3.1 选择工具与技巧</h3>
+<p>高效的选择是快速建模的关键。Blender 提供了丰富的选择工具：</p>
+<p><strong>基础选择：</strong></p>
+<ul>
+<li><strong>左键点击</strong>：选择单个元素</li>
+<li><strong>Shift + 左键</strong>：添加/移除选择</li>
+<li><strong>A</strong>：全选/取消全选</li>
+<li><strong>Alt + A</strong>：取消全部选择</li>
+<li><strong>Ctrl + I</strong>：反选</li>
+</ul>
+<p><strong>框选工具：</strong></p>
+<ul>
+<li><strong>B</strong>：矩形框选（Box Select）</li>
+<li><strong>C</strong>：圆形刷选（Circle Select），滚轮调整大小</li>
+<li><strong>Ctrl + 左键拖动</strong>：套索选择（Lasso Select）</li>
+</ul>
+<p><strong>循环选择：</strong></p>
+<ul>
+<li><strong>Alt + 左键</strong>：选择边环/面环</li>
+<li><strong>Ctrl + Alt + 左键</strong>：选择并行边环</li>
+<li><strong>Shift + Alt + 左键</strong>：添加边环到选择</li>
+</ul>
+<p><strong>扩展选择：</strong></p>
+<ul>
+<li><strong>Ctrl + L</strong>：选择相连的所有元素</li>
+<li><strong>Ctrl + Shift + +</strong>：扩展选择</li>
+<li><strong>Ctrl + Shift + -</strong>：缩减选择</li>
+</ul>
+<p><strong>按条件选择（Select 菜单）：</strong></p>
+<ul>
+<li>按相似性（Shift + G）：材质、法线方向、面积等</li>
+<li>按特征：非流形边、松散几何体、内部面等</li>
+<li>随机选择：用于创建自然变化</li>
+</ul>
+<h3 id="232">2.3.2 变换操作：移动、旋转、缩放</h3>
+<p>三大基础变换是建模的核心操作：</p>
+<p><strong>移动（Move）- G键：</strong></p>
+<ul>
+<li><strong>G</strong>：自由移动</li>
+<li><strong>G + X/Y/Z</strong>：沿轴移动</li>
+<li><strong>G + Shift + X/Y/Z</strong>：在平面内移动</li>
+<li><strong>G + G</strong>：沿边或法线滑动</li>
+</ul>
+<p><strong>旋转（Rotate）- R键：</strong></p>
+<ul>
+<li><strong>R</strong>：自由旋转</li>
+<li><strong>R + X/Y/Z</strong>：绕轴旋转</li>
+<li><strong>R + R</strong>：轨迹球旋转</li>
+<li><strong>输入数值</strong>：精确旋转角度</li>
+</ul>
+<p><strong>缩放（Scale）- S键：</strong></p>
+<ul>
+<li><strong>S</strong>：均匀缩放</li>
+<li><strong>S + X/Y/Z</strong>：沿轴缩放</li>
+<li><strong>S + Shift + X/Y/Z</strong>：在平面内缩放</li>
+<li><strong>Alt + S</strong>：沿法线缩放（收缩/膨胀）</li>
+</ul>
+<p><strong>变换技巧：</strong></p>
+<ul>
+<li>变换时输入数值可精确控制</li>
+<li>按住 Shift 可微调</li>
+<li>按住 Ctrl 可吸附到网格</li>
+<li>使用 3D 游标作为变换中心点</li>
+</ul>
+<h3 id="233">2.3.3 基础建模工具</h3>
+<p><strong>挤出（Extrude）- E键：</strong>
+最常用的建模工具，从选中的顶点、边或面创建新的几何体。</p>
+<div class="codehilite"><pre><span></span><code>挤出面示例：
+┌───┐      E + Z →      ┌───┐
+│   │                   │   │
+└───┘                   │   │
+                        └───┘
+</code></pre></div>
+
+<ul>
+<li><strong>E</strong>：挤出并移动</li>
+<li><strong>Alt + E</strong>：挤出菜单（沿法线、个体等）</li>
+<li><strong>Ctrl + 右键</strong>：快速挤出</li>
+</ul>
+<p><strong>内插面（Inset）- I键：</strong>
+在选中的面内部创建新的面，常用于添加细节。</p>
+<div class="codehilite"><pre><span></span><code>内插面示例：
+┌─────┐      I →      ┌─────┐
+│     │              │┌───┐│
+│     │              ││   ││
+└─────┘              │└───┘│
+                     └─────┘
+</code></pre></div>
+
+<ul>
+<li><strong>I</strong>：内插面</li>
+<li><strong>I + I</strong>：个体内插（每个面独立）</li>
+<li><strong>B</strong>（内插时）：调整深度</li>
+</ul>
+<p><strong>环切（Loop Cut）- Ctrl + R：</strong>
+添加贯穿模型的边环，用于增加细节和控制形状。</p>
+<ul>
+<li><strong>Ctrl + R</strong>：预览环切</li>
+<li><strong>滚轮</strong>：增加环切数量</li>
+<li><strong>左键</strong>：确认并滑动</li>
+<li><strong>右键</strong>：确认在中心位置</li>
+</ul>
+<p><strong>倒角（Bevel）- Ctrl + B：</strong>
+将锐利的边角变得圆滑，增加真实感。</p>
+<ul>
+<li><strong>Ctrl + B</strong>：倒角边</li>
+<li><strong>Ctrl + Shift + B</strong>：倒角顶点</li>
+<li><strong>滚轮</strong>：调整段数</li>
+<li><strong>P</strong>（倒角时）：改变轮廓类型</li>
+</ul>
+<p><strong>细分（Subdivide）：</strong>
+增加几何体的分辨率，为进一步编辑提供更多控制点。</p>
+<ul>
+<li><strong>右键 → Subdivide</strong>：细分选中的面</li>
+<li><strong>细分平滑</strong>：细分同时平滑表面</li>
+<li><strong>分形细分</strong>：添加随机扰动，用于自然表面</li>
+</ul>
+<h3 id="234">2.3.4 高级编辑技巧</h3>
+<p><strong>比例编辑（Proportional Editing）- O键：</strong>
+使变换操作影响周围的顶点，创建平滑的过渡。</p>
+<div class="codehilite"><pre><span></span><code>比例编辑效果：
+    之前：              之后：
+    ────               ╱╲
+                      ╱  ╲
+    ────             ────────
+</code></pre></div>
+
+<ul>
+<li><strong>O</strong>：开启/关闭比例编辑</li>
+<li><strong>滚轮</strong>：调整影响范围</li>
+<li><strong>Shift + O</strong>：切换衰减类型（平滑、球形、随机等）</li>
+</ul>
+<p><strong>吸附功能（Snapping）：</strong>
+精确对齐和定位元素。</p>
+<ul>
+<li><strong>Shift + Tab</strong>：开启/关闭吸附</li>
+<li><strong>吸附类型</strong>：顶点、边、面、网格、增量</li>
+<li><strong>吸附目标</strong>：最近、中心、中点、活动</li>
+</ul>
+<p><strong>法线方向管理：</strong>
+确保法线方向正确对渲染和修改器至关重要。</p>
+<ul>
+<li><strong>Alt + N</strong>：法线菜单</li>
+<li><strong>Shift + N</strong>：重新计算法线（外部）</li>
+<li><strong>Ctrl + Shift + N</strong>：反转法线</li>
+<li><strong>显示法线</strong>：Overlay → Normals</li>
+</ul>
+<p><strong>其他实用工具：</strong></p>
+<ul>
+<li><strong>F</strong>：填充面（Fill）</li>
+<li><strong>J</strong>：连接顶点（Join）</li>
+<li><strong>K</strong>：切割工具（Knife）</li>
+<li><strong>V</strong>：撕裂（Rip）</li>
+<li><strong>Alt + M</strong>：合并菜单（Merge）</li>
+<li><strong>P</strong>：分离（Separate）</li>
+<li><strong>Ctrl + E/F/V</strong>：边/面/顶点菜单</li>
+</ul>
+<h2 id="24_1">2.4 修改器系统入门</h2>
+<h3 id="241">2.4.1 修改器的概念与优势</h3>
+<p>修改器（Modifiers）是 Blender 中的非破坏性编辑工具，它们在不改变原始网格的情况下对模型进行处理。这种方式的优势包括：</p>
+<ul>
+<li><strong>非破坏性</strong>：随时调整或移除，不影响原始数据</li>
+<li><strong>参数化控制</strong>：通过数值精确控制效果</li>
+<li><strong>实时预览</strong>：立即看到修改效果</li>
+<li><strong>堆栈式处理</strong>：多个修改器按顺序叠加</li>
+</ul>
+<p>修改器分为四大类：</p>
+<ol>
+<li><strong>修改（Modify）</strong>：改变对象数据</li>
+<li><strong>生成（Generate）</strong>：创建新的几何体</li>
+<li><strong>变形（Deform）</strong>：改变形状但不改变拓扑</li>
+<li><strong>物理（Physics）</strong>：添加物理模拟</li>
+</ol>
+<h3 id="242">2.4.2 常用修改器介绍</h3>
+<p><strong>细分曲面（Subdivision Surface）：</strong>
+将模型细分并平滑，是创建有机形状的核心工具。</p>
+<div class="codehilite"><pre><span></span><code>细分效果示例：
+┌─┬─┐     细分1次      ╭─┬─╮
+├─┼─┤    ────────→    ├─┼─┤
+└─┴─┘                 ╰─┴─╯
+</code></pre></div>
+
+<ul>
+<li><strong>视图级别</strong>：编辑时的细分级别</li>
+<li><strong>渲染级别</strong>：渲染时的细分级别</li>
+<li><strong>Simple/Catmull-Clark</strong>：细分算法选择</li>
+<li><strong>Ctrl + 1/2/3</strong>：快速添加并设置级别</li>
+</ul>
+<p><strong>镜像（Mirror）：</strong>
+沿轴创建对称模型，节省一半的建模工作。</p>
+<ul>
+<li><strong>轴向选择</strong>：X、Y、Z 或多轴</li>
+<li><strong>合并</strong>：自动合并中线顶点</li>
+<li><strong>限制</strong>：限制顶点不越过镜像平面</li>
+<li><strong>镜像对象</strong>：使用其他对象作为镜像中心</li>
+</ul>
+<p><strong>阵列（Array）：</strong>
+创建对象的重复副本，用于栅栏、楼梯等重复结构。</p>
+<ul>
+<li><strong>数量</strong>：固定数量或适应长度</li>
+<li><strong>偏移类型</strong>：相对、恒定、对象偏移</li>
+<li><strong>对象偏移</strong>：使用空对象控制变换</li>
+</ul>
+<p><strong>实体化（Solidify）：</strong>
+给平面添加厚度，快速创建墙壁、外壳等。</p>
+<ul>
+<li><strong>厚度</strong>：正值向外，负值向内</li>
+<li><strong>偏移</strong>：控制厚度生成方向</li>
+<li><strong>均匀厚度</strong>：保持一致的厚度</li>
+<li><strong>边折痕</strong>：控制边缘锐利度</li>
+</ul>
+<p><strong>布尔（Boolean）：</strong>
+通过并集、差集、交集运算组合模型。</p>
+<div class="codehilite"><pre><span></span><code>布尔运算示例：
+立方体 - 球体 = 带凹陷的立方体
+   □  -  ○  =     ⊓
+</code></pre></div>
+
+<ul>
+<li><strong>运算类型</strong>：</li>
+<li>差集（Difference）：减去对象</li>
+<li>并集（Union）：合并对象</li>
+<li>交集（Intersect）：保留重叠部分</li>
+<li><strong>求解器</strong>：Fast（快速）或 Exact（精确）</li>
+<li><strong>自相交</strong>：处理自身相交的网格</li>
+</ul>
+<h3 id="243">2.4.3 修改器堆栈管理</h3>
+<p>修改器按照从上到下的顺序依次应用，顺序很重要：</p>
+<div class="codehilite"><pre><span></span><code>修改器堆栈示例：
+┌─────────────┐
+│  镜像       │ ← 第一个应用
+├─────────────┤
+│  细分曲面   │ ← 第二个应用
+├─────────────┤
+│  实体化     │ ← 最后应用
+└─────────────┘
+</code></pre></div>
+
+<p><strong>堆栈操作：</strong></p>
+<ul>
+<li><strong>上下箭头</strong>：调整顺序</li>
+<li><strong>眼睛图标</strong>：视图中显示/隐藏</li>
+<li><strong>相机图标</strong>：渲染时启用/禁用</li>
+<li><strong>屏幕图标</strong>：编辑模式中显示</li>
+<li><strong>复制</strong>：复制修改器</li>
+<li><strong>应用</strong>：将效果永久应用到网格</li>
+</ul>
+<h3 id="244">2.4.4 应用修改器的时机</h3>
+<p>何时保持修改器：</p>
+<ul>
+<li>需要持续调整参数</li>
+<li>制作动画（某些修改器可动画化）</li>
+<li>保持文件大小较小</li>
+<li>需要在多个对象间共享设置</li>
+</ul>
+<p>何时应用修改器：</p>
+<ul>
+<li>需要直接编辑生成的几何体</li>
+<li>导出到其他软件</li>
+<li>修改器导致性能问题</li>
+<li>最终确定设计</li>
+</ul>
+<p><strong>应用技巧：</strong></p>
+<ul>
+<li><strong>Ctrl + A</strong>：应用修改器（仅在对象模式）</li>
+<li><strong>应用为形态键</strong>：保留变形能力</li>
+<li><strong>复制对象</strong>：保留原始版本作为备份</li>
+</ul>
+<h2 id="25_1">2.5 建模工作流程</h2>
+<h3 id="251">2.5.1 参考图的使用</h3>
+<p>参考图是精确建模的基础，特别是制作写实模型时。</p>
+<p><strong>设置参考图：</strong></p>
+<ol>
+<li>
+<p><strong>背景图像</strong>：
+   - 在正交视图中（Numpad 1/3/7）
+   - Shift + A → Image → Reference
+   - 调整位置和透明度</p>
+</li>
+<li>
+<p><strong>空对象图像</strong>：
+   - 添加空对象 → 图像类型
+   - 可在3D空间中自由放置
+   - 支持多个角度的参考</p>
+</li>
+</ol>
+<p><strong>参考图最佳实践：</strong></p>
+<ul>
+<li>使用正交视图对齐参考图</li>
+<li>多角度参考（正面、侧面、顶部）</li>
+<li>调整透明度避免干扰</li>
+<li>锁定参考图避免误操作</li>
+</ul>
+<h3 id="252">2.5.2 从简单到复杂的建模策略</h3>
+<p><strong>渐进式细化流程：</strong></p>
+<ol>
+<li>
+<p><strong>基础形状阶段</strong>：
+   - 使用基础几何体搭建大致形状
+   - 关注整体比例和轮廓
+   - 不要过早添加细节</p>
+</li>
+<li>
+<p><strong>主要特征阶段</strong>：
+   - 添加主要的形状特征
+   - 建立基本的拓扑结构
+   - 保持较低的面数</p>
+</li>
+<li>
+<p><strong>细节添加阶段</strong>：
+   - 逐步增加细分
+   - 添加次要细节
+   - 优化边流</p>
+</li>
+<li>
+<p><strong>最终优化阶段</strong>：
+   - 清理拓扑
+   - 检查法线
+   - 优化面数</p>
+</li>
+</ol>
+<h3 id="253">2.5.3 模块化建模思想</h3>
+<p>将复杂模型分解为可重用的模块：</p>
+<p><strong>模块化优势：</strong></p>
+<ul>
+<li>提高建模效率</li>
+<li>便于修改和迭代</li>
+<li>节省内存（实例化）</li>
+<li>利于团队协作</li>
+</ul>
+<p><strong>实施方法：</strong></p>
+<ul>
+<li>识别重复元素</li>
+<li>创建基础模块</li>
+<li>使用集合组织</li>
+<li>通过链接或实例复用</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>模块化示例：建筑
+┌──────────────┐
+│   主体结构    │
+├──────────────┤
+│ 窗户模块 × n  │ ← 实例化
+├──────────────┤
+│ 门模块 × n    │ ← 实例化
+├──────────────┤
+│ 装饰模块 × n  │ ← 实例化
+└──────────────┘
+</code></pre></div>
+
+<h3 id="254">2.5.4 建模精度与效率平衡</h3>
+<p><strong>低模阶段：</strong></p>
+<ul>
+<li>快速迭代设计</li>
+<li>测试整体效果</li>
+<li>确定基本形状</li>
+</ul>
+<p><strong>中模阶段：</strong></p>
+<ul>
+<li>添加必要细节</li>
+<li>优化拓扑流向</li>
+<li>准备UV展开</li>
+</ul>
+<p><strong>高模阶段：</strong></p>
+<ul>
+<li>细节雕刻</li>
+<li>用于烘焙贴图</li>
+<li>展示最终效果</li>
+</ul>
+<p><strong>效率技巧：</strong></p>
+<ul>
+<li>使用修改器而非手动操作</li>
+<li>善用对称性</li>
+<li>合理使用细分级别</li>
+<li>及时清理无用顶点</li>
+</ul>
+<h2 id="26_1">2.6 本章小结</h2>
+<p>本章系统介绍了 Blender 的基础建模技术。我们从多边形建模的基本概念开始，深入学习了编辑模式下的各种工具和技巧，掌握了修改器系统的使用方法，并建立了高效的建模工作流程。</p>
+<p><strong>关键要点回顾：</strong></p>
+<ol>
+<li>
+<p><strong>多边形建模基础</strong>：
+   - 顶点、边、面是构成模型的三要素
+   - 良好的拓扑结构是高质量模型的基础
+   - 四边面优于三角面，特别是在需要细分和变形的区域</p>
+</li>
+<li>
+<p><strong>编辑模式工具</strong>：
+   - 掌握选择技巧能大幅提高建模效率
+   - 挤出、内插、环切、倒角是最常用的建模工具
+   - 比例编辑和吸附功能提供精确控制</p>
+</li>
+<li>
+<p><strong>修改器系统</strong>：
+   - 非破坏性工作流的核心
+   - 修改器顺序影响最终结果
+   - 合理组合修改器可以实现复杂效果</p>
+</li>
+<li>
+<p><strong>工作流程优化</strong>：
+   - 从简单到复杂的渐进式建模
+   - 模块化思想提高效率和可维护性
+   - 平衡精度与性能的需求</p>
+</li>
+</ol>
+<p><strong>与 CAD 建模的主要区别：</strong></p>
+<ul>
+<li>CAD 强调精确尺寸，Blender 强调视觉效果</li>
+<li>CAD 使用参数化约束，Blender 使用自由变形</li>
+<li>CAD 关注工程精度，Blender 关注艺术表现</li>
+</ul>
+<h2 id="27_1">2.7 练习题</h2>
+<h3 id="_2">基础题（巩固概念）</h3>
+<p><strong>练习 2.1：基础形状组合</strong>
+创建一个简单的桌子模型，要求：</p>
+<ul>
+<li>使用立方体作为桌面</li>
+<li>使用圆柱体作为桌腿</li>
+<li>应用适当的缩放变换</li>
+<li>使用阵列修改器创建四条腿</li>
+</ul>
+<details>
+<summary>提示（Hint）</summary>
+<ul>
+<li>桌面：添加立方体，S + Z 缩放变薄</li>
+<li>桌腿：添加圆柱体，调整位置</li>
+<li>使用阵列修改器 + 空对象控制旋转复制</li>
+</ul>
+</details>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>添加立方体，缩放为桌面形状（S + Z + 0.1）</li>
+<li>添加圆柱体，缩放并移动到角落位置</li>
+<li>添加空对象在桌子中心</li>
+<li>给圆柱体添加阵列修改器：
+   - 数量：4
+   - 使用对象偏移
+   - 偏移对象选择空对象</li>
+<li>旋转空对象 90 度（R + Z + 90）</li>
+<li>调整桌腿位置确保对称</li>
+</ol>
+</details>
+<p><strong>练习 2.2：编辑模式操作</strong>
+从默认立方体创建一个简单的房子形状：</p>
+<ul>
+<li>使用挤出创建屋顶</li>
+<li>使用内插面创建窗户</li>
+<li>使用环切添加细节</li>
+<li>保持良好的拓扑结构</li>
+</ul>
+<details>
+<summary>提示（Hint）</summary>
+<ul>
+<li>选择顶面，I 键内插，E 键挤出形成屋顶</li>
+<li>侧面使用内插面创建窗户轮廓</li>
+<li>Ctrl + R 添加支撑边环</li>
+</ul>
+</details>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>Tab 进入编辑模式</li>
+<li>选择顶面（3 键面选择模式）</li>
+<li>I 键内插面，缩小到 0.8</li>
+<li>E + Z 向上挤出屋顶底部</li>
+<li>选择屋顶顶面，S + 0 缩放到一点</li>
+<li>选择侧面，I 内插创建窗户框架</li>
+<li>删除窗户中心面</li>
+<li>Ctrl + R 在墙面添加水平和垂直支撑边</li>
+</ol>
+</details>
+<p><strong>练习 2.3：修改器应用</strong>
+创建一个对称的机械零件：</p>
+<ul>
+<li>使用镜像修改器实现对称</li>
+<li>使用细分曲面平滑模型</li>
+<li>使用布尔运算创建孔洞</li>
+</ul>
+<details>
+<summary>提示（Hint）</summary>
+<ul>
+<li>只建模一半，用镜像修改器</li>
+<li>细分前添加支撑边环</li>
+<li>布尔差集创建圆孔</li>
+</ul>
+</details>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>删除立方体右半部分顶点</li>
+<li>添加镜像修改器，开启裁剪和合并</li>
+<li>编辑左半部分创建基本形状</li>
+<li>添加圆柱体作为布尔对象</li>
+<li>添加布尔修改器，选择差集运算</li>
+<li>最后添加细分曲面修改器</li>
+<li>在需要保持锐利的边添加折痕（Shift + E）</li>
+</ol>
+</details>
+<p><strong>练习 2.4：选择技巧练习</strong>
+下载提供的练习文件，完成以下选择操作：</p>
+<ul>
+<li>选择所有边环</li>
+<li>选择相似面积的面</li>
+<li>选择非流形边</li>
+<li>使用套索选择特定区域</li>
+</ul>
+<details>
+<summary>提示（Hint）</summary>
+<ul>
+<li>Alt + 点击选择边环</li>
+<li>Shift + G 选择相似</li>
+<li>Select 菜单找特殊选择选项</li>
+</ul>
+</details>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>Alt + 左键点击边选择边环</li>
+<li>选择一个面，Shift + G → Area 选择相似面积</li>
+<li>Select → Select All by Trait → Non Manifold</li>
+<li>Ctrl + 左键拖动使用套索工具</li>
+<li>练习组合使用 Shift 添加选择</li>
+</ol>
+</details>
+<h3 id="_3">挑战题（深入思考）</h3>
+<p><strong>练习 2.5：复杂拓扑优化</strong>
+给定一个拓扑混乱的模型，重新布线使其适合动画：</p>
+<ul>
+<li>将所有 N 边形转换为四边形</li>
+<li>确保边流跟随形体轮廓</li>
+<li>减少不必要的边环</li>
+<li>优化极点分布</li>
+</ul>
+<details>
+<summary>提示（Hint）</summary>
+<ul>
+<li>使用 F 填充和 J 连接重建面</li>
+<li>Alt + M 合并多余顶点</li>
+<li>删除边环：X → Edge Loops</li>
+<li>使用刀切工具重新布线</li>
+</ul>
+</details>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>分析模型识别问题区域（N边形、三角面集中区）</li>
+<li>选择 N 边形，删除并重新创建为四边形</li>
+<li>使用刀切工具（K）重新定义边流：
+   - 沿形体轮廓切割
+   - 创建连续的边环</li>
+<li>选择多余的边环，X → Dissolve Edges</li>
+<li>检查极点（5条或更多边的顶点）：
+   - 将极点移到不影响变形的区域
+   - 保持极点之间有足够距离</li>
+<li>最终检查：
+   - Mesh → Clean Up → Merge by Distance
+   - 确保所有法线方向正确</li>
+</ol>
+</details>
+<p><strong>练习 2.6：程序化建模</strong>
+仅使用修改器创建一个螺旋楼梯：</p>
+<ul>
+<li>不使用编辑模式</li>
+<li>组合多个修改器实现</li>
+<li>参数可调节</li>
+<li>包含扶手</li>
+</ul>
+<details>
+<summary>提示（Hint）</summary>
+<ul>
+<li>阵列 + 空对象偏移</li>
+<li>简单形变修改器</li>
+<li>曲线修改器配合曲线对象</li>
+</ul>
+</details>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>创建单个台阶（立方体缩放）</li>
+<li>添加阵列修改器：
+   - 数量：20
+   - 相对偏移 Z：0.2</li>
+<li>添加空对象在原点</li>
+<li>阵列修改器添加对象偏移：
+   - 选择空对象
+   - 旋转空对象 Z：15度</li>
+<li>创建贝塞尔曲线作为扶手路径</li>
+<li>创建圆形作为扶手截面</li>
+<li>给圆形添加阵列和曲线修改器</li>
+<li>调整参数实现螺旋效果</li>
+</ol>
+</details>
+<p><strong>练习 2.7：建模效率挑战</strong>
+在 10 分钟内创建一个低多边形城市街区：</p>
+<ul>
+<li>至少 5 种不同建筑</li>
+<li>使用实例化优化性能</li>
+<li>添加简单细节（窗户、门）</li>
+<li>总面数控制在 10000 以下</li>
+</ul>
+<details>
+<summary>提示（Hint）</summary>
+<ul>
+<li>创建基础建筑模块</li>
+<li>使用 Alt + D 创建链接副本</li>
+<li>简化细节，使用纹理暗示</li>
+<li>集合实例化</li>
+</ul>
+</details>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>规划阶段（1分钟）：
+   - 确定建筑类型和布局
+   - 决定模块化策略</li>
+<li>创建基础模块（3分钟）：
+   - 建筑主体：简单立方体变形
+   - 窗户：单个面内插
+   - 使用阵列快速复制</li>
+<li>变化创建（3分钟）：
+   - Alt + D 链接复制基础建筑
+   - 仅改变比例和比例
+   - 添加简单屋顶变化</li>
+<li>场景组装（2分钟）：
+   - 快速摆放建筑
+   - 添加简单道路（平面）</li>
+<li>优化检查（1分钟）：
+   - 检查面数统计
+   - 合并相近顶点
+   - 删除看不见的面</li>
+</ol>
+</details>
+<p><strong>练习 2.8：逆向工程建模</strong>
+观察一个复杂模型，分析并重现其建模方法：</p>
+<ul>
+<li>推断使用的建模技术</li>
+<li>识别使用的修改器</li>
+<li>重现关键建模步骤</li>
+<li>优化原始方法</li>
+</ul>
+<details>
+<summary>提示（Hint）</summary>
+<ul>
+<li>观察拓扑特征判断技术</li>
+<li>对称性暗示镜像修改器</li>
+<li>重复模式暗示阵列</li>
+<li>平滑表面暗示细分</li>
+</ul>
+</details>
+<details>
+<summary>参考答案</summary>
+<p>分析方法：</p>
+<ol>
+<li>整体观察：
+   - 是否对称？→ 镜像修改器
+   - 是否有重复元素？→ 阵列修改器
+   - 表面是否平滑？→ 细分曲面</li>
+<li>拓扑分析：
+   - 边流方向 → 建模顺序
+   - 密度变化 → 使用的工具
+   - 特殊结构 → 特定技术</li>
+<li>重建步骤：
+   - 从最简单的基础形状开始
+   - 按照推断的顺序添加细节
+   - 应用相同的修改器组合</li>
+<li>优化思考：
+   - 是否可以减少步骤？
+   - 是否可以改善拓扑？
+   - 是否可以提高效率？</li>
+</ol>
+</details>
+<h2 id="28-gotchas">2.8 常见陷阱与错误（Gotchas）</h2>
+<h3 id="_4">常见错误及解决方案</h3>
+<ol>
+<li>
+<p><strong>法线方向错误</strong>
+- <strong>症状</strong>：模型显示黑色面片，渲染异常
+- <strong>原因</strong>：法线朝向内部
+- <strong>解决</strong>：选择所有面，Shift + N 重新计算法线</p>
+</li>
+<li>
+<p><strong>重复顶点</strong>
+- <strong>症状</strong>：看似连接的边实际分离
+- <strong>原因</strong>：顶点重叠但未合并
+- <strong>解决</strong>：A 全选，M → By Distance 合并</p>
+</li>
+<li>
+<p><strong>修改器顺序错误</strong>
+- <strong>症状</strong>：效果与预期不符
+- <strong>原因</strong>：修改器执行顺序不当
+- <strong>解决</strong>：调整修改器堆栈顺序</p>
+</li>
+<li>
+<p><strong>比例应用问题</strong>
+- <strong>症状</strong>：修改器效果异常，倒角大小不一致
+- <strong>原因</strong>：对象缩放未应用
+- <strong>解决</strong>：对象模式下 Ctrl + A → Scale</p>
+</li>
+<li>
+<p><strong>孤立顶点</strong>
+- <strong>症状</strong>：删除面后留下悬空顶点
+- <strong>原因</strong>：删除操作选择错误
+- <strong>解决</strong>：使用 X → Vertices 而非 Delete 键</p>
+</li>
+</ol>
+<h3 id="_5">调试技巧</h3>
+<p><strong>检查拓扑问题：</strong></p>
+<ol>
+<li>开启统计信息显示（Overlays → Statistics）</li>
+<li>使用 Select → Select All by Trait 查找问题</li>
+<li>3D 视图 Overlays 中开启 Face Orientation</li>
+<li>Mesh → Clean Up 菜单中的各种清理工具</li>
+</ol>
+<p><strong>性能优化检查：</strong></p>
+<ul>
+<li>查看面数：状态栏显示</li>
+<li>检查修改器级别：避免过高细分</li>
+<li>使用 Decimate 修改器减面</li>
+<li>及时应用不需要的修改器</li>
+</ul>
+<p><strong>建模问题诊断流程：</strong></p>
+<ol>
+<li>检查对象缩放（应为 1,1,1）</li>
+<li>检查法线方向</li>
+<li>检查重复顶点</li>
+<li>检查修改器设置</li>
+<li>检查是否在编辑模式</li>
+</ol>
+<h2 id="29_1">2.9 最佳实践检查清单</h2>
+<h3 id="_6">建模前准备</h3>
+<ul>
+<li>[ ] 收集并设置参考图</li>
+<li>[ ] 规划模型拓扑结构</li>
+<li>[ ] 确定建模精度要求</li>
+<li>[ ] 创建合理的文件组织结构</li>
+</ul>
+<h3 id="_7">建模过程中</h3>
+<ul>
+<li>[ ] 保持良好的拓扑（四边面为主）</li>
+<li>[ ] 定期保存和备份（增量保存）</li>
+<li>[ ] 合理命名对象</li>
+<li>[ ] 使用集合组织场景</li>
+<li>[ ] 优先使用修改器而非破坏性编辑</li>
+</ul>
+<h3 id="_8">建模完成后</h3>
+<ul>
+<li>[ ] 应用对象变换（Ctrl + A）</li>
+<li>[ ] 检查并修复法线方向</li>
+<li>[ ] 清理多余顶点（Merge by Distance）</li>
+<li>[ ] 删除内部看不见的面</li>
+<li>[ ] 检查是否有非流形几何体</li>
+</ul>
+<h3 id="_9">优化检查</h3>
+<ul>
+<li>[ ] 面数是否合理</li>
+<li>[ ] 是否有不必要的细分</li>
+<li>[ ] 修改器是否需要应用</li>
+<li>[ ] 是否可以使用实例化</li>
+<li>[ ] UV 展开是否需要（下章内容）</li>
+</ul>
+<h3 id="_10">团队协作</h3>
+<ul>
+<li>[ ] 模型单位是否正确</li>
+<li>[ ] 命名是否规范</li>
+<li>[ ] 是否包含必要的注释</li>
+<li>[ ] 文件是否打包外部数据</li>
+<li>[ ] 版本兼容性确认</li>
+</ul>
+<hr />
+<p>恭喜您完成第二章的学习！您已经掌握了 Blender 基础建模的核心技术。下一章我们将学习如何为模型添加材质和纹理，让您的创作更加生动逼真。</p>
+<p><strong>预习提示：</strong> 第三章将介绍 Shader Editor 和材质节点系统，建议您先熟悉节点编辑的基本概念。</p>
+            </article>
+            
+            <nav class="page-nav"><a href="chapter1.html" class="nav-link prev">← 第1章：Blender 界面与基础操作</a><a href="chapter3.html" class="nav-link next">第3章：材质与纹理基础 →</a></nav>
+        </main>
+    </div>
+</body>
+</html>

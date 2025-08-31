@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="./">
+    <title>第7章：角色建模基础</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/highlight.css">
+    <script src="assets/script.js" defer></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']],
+                processEscapes: false,
+                packages: {'[+]': ['noerrors', 'ams']}
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            loader: {
+                load: ['[tex]/noerrors', '[tex]/ams']
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <nav id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>目录</h3>
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div class="sidebar-search">
+                <input type="text" id="sidebar-search-input" placeholder="搜索..." autocomplete="off">
+            </div>
+            <div id="tree-container">
+                <nav class="tree-nav" role="tree">
+                    <div class="tree-item " >
+                        <a href="index.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Blender 速成教程</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter1.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第1章：Blender 界面与基础操作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter2.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第2章：基础建模技术</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter3.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第3章：材质与纹理基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter4.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第4章：硬表面建模</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter5.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第5章：有机建模与雕刻</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter6.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第6章：场景构建与优化</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item active" >
+                        <a href="chapter7.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第7章：角色建模基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter8.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第8章：写实角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter9.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第9章：卡通角色制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter10.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第10章：动画基础</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter11.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第11章：骨骼绑定系统</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter12.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第12章：角色动画进阶</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter13.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第13章：打斗动画制作</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter14.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第14章：物理模拟与动力学</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter15.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第15章：灯光与渲染</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter16.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第16章：合成与后期处理</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter17.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第17章：科幻场景综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter18.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第18章：写实角色综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="chapter19.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">第19章：卡通短片综合项目</span>
+                        </a>
+                    </div>
+                
+                    <div class="tree-item " >
+                        <a href="CLAUDE.html" class="tree-link">
+                            <span class="tree-icon">📄</span>
+                            <span class="tree-title">Untitled</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </nav>
+        
+        <main class="content">
+            <article>
+                <h1 id="7">第7章：角色建模基础</h1>
+<h2 id="_1">章节概述</h2>
+<p>角色建模是 3D 创作中最具挑战性也最有成就感的领域之一。本章将带您从人体解剖学基础开始，系统学习角色建模的核心概念和技术。我们将探讨写实与卡通两种主流风格的特点，掌握专业的角色建模工作流程，并深入理解拓扑结构对动画的重要性。无论您的目标是创建逼真的数字人类还是富有个性的卡通角色，本章都将为您打下坚实的基础。</p>
+<h2 id="_2">学习目标</h2>
+<p>完成本章学习后，您将能够：</p>
+<ul>
+<li>理解人体基本比例和解剖结构</li>
+<li>区分并选择适合项目需求的建模风格</li>
+<li>掌握从概念到成品的完整角色建模流程</li>
+<li>创建适合动画的清晰拓扑结构</li>
+<li>避免常见的角色建模错误</li>
+</ul>
+<h2 id="71">7.1 人体解剖学基础</h2>
+<h3 id="711">7.1.1 人体比例系统</h3>
+<p>人体比例是角色建模的基石。传统上，我们使用"头高"作为测量单位来定义人体各部分的比例关系。</p>
+<h4 id="8">标准成人比例（8头身）</h4>
+<div class="codehilite"><pre><span></span><code><span class="w">     </span>╔═══╗<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>头高：头部
+<span class="w">     </span>║<span class="w"> </span><span class="n">O</span><span class="w"> </span>║
+<span class="w">     </span>╚═╤═╝
+<span class="w">       </span>│<span class="w">    </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>头高：下巴到胸部
+<span class="w">     </span>╔═╧═╗
+<span class="w">     </span>║<span class="w">   </span>║<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">3</span><span class="w"> </span>头高：胸部到肚脐
+<span class="w">     </span>║<span class="w">   </span>║
+<span class="w">     </span>╚═╤═╝<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">4</span><span class="w"> </span>头高：肚脐到耻骨（身体中点）
+<span class="w">       </span>│
+<span class="w">     </span>╔═╧═╗<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>头高：耻骨到大腿中部
+<span class="w">     </span>║<span class="w">   </span>║
+<span class="w">     </span>║<span class="w">   </span>║<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">6</span><span class="w"> </span>头高：大腿中部到膝盖下方
+<span class="w">     </span>╚═╤═╝
+<span class="w">       </span>│<span class="w">    </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">7</span><span class="w"> </span>头高：膝盖到小腿中部
+<span class="w">     </span>╔═╧═╗
+<span class="w">     </span>║<span class="w">   </span>║<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">8</span><span class="w"> </span>头高：小腿到脚底
+<span class="w">     </span>╚═══╝
+</code></pre></div>
+
+<h4 id="_3">关键比例关系</h4>
+<ol>
+<li>
+<p><strong>躯干比例</strong>
+   - 肩宽 = 2-2.5 头宽（男性偏宽，女性偏窄）
+   - 臀宽 = 男性约1.5头宽，女性约2头宽
+   - 腰围位置 = 肘部水平线（手臂自然下垂时）</p>
+</li>
+<li>
+<p><strong>四肢比例</strong>
+   - 手臂展开长度 ≈ 身高
+   - 上臂：前臂：手 = 1.3 : 1 : 0.8
+   - 大腿：小腿 = 1 : 1.1</p>
+</li>
+<li>
+<p><strong>手部比例</strong>
+   - 手长 = 下巴到发际线的距离
+   - 中指长度 = 手掌长度
+   - 拇指尖到达食指第一关节</p>
+</li>
+</ol>
+<h3 id="712">7.1.2 骨骼结构要点</h3>
+<p>理解骨骼结构对于创建可信的角色至关重要，即使是卡通角色也需要遵循基本的骨骼逻辑。</p>
+<h4 id="_4">脊柱曲线</h4>
+<p>脊柱不是直线，而是呈 S 形曲线：</p>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span>侧视图：
+
+<span class="w">    </span>颈椎<span class="w"> </span><span class="p">(</span><span class="m">7</span>节<span class="p">)</span><span class="w">     </span>╱
+<span class="w">                   </span>╱<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span>前凸
+<span class="w">                  </span>╱
+<span class="w">    </span>胸椎<span class="w"> </span><span class="p">(</span><span class="m">12</span>节<span class="p">)</span><span class="w">   </span>╲
+<span class="w">                   </span>╲<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span>后凸
+<span class="w">                    </span>╲
+<span class="w">    </span>腰椎<span class="w"> </span><span class="p">(</span><span class="m">5</span>节<span class="p">)</span><span class="w">      </span>╱
+<span class="w">                   </span>╱<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span>前凸
+<span class="w">                  </span>╱
+<span class="w">    </span>骶椎<span class="o">/</span>尾椎<span class="w">      </span>╲<span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span>后凸
+</code></pre></div>
+
+<p>这个 S 形曲线赋予人体优雅的姿态，也是角色立体感的来源。</p>
+<h4 id="_5">关节活动范围</h4>
+<p>不同关节有不同的活动类型和范围：</p>
+<ol>
+<li>
+<p><strong>球窝关节</strong>（肩、髋）
+   - 三轴旋转
+   - 最大活动范围
+   - 建模时需要额外的边线环</p>
+</li>
+<li>
+<p><strong>铰链关节</strong>（肘、膝）
+   - 单轴旋转
+   - 弯曲方向固定
+   - 需要正确的边线流向</p>
+</li>
+<li>
+<p><strong>枢轴关节</strong>（颈部、前臂）
+   - 轴向旋转
+   - 扭转动作
+   - 需要足够的分段</p>
+</li>
+</ol>
+<h3 id="713">7.1.3 肌肉系统简化</h3>
+<p>对于角色建模，我们不需要雕刻每一块肌肉，但需要理解主要肌肉群如何影响外形。</p>
+<h4 id="_6">核心肌肉群</h4>
+<ol>
+<li><strong>胸大肌</strong>：决定胸部形状</li>
+<li><strong>三角肌</strong>：肩部轮廓</li>
+<li><strong>二头肌/三头肌</strong>：手臂形状</li>
+<li><strong>腹直肌</strong>：腹部"六块肌"</li>
+<li><strong>股四头肌</strong>：大腿前侧</li>
+<li><strong>腓肠肌</strong>：小腿形状</li>
+</ol>
+<h4 id="_7">形体简化原则</h4>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="err">复杂解剖</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="err">基础形体</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="err">建模基础</span>
+
+<span class="w">    </span><span class="err">手臂横截面：</span>
+<span class="w">    </span><span class="err">解剖视图</span><span class="w">          </span><span class="err">简化视图</span><span class="w">         </span><span class="err">建模视图</span>
+<span class="w">    </span><span class="err">╭─────╮</span><span class="w">        </span><span class="err">╭─────╮</span><span class="w">        </span><span class="err">╭─────╮</span>
+<span class="w">    </span><span class="err">│肌肉纤维│</span><span class="w">   </span><span class="o">-&gt;</span><span class="w">   </span><span class="err">│椭圆形│</span><span class="w">   </span><span class="o">-&gt;</span><span class="w">   </span><span class="err">│</span><span class="mi">8</span><span class="err">边形│</span>
+<span class="w">    </span><span class="err">╰─────╯</span><span class="w">        </span><span class="err">╰─────╯</span><span class="w">        </span><span class="err">╰─────╯</span>
+</code></pre></div>
+
+<h2 id="72-vs">7.2 写实风格 vs 卡通风格对比</h2>
+<h3 id="721">7.2.1 写实风格特点</h3>
+<p>写实风格追求接近真实人体的表现，但仍需要艺术化处理。</p>
+<h4 id="_8">比例特征</h4>
+<ul>
+<li>严格遵循 7-8 头身比例</li>
+<li>准确的解剖结构</li>
+<li>真实的体态变化</li>
+</ul>
+<h4 id="_9">细节要求</h4>
+<ul>
+<li>高密度网格（面部 10000+ 面）</li>
+<li>细微的不对称性</li>
+<li>皮肤细节（毛孔、皱纹）</li>
+<li>真实的肌肉和脂肪分布</li>
+</ul>
+<h4 id="_10">建模重点</h4>
+<ol>
+<li><strong>面部精度</strong>：眼睑、嘴唇、鼻翼需要密集拓扑</li>
+<li><strong>关节变形</strong>：肘部、膝盖需要额外边线环</li>
+<li><strong>细节层次</strong>：基础模型 + 雕刻细节 + 置换贴图</li>
+</ol>
+<h3 id="722">7.2.2 卡通风格特点</h3>
+<p>卡通风格通过夸张和简化来传达角色个性。</p>
+<h4 id="_11">比例变化</h4>
+<div class="codehilite"><pre><span></span><code>    常见卡通比例：
+
+    Q版 (3头身)      少年 (5头身)      英雄 (9头身)
+       ╔═╗             ╔═╗              ╔═╗
+       ║O║             ║O║              ║O║
+       ╚╤╝             ╚╤╝              ╚╤╝
+       ╔╧╗             ╔╧╗              ╔╧╗
+       ║ ║            ╔╣ ╠╗            ╔╣ ╠╗
+       ╚╤╝            ║╰╤╯║            ║╰╤╯║
+        ╧             ╚═╤═╝            ╚═╤═╝
+                        ║║               ║║
+                        ╧╧              ╔╧╧╗
+                                       ║  ║
+                                       ╚══╝
+</code></pre></div>
+
+<h4 id="_12">风格化原则</h4>
+<ol>
+<li>
+<p><strong>形状语言</strong>
+   - 圆形 = 友善、可爱
+   - 方形 = 强壮、可靠
+   - 三角形 = 危险、敏捷</p>
+</li>
+<li>
+<p><strong>特征夸张</strong>
+   - 大眼睛表现纯真
+   - 大手掌增加力量感
+   - 细长腿提升优雅感</p>
+</li>
+<li>
+<p><strong>简化策略</strong>
+   - 省略小关节（如手指关节）
+   - 合并肌肉群
+   - 几何化轮廓</p>
+</li>
+</ol>
+<h3 id="723">7.2.3 风格选择指南</h3>
+<p>选择建模风格需要考虑多个因素：</p>
+<p>| 考虑因素 | 写实风格 | 卡通风格 |</p>
+<table>
+<thead>
+<tr>
+<th>考虑因素</th>
+<th>写实风格</th>
+<th>卡通风格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目标受众</td>
+<td>成人、专业领域</td>
+<td>全年龄、娱乐向</td>
+</tr>
+<tr>
+<td>制作时间</td>
+<td>长（2-4周/角色）</td>
+<td>短（3-5天/角色）</td>
+</tr>
+<tr>
+<td>技术要求</td>
+<td>高（雕刻、纹理）</td>
+<td>中（建模、绑定）</td>
+</tr>
+<tr>
+<td>硬件需求</td>
+<td>高端显卡、大内存</td>
+<td>中端配置即可</td>
+</tr>
+<tr>
+<td>动画难度</td>
+<td>高（面部细节多）</td>
+<td>低（简化的表情）</td>
+</tr>
+<tr>
+<td>渲染时间</td>
+<td>长（SSS、毛发）</td>
+<td>短（简单材质）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="73">7.3 角色建模工作流</h2>
+<h3 id="731">7.3.1 概念设计阶段</h3>
+<h4 id="_13">参考收集</h4>
+<ol>
+<li><strong>正交视图</strong>（前、侧、背）</li>
+<li><strong>细节参考</strong>（服装、配饰）</li>
+<li><strong>表情参考</strong>（如需面部动画）</li>
+<li><strong>动作参考</strong>（了解可动范围）</li>
+</ol>
+<h4 id="_14">设计图准备</h4>
+<p>在 Blender 中设置参考图：</p>
+<ol>
+<li>添加 Image &gt; Reference</li>
+<li>设置透明度 0.5</li>
+<li>锁定位置避免误操作</li>
+<li>分别设置前视图和侧视图</li>
+</ol>
+<h3 id="732">7.3.2 基础建模流程</h3>
+<h4 id="box-modeling">方法一：盒子建模法（Box Modeling）</h4>
+<p>从简单几何体开始，逐步细分添加细节：</p>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="err">步骤流程：</span>
+
+<span class="w">    </span><span class="mf">1.</span><span class="w"> </span><span class="err">立方体</span><span class="w">     </span><span class="mf">2.</span><span class="w"> </span><span class="err">挤出四肢</span><span class="w">    </span><span class="mf">3.</span><span class="w"> </span><span class="err">细分表面</span><span class="w">    </span><span class="mf">4.</span><span class="w"> </span><span class="err">雕刻细节</span>
+<span class="w">       </span><span class="err">╔═╗</span><span class="w">          </span><span class="err">╔═╗</span><span class="w">           </span><span class="err">╔═╗</span><span class="w">           </span><span class="err">╔═╗</span>
+<span class="w">       </span><span class="err">║</span><span class="w"> </span><span class="err">║</span><span class="w">      </span><span class="o">-&gt;</span><span class="w">  </span><span class="err">╫</span><span class="w"> </span><span class="err">╫</span><span class="w">       </span><span class="o">-&gt;</span><span class="w">  </span><span class="err">╬</span><span class="w"> </span><span class="err">╬</span><span class="w">      </span><span class="o">-&gt;</span><span class="w">   </span><span class="err">╬○╬</span>
+<span class="w">       </span><span class="err">╚═╝</span><span class="w">          </span><span class="err">╟</span><span class="w"> </span><span class="err">╢</span><span class="w">           </span><span class="err">╟</span><span class="w"> </span><span class="err">╢</span><span class="w">           </span><span class="err">╟</span><span class="w"> </span><span class="err">╢</span>
+<span class="w">                    </span><span class="err">╨</span><span class="w"> </span><span class="err">╨</span><span class="w">           </span><span class="err">╨</span><span class="w"> </span><span class="err">╨</span><span class="w">           </span><span class="err">╨</span><span class="w"> </span><span class="err">╨</span>
+</code></pre></div>
+
+<p>优点：</p>
+<ul>
+<li>拓扑结构清晰</li>
+<li>容易控制多边形数量</li>
+<li>适合硬表面角色</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>有机形状较难处理</li>
+<li>需要大量调整才能达到自然效果</li>
+</ul>
+<h4 id="poly-modeling">方法二：多边形建模法（Poly Modeling）</h4>
+<p>从单个面片开始，逐步挤出构建：</p>
+<ol>
+<li>创建躯干轮廓</li>
+<li>挤出手臂和腿部</li>
+<li>连接各部分</li>
+<li>细化形状</li>
+</ol>
+<p>优点：</p>
+<ul>
+<li>精确控制拓扑</li>
+<li>适合有机角色</li>
+<li>边线流向自然</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>需要扎实的解剖知识</li>
+<li>建模速度较慢</li>
+</ul>
+<h4 id="sculpt-retopo">方法三：雕刻重拓扑法（Sculpt &amp; Retopo）</h4>
+<p>先雕刻高模，再重新拓扑：</p>
+<ol>
+<li>使用 Sculpt Mode 创建高模</li>
+<li>使用 Shrinkwrap 修改器重拓扑</li>
+<li>烘焙法线贴图保留细节</li>
+</ol>
+<p>优点：</p>
+<ul>
+<li>创作自由度高</li>
+<li>细节丰富</li>
+<li>适合艺术家思维</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>需要重拓扑步骤</li>
+<li>工作量较大</li>
+</ul>
+<h3 id="733">7.3.3 建模检查清单</h3>
+<h4 id="_15">比例检查</h4>
+<ul>
+<li>[ ] 头身比例符合设计</li>
+<li>[ ] 四肢长度协调</li>
+<li>[ ] 关节位置准确</li>
+<li>[ ] 体型特征明显</li>
+</ul>
+<h4 id="_16">对称性检查</h4>
+<ul>
+<li>[ ] 使用 Mirror 修改器保证对称</li>
+<li>[ ] 应用修改器前检查中线</li>
+<li>[ ] 保留适度不对称增加真实感</li>
+</ul>
+<h4 id="_17">细节层次</h4>
+<ul>
+<li>[ ] 大型（整体轮廓）</li>
+<li>[ ] 中型（主要肌肉群）</li>
+<li>[ ] 小型（皱纹、疤痕等）</li>
+</ul>
+<h2 id="74">7.4 拓扑结构要求</h2>
+<h3 id="741">7.4.1 动画友好的拓扑</h3>
+<p>良好的拓扑是成功动画的基础。</p>
+<h4 id="_18">边线流向原则</h4>
+<div class="codehilite"><pre><span></span><code>    面部拓扑示例：
+
+        眼部环线           口部环线
+       ╭─────╮          ╭─────╮
+      ╱╲ ╭─╮ ╱╲        ╱       ╲
+     │  ╲│O│╱  │      │ ╭─────╮ │
+     │   ╰─╯   │      │ │     │ │
+      ╲   鼻   ╱       ╲ ╰─────╯ ╱
+       ╰─────╯          ╰─────╯
+</code></pre></div>
+
+<p>关键环线：</p>
+<ol>
+<li><strong>眼环</strong>：5-6 圈环线</li>
+<li><strong>口环</strong>：4-5 圈环线  </li>
+<li><strong>鼻环</strong>：连接眼口的过渡</li>
+</ol>
+<h4 id="_19">关节拓扑</h4>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="err">肘关节拓扑（侧视图）：</span>
+
+<span class="w">    </span><span class="err">伸直状态</span><span class="w">          </span><span class="err">弯曲状态</span>
+<span class="w">    </span><span class="err">═══╤═══</span><span class="w">          </span><span class="err">╔══╗</span>
+<span class="w">       </span><span class="err">│</span><span class="w">        </span><span class="o">-&gt;</span><span class="w">   </span><span class="err">║</span><span class="w">  </span><span class="err">║</span>
+<span class="w">    </span><span class="err">═══╧═══</span><span class="w">          </span><span class="err">╚══╝</span>
+
+<span class="w">    </span><span class="err">需要</span><span class="mi">3</span><span class="err">条支撑环线防止挤压</span>
+</code></pre></div>
+
+<h3 id="742">7.4.2 多边形密度分布</h3>
+<p>不同区域需要不同的网格密度：</p>
+<p>| 身体部位 | 推荐面数 | 原因 |</p>
+<table>
+<thead>
+<tr>
+<th>身体部位</th>
+<th>推荐面数</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>面部</td>
+<td>2000-5000</td>
+<td>表情变化多</td>
+</tr>
+<tr>
+<td>手部</td>
+<td>800-1500</td>
+<td>动作精细</td>
+</tr>
+<tr>
+<td>躯干</td>
+<td>1000-2000</td>
+<td>变形适中</td>
+</tr>
+<tr>
+<td>四肢</td>
+<td>每段500-1000</td>
+<td>弯曲需求</td>
+</tr>
+<tr>
+<td>脚部</td>
+<td>400-800</td>
+<td>变形较少</td>
+</tr>
+</tbody>
+</table>
+<h3 id="743">7.4.3 常见拓扑错误</h3>
+<h4 id="1">1. 三角面和多边形</h4>
+<div class="codehilite"><pre><span></span><code>    错误：              正确：
+    ╱│╲               ╱─┬─╲
+   ╱ │ ╲             ╱  │  ╲
+  ╱  │  ╲           ├───┼───┤
+ ╱   │   ╲         ╱    │    ╲
+╱    │    ╲       ╱     │     ╲
+</code></pre></div>
+
+<p>三角面会导致：</p>
+<ul>
+<li>细分时产生奇怪的褶皱</li>
+<li>动画时变形不自然</li>
+<li>纹理拉伸</li>
+</ul>
+<h4 id="2">2. 极点问题</h4>
+<p>极点（Pole）是指连接 3 个或 5 个以上边的顶点。</p>
+<div class="codehilite"><pre><span></span><code>    3极点（E-pole）    5极点（N-pole）
+         ╲│╱              │
+          ╳             ──╬──
+         ╱│╲              │
+</code></pre></div>
+
+<p>极点放置原则：</p>
+<ul>
+<li>避免放在变形区域</li>
+<li>隐藏在不明显位置</li>
+<li>保持极点间距离</li>
+</ul>
+<h4 id="3">3. 螺旋边线</h4>
+<div class="codehilite"><pre><span></span><code>    错误（螺旋）：        正确（环状）：
+    ╱╱╱╱╱╱╱╱         ────────
+   ╱╱╱╱╱╱╱╱          ────────
+  ╱╱╱╱╱╱╱╱           ────────
+</code></pre></div>
+
+<p>螺旋边线会导致：</p>
+<ul>
+<li>UV展开困难</li>
+<li>权重绘制复杂</li>
+<li>变形不可预测</li>
+</ul>
+<h3 id="744">7.4.4 拓扑优化技巧</h3>
+<h4 id="_20">循环边优化</h4>
+<p>使用 Select &gt; Select Loops 检查边线流向</p>
+<ul>
+<li>理想情况：环线应该平滑流动</li>
+<li>避免：突然的方向改变</li>
+</ul>
+<h4 id="_21">四边形化</h4>
+<ol>
+<li>选择所有非四边形面</li>
+<li>Mesh &gt; Clean Up &gt; Limited Dissolve</li>
+<li>手动调整剩余问题区域</li>
+</ol>
+<h4 id="_22">重拓扑工具</h4>
+<ul>
+<li><strong>手动重拓扑</strong>：使用 Shrinkwrap + Snap</li>
+<li><strong>自动重拓扑</strong>：QuadRemesher 插件</li>
+<li><strong>半自动</strong>：RetopoFlow 插件</li>
+</ul>
+<h2 id="_23">本章小结</h2>
+<p>在本章中，我们系统学习了角色建模的基础知识：</p>
+<h3 id="_24">核心概念回顾</h3>
+<ol>
+<li>
+<p><strong>人体解剖基础</strong>
+   - 8头身标准比例系统
+   - S形脊柱曲线的重要性
+   - 主要肌肉群对外形的影响
+   - 关节类型与活动范围</p>
+</li>
+<li>
+<p><strong>风格选择</strong>
+   - 写实风格：精确解剖、高细节、长制作周期
+   - 卡通风格：夸张比例、简化形状、快速制作
+   - 根据项目需求选择合适风格</p>
+</li>
+<li>
+<p><strong>建模工作流</strong>
+   - 盒子建模：从简单到复杂
+   - 多边形建模：精确控制拓扑
+   - 雕刻重拓扑：艺术自由度高</p>
+</li>
+<li>
+<p><strong>拓扑要求</strong>
+   - 边线流向遵循肌肉走向
+   - 关节处需要支撑环线
+   - 避免三角面和螺旋边线
+   - 合理分布网格密度</p>
+</li>
+</ol>
+<h3 id="_25">关键技术点</h3>
+<ul>
+<li><strong>比例公式</strong>：肩宽 = 2-2.5头宽，臂展 ≈ 身高</li>
+<li><strong>环线系统</strong>：眼环5-6圈，口环4-5圈</li>
+<li><strong>网格密度</strong>：面部 &gt; 手部 &gt; 躯干 &gt; 四肢 &gt; 脚部</li>
+<li><strong>极点原则</strong>：远离变形区，保持间距</li>
+</ul>
+<h3 id="_26">下一步学习</h3>
+<p>掌握了角色建模基础后，下一章我们将深入学习写实角色的高级制作技巧，包括高精度雕刻、逼真材质制作和毛发系统的应用。</p>
+<h2 id="_27">练习题</h2>
+<h3 id="_28">基础题（帮助熟悉材料）</h3>
+<h4 id="71_1">练习 7.1：人体比例测量</h4>
+<p>创建一个 8 头身的基础人体模型，只使用立方体堆叠，标注每个头高的关键解剖位置。</p>
+<p><strong>提示（Hint）</strong>：使用 Array 修改器创建 8 个立方体作为参考网格。</p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>在 Blender 中添加立方体（Shift+A &gt; Mesh &gt; Cube）</li>
+<li>设置立方体尺寸为 1x1x1（代表一个头高）</li>
+<li>添加 Array 修改器，Count 设为 8，Relative Offset Z 轴设为 1.1</li>
+<li>在每个高度标注：
+   - 第1层：头顶到下巴
+   - 第2层：下巴到乳头
+   - 第3层：乳头到肚脐
+   - 第4层：肚脐到耻骨（髋部）
+   - 第5层：髋部到大腿中部
+   - 第6层：大腿中部到膝盖下方
+   - 第7层：膝盖到小腿中部
+   - 第8层：小腿到脚底</li>
+<li>添加文字标注（Shift+A &gt; Text）标明各个位置</li>
+</ol>
+</details>
+<h4 id="72">练习 7.2：风格对比建模</h4>
+<p>使用相同的基础网格，分别制作一个写实风格头部（细分3次）和卡通风格头部（保持低模）。</p>
+<p><strong>提示（Hint）</strong>：从 UV 球体开始，写实版本使用 Subdivision Surface，卡通版本保持几何形状。</p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>创建 UV 球体作为头部基础</li>
+<li>写实头部：
+   - 添加 Subdivision Surface 修改器，级别设为 3
+   - 进入编辑模式，启用比例编辑
+   - 调整顶点创建眼窝、鼻梁、嘴部凹陷
+   - 保持自然的曲线和渐变</li>
+<li>卡通头部：
+   - 复制原始球体
+   - 进入编辑模式，选择面模式
+   - 挤出大眼睛区域（夸张比例）
+   - 创建简化的鼻子（可以只是一个凸起）
+   - 嘴部使用简单的凹陷</li>
+<li>对比两者的多边形数量和视觉效果</li>
+</ol>
+</details>
+<h4 id="73_1">练习 7.3：关节拓扑练习</h4>
+<p>创建一个简化的手臂模型，重点处理肘关节的拓扑结构，确保弯曲时不会出现挤压变形。</p>
+<p><strong>提示（Hint）</strong>：在肘关节处添加 3 条支撑环线，使用 Loop Cut (Ctrl+R)。</p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>创建圆柱体（8 个顶点，3 个段）</li>
+<li>缩放调整为手臂比例</li>
+<li>在肘关节位置（中间段）使用 Ctrl+R 添加 3 条环线</li>
+<li>选择肘关节前方的面，略微向内缩放（S键）</li>
+<li>添加骨骼测试：
+   - 添加两段骨骼（Shift+A &gt; Armature）
+   - 父子关系设定（自动权重）
+   - 切换到 Pose Mode
+   - 旋转前臂骨骼测试弯曲</li>
+<li>观察肘部是否保持体积，没有明显挤压</li>
+</ol>
+</details>
+<h4 id="74_1">练习 7.4：面部环线构建</h4>
+<p>从一个细分的立方体开始，创建基础的面部拓扑，包含眼环和口环。</p>
+<p><strong>提示（Hint）</strong>：使用 Inset (I键) 创建眼睛和嘴巴的基础环线。</p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>添加立方体，细分 2 次（Subdivision Surface）</li>
+<li>应用修改器转为可编辑网格</li>
+<li>创建眼环：
+   - 选择眼睛位置的面
+   - 按 I 键内插，创建第一圈环线
+   - 重复 3-4 次，形成眼环系统
+   - 删除中心面形成眼窝</li>
+<li>创建口环：
+   - 选择嘴巴位置的面（通常比眼睛低且靠中）
+   - 按 I 键内插，创建环线
+   - 调整形状为椭圆形
+   - 删除中心面形成口腔</li>
+<li>使用 Bridge Edge Loops 连接必要的边</li>
+</ol>
+</details>
+<h3 id="_29">挑战题（深入思考与实践）</h3>
+<h4 id="75">练习 7.5：角色剪影设计</h4>
+<p>设计三个不同体型的角色剪影（瘦高型、强壮型、矮胖型），仅使用基础几何体组合，强调形状语言的运用。</p>
+<p><strong>提示（Hint）</strong>：瘦高型用拉长的椭圆，强壮型用方块，矮胖型用球体。</p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>
+<p>瘦高型角色：
+   - 使用拉长的圆柱体作躯干（Z轴缩放 1.5）
+   - 细长的圆柱作四肢（直径减小 50%）
+   - 椭圆形头部，略小
+   - 整体呈垂直线条，传达优雅感</p>
+</li>
+<li>
+<p>强壮型角色：
+   - 使用立方体作躯干，上宽下窄（倒梯形）
+   - 粗壮的圆柱作四肢（直径增加 30%）
+   - 方形化的头部
+   - 宽阔的肩膀（X轴缩放 1.5）
+   - 整体呈三角形构图，传达力量感</p>
+</li>
+<li>
+<p>矮胖型角色：
+   - 使用球体作躯干
+   - 短粗的圆柱作四肢（长度减少 30%，直径增加 20%）
+   - 圆形头部，与身体比例接近
+   - 整体呈圆形构图，传达友善感</p>
+</li>
+<li>
+<p>将三个角色并排，观察剪影差异</p>
+</li>
+<li>渲染纯黑剪影（使用 Emission 着色器，世界环境设为白色）</li>
+</ol>
+</details>
+<h4 id="76">练习 7.6：拓扑流向分析</h4>
+<p>导入一个免费的角色模型（如 Blender 自带的），分析并标注其主要的边线流向，识别极点位置。</p>
+<p><strong>提示（Hint）</strong>：使用 Select Loop (Alt+点击边) 追踪边线流向，用 Vertex 颜色标记极点。</p>
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>导入模型（File &gt; Append，选择角色网格）</li>
+<li>边线流向分析：
+   - 进入编辑模式，边选择模式
+   - Alt+点击追踪主要环线：<ul>
+<li>识别围绕眼睛的环线（通常5-6圈）</li>
+<li>识别围绕嘴巴的环线（通常4-5圈）</li>
+<li>识别从鼻子到嘴角的边线</li>
+<li>识别肩部到手臂的过渡线</li>
+</ul>
+</li>
+<li>极点识别：
+   - 切换到顶点模式
+   - 选择一个顶点，查看连接的边数
+   - 3边连接 = E极点（通常在肩部、臀部）
+   - 5边连接 = N极点（通常在额头、下巴）</li>
+<li>标注方法：
+   - 使用顶点绘制模式标记不同类型极点
+   - 或创建小球体标记极点位置</li>
+<li>总结发现：
+   - 极点通常位于低变形区域
+   - 主要环线遵循肌肉走向
+   - 关节处有额外的支撑环线</li>
+</ol>
+</details>
+<h4 id="77">练习 7.7：快速角色原型</h4>
+<p>在 30 分钟内，使用盒子建模法创建一个完整的低模角色（&lt;1000 面），包含基本的人体比例和可识别的特征。</p>
+<p><strong>提示（Hint）</strong>：先快速搭建整体，后期再调整比例。使用 Mirror 修改器保证对称。</p>
+<details>
+<summary>参考答案</summary>
+<p>时间分配建议：</p>
+<ul>
+<li>5分钟：基础形体</li>
+<li>10分钟：四肢挤出</li>
+<li>10分钟：形状调整</li>
+<li>5分钟：细节添加</li>
+</ul>
+<p>具体步骤：</p>
+<ol>
+<li>
+<p>基础搭建（5分钟）：
+   - 添加立方体作为躯干
+   - X轴添加 Mirror 修改器
+   - Z轴缩放成躯干比例（约3个头高）</p>
+</li>
+<li>
+<p>四肢挤出（10分钟）：
+   - 选择肩部位置的面，挤出手臂（E键）
+   - 分三段：上臂、前臂、手掌
+   - 选择髋部位置的面，挤出腿部
+   - 分三段：大腿、小腿、脚掌
+   - 挤出颈部和头部</p>
+</li>
+<li>
+<p>形状调整（10分钟）：
+   - 启用比例编辑（O键）
+   - 调整躯干呈现自然曲线
+   - 收窄腰部，展宽肩部或髋部
+   - 调整四肢粗细变化
+   - 确保关节位置正确</p>
+</li>
+<li>
+<p>基础细节（5分钟）：
+   - 头部添加简单的面部特征（挤出或内凹）
+   - 手部分离拇指（选择边，V键分离）
+   - 脚部创建基本形状
+   - 添加简单的衣领或腰带分界线</p>
+</li>
+<li>
+<p>检查清单：
+   - 总面数 &lt;1000（查看统计信息）
+   - 比例协调（使用测量工具）
+   - 对称性（应用 Mirror 前检查）
+   - 关节可动性（简单摆 Pose 测试）</p>
+</li>
+</ol>
+</details>
+<h4 id="78">练习 7.8：拓扑重定向挑战</h4>
+<p>将一个高模雕刻头部（10万面）重拓扑为动画友好的低模头部（5000面以内），保持关键特征。</p>
+<p><strong>提示（Hint）</strong>：使用 Shrinkwrap 修改器配合 Snapping 功能手动重拓扑。</p>
+<details>
+<summary>参考答案</summary>
+<p>准备工作：</p>
+<ol>
+<li>创建或导入高模头部</li>
+<li>设置为参考物体，锁定选择</li>
+</ol>
+<p>重拓扑流程：</p>
+<ol>
+<li>创建新的平面作为起点</li>
+<li>启用吸附设置：
+   - 开启 Snap to Face
+   - 启用 Project Individual Elements</li>
+<li>
+<p>添加 Shrinkwrap 修改器：
+   - Target 设为高模
+   - Mode: Project
+   - 启用 Snap Mode: Outside</p>
+</li>
+<li>
+<p>构建拓扑：
+   - 从眼部开始（最复杂的区域）
+   - 创建眼环系统（5-6圈）
+   - 延伸到鼻部和嘴部
+   - 确保主要环线流向正确</p>
+</li>
+<li>
+<p>优化策略：
+   - 平坦区域使用大面
+   - 细节区域增加密度
+   - 保持四边形为主
+   - 策略性放置极点</p>
+</li>
+<li>
+<p>细节传递：
+   - 使用 Multiresolution 修改器
+   - 或烘焙法线贴图
+   - 保留关键形状特征</p>
+</li>
+<li>
+<p>最终检查：
+   - 面数控制在5000以内
+   - 无三角面在关键变形区
+   - 边线流向适合动画
+   - 对称性检查</p>
+</li>
+</ol>
+</details>
+<h2 id="gotchas">常见陷阱与错误（Gotchas）</h2>
+<h3 id="1_1">1. 比例失调综合症</h3>
+<p><strong>问题</strong>：角色看起来"不对劲"，但说不出具体问题。</p>
+<p><strong>原因</strong>：</p>
+<ul>
+<li>头部过大或过小（最常见）</li>
+<li>手臂长度不当（应该到大腿中部）</li>
+<li>腿部比例失衡（大小腿比例）</li>
+</ul>
+<p><strong>解决方案</strong>：</p>
+<ul>
+<li>始终使用参考图</li>
+<li>创建比例参考物（8个立方体）</li>
+<li>定期切换到正交视图检查</li>
+<li>使用测量工具验证比例</li>
+</ul>
+<h3 id="2_1">2. 恐怖谷效应</h3>
+<p><strong>问题</strong>：写实角色看起来诡异、令人不适。</p>
+<p><strong>原因</strong>：</p>
+<ul>
+<li>接近真实但又不够真实</li>
+<li>眼睛缺乏生气</li>
+<li>表情僵硬</li>
+</ul>
+<p><strong>解决方案</strong>：</p>
+<ul>
+<li>要么追求完全写实，要么适度风格化</li>
+<li>重点处理眼部细节（高光、泪腺）</li>
+<li>添加微妙的不对称性</li>
+<li>确保表情自然</li>
+</ul>
+<h3 id="3_1">3. 拓扑灾难</h3>
+<p><strong>问题</strong>：模型在动画时出现奇怪的变形。</p>
+<p><strong>常见错误</strong>：</p>
+<ul>
+<li>关节处缺少支撑环线</li>
+<li>螺旋边线导致扭曲</li>
+<li>极点位置不当</li>
+<li>三角面在弯曲区域</li>
+</ul>
+<p><strong>预防措施</strong>：</p>
+<ul>
+<li>动画前测试极限姿势</li>
+<li>使用 Check Mesh 工具检查</li>
+<li>保持边线流向遵循肌肉</li>
+<li>在关节处预留足够几何体</li>
+</ul>
+<h3 id="4">4. 细节过早症</h3>
+<p><strong>问题</strong>：在基础比例未定的情况下雕刻细节。</p>
+<p><strong>后果</strong>：</p>
+<ul>
+<li>修改比例时细节被破坏</li>
+<li>工作量翻倍</li>
+<li>细节分布不均</li>
+</ul>
+<p><strong>正确流程</strong>：</p>
+<ol>
+<li>先确定大型（整体剪影）</li>
+<li>再处理中型（主要形体）</li>
+<li>最后添加小型（细节）</li>
+</ol>
+<h3 id="5">5. 对称强迫症</h3>
+<p><strong>问题</strong>：角色过于完美对称，缺乏生命力。</p>
+<p><strong>平衡方法</strong>：</p>
+<ul>
+<li>基础建模保持对称（使用 Mirror）</li>
+<li>应用 Mirror 后添加细微变化</li>
+<li>姿势和表情打破对称</li>
+<li>疤痕、痣等细节增加个性</li>
+</ul>
+<h3 id="6">6. 密度分布失衡</h3>
+<p><strong>问题</strong>：某些区域面数过多，其他区域不足。</p>
+<p><strong>常见情况</strong>：</p>
+<ul>
+<li>躯干面数超过面部</li>
+<li>手指缺少足够段数</li>
+<li>关节处几何体不足</li>
+</ul>
+<p><strong>优化原则</strong>：</p>
+<ul>
+<li>变形大的区域增加密度</li>
+<li>视觉焦点增加细节</li>
+<li>隐藏区域减少面数</li>
+<li>使用 Decimate 修改器测试最低需求</li>
+</ul>
+<h2 id="_30">最佳实践检查清单</h2>
+<h3 id="_31">建模前准备</h3>
+<ul>
+<li>[ ] 收集充足的参考资料（三视图+细节）</li>
+<li>[ ] 确定目标风格（写实/卡通/混合）</li>
+<li>[ ] 设定多边形预算（低模/中模/高模）</li>
+<li>[ ] 规划制作流程（建模方法选择）</li>
+<li>[ ] 设置场景单位和比例</li>
+</ul>
+<h3 id="_32">建模过程中</h3>
+<ul>
+<li>[ ] 始终保持良好命名习惯</li>
+<li>[ ] 定期保存增量版本</li>
+<li>[ ] 使用 Mirror 修改器保证基础对称</li>
+<li>[ ] 先整体后局部，先大型后细节</li>
+<li>[ ] 定期检查比例关系</li>
+<li>[ ] 保持清晰的拓扑结构</li>
+</ul>
+<h3 id="_33">拓扑检查</h3>
+<ul>
+<li>[ ] 以四边形为主（95%以上）</li>
+<li>[ ] 边线流向遵循解剖结构</li>
+<li>[ ] 关节处有足够的支撑环线</li>
+<li>[ ] 极点远离高变形区域</li>
+<li>[ ] 无螺旋边线和内部面</li>
+<li>[ ] 密度分布合理</li>
+</ul>
+<h3 id="_34">动画准备</h3>
+<ul>
+<li>[ ] 关节位置解剖正确</li>
+<li>[ ] 弯曲测试无明显问题</li>
+<li>[ ] 面部拓扑支持表情</li>
+<li>[ ] 手指脚趾可独立控制</li>
+<li>[ ] 模型中心和轴向正确</li>
+</ul>
+<h3 id="_35">优化与清理</h3>
+<ul>
+<li>[ ] 删除重复顶点（Merge by Distance）</li>
+<li>[ ] 修复法线方向（Recalculate Outside）</li>
+<li>[ ] 应用必要的修改器</li>
+<li>[ ] 清理孤立顶点</li>
+<li>[ ] 检查并修复非流形几何体</li>
+</ul>
+<h3 id="_36">文档与交接</h3>
+<ul>
+<li>[ ] 模型命名规范清晰</li>
+<li>[ ] 记录特殊处理区域</li>
+<li>[ ] 标注已知限制</li>
+<li>[ ] 提供拓扑说明图</li>
+<li>[ ] 包含测试姿势文件</li>
+</ul>
+            </article>
+            
+            <nav class="page-nav"><a href="chapter6.html" class="nav-link prev">← 第6章：场景构建与优化</a><a href="chapter8.html" class="nav-link next">第8章：写实角色制作 →</a></nav>
+        </main>
+    </div>
+</body>
+</html>
